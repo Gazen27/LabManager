@@ -20,12 +20,6 @@ public class ConnessioneDB {
 			String password = "6540";
 			
 			connection = DriverManager.getConnection(url, user, password);
-			
-			if(connection != null) {
-				
-				System.out.println("FUNZIONA");
-				
-			} else { System.out.println("NON FUNZIONA"); }
 
 		} catch (SQLException e) {
 

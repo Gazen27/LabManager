@@ -1,5 +1,3 @@
-//VERSIONE AGGIORNATA A: 
-
 package UTILITIES;
 
 import javax.swing.JFrame;
