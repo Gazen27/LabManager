@@ -20,6 +20,7 @@ public class AnagraficaPanel extends JPanel {
 	private JTextField nomeField;
 	private JTextField cognomeField;
 	private DataComponent dataComponent;
+	private JComboBox sessoComboBox;
 	private JTextField codiceFiscaleField;
 	private JTextField telefonoField;
 	private JTextField emailField;
@@ -77,7 +78,7 @@ public class AnagraficaPanel extends JPanel {
 		sessoLabel.setBounds(340, 280, 160, 22);
 		sessoLabel.setFont(new Font("Arial", Font.BOLD, 20));
 		String[] genderList = {"Uomo", "Donna"};
-		JComboBox sessoComboBox = new JComboBox(genderList);
+		sessoComboBox = new JComboBox(genderList);
 		sessoComboBox.setBounds(340, 310, 240, 30);
 		sessoComboBox.setFont(new Font("Arial", Font.PLAIN, 17));
 		add(sessoLabel);
@@ -138,6 +139,10 @@ public class AnagraficaPanel extends JPanel {
 	
 	public String getAnnoInserted() {
 		return this.dataComponent.getAnno();
+	}
+	
+	public String getDataNascitaInserted() {
+		return this.dataComponent.getDataCompleta();
 	}
 	
 	public String getCFInserted() {

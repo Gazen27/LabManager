@@ -86,16 +86,16 @@ public class DataComponent extends JComponent {
 		return giornoField.getText();
 	}
 
-	public void setGiornoField(JTextField giornoField) {
-		this.giornoField = giornoField;
-	}
-
 	public String getMese() {
 		return meseField.getText();
 	}
 	
 	public String getAnno() {
 		return annoField.getText();
+	}
+	
+	public String getDataCompleta() {
+		return this.getGiorno() + "-" + this.getMese() + "-" + this.getAnno();
 	}
 
 }

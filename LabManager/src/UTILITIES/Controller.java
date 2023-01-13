@@ -2,9 +2,18 @@ package UTILITIES;
 
 import javax.swing.JFrame;
 
+import java.util.Random;
+
+import DAO.TecnicoDAO;
+import DTO.Tecnico;
 import GUI.*;
 
 public class Controller {
+	
+	private Tecnico newTecnico;
+	private Tecnico tecnicoTemp;
+	private TecnicoDAO tecnicoDAO;
+	private String matricolaFinale;
 
 	public static void main(String[] args) {
 		
@@ -22,13 +31,11 @@ public class Controller {
 	
 	public Boolean CheckPasswordLength(String passwordInserted) {
 		
-		Boolean result = false;
-		
 		if(passwordInserted.length() > 7 && passwordInserted.length() < 17) {
-			result = true;
-		}
+			return true;
+			
+		} else return false;
 		
-		return result;
 	}
 	
 	public void GotoLoginPage(JFrame currentPage) {
@@ -85,7 +92,31 @@ public class Controller {
 		
 	} 
 	
-	public void CheckMissingPersonalInfo(AnagraficaPanel anagrafica, CredenzialiPanel credenziali) {
+	public Tecnico CreazioneTecnicoFinale(String matricola, CredenzialiPanel credenziali) {
+		
+		newTecnico = new Tecnico(this);
+		
+		newTecnico.setMatricola(matricola);
+		newTecnico.setPassword(credenziali.getPasswordInserted());
+		newTecnico.setNome(this.tecnicoTemp.getNome());
+		newTecnico.setCognome(this.tecnicoTemp.getCognome());
+		newTecnico.setDataNascita(this.tecnicoTemp.getDataNascita());
+		newTecnico.setSesso(this.tecnicoTemp.getSesso());
+		newTecnico.setCodiceFiscale(this.tecnicoTemp.getCodiceFiscale());
+		newTecnico.setTelefono(this.tecnicoTemp.getTelefono());
+		newTecnico.setEmail(this.tecnicoTemp.getEmail());
+		
+		return newTecnico;
+	}
+	
+	public void RegisterNewUser(String newMatricola, CredenzialiPanel currentCredenziali) {
+		
+		Tecnico tecnicoCreato = CreazioneTecnicoFinale(newMatricola, currentCredenziali);
+		TecnicoDAO tecnicoDAO = new TecnicoDAO();
+		tecnicoDAO.creaTecnico(tecnicoCreato);
+	}
+	
+	public Boolean CheckMissingPersonalInfo(AnagraficaPanel anagrafica, CredenzialiPanel credenziali) {
 		
 		//Checking if the fields are empty
 	    if(!anagrafica.getNomeInserted().equals("") && !anagrafica.getCognomeInserted().equals("")) {
@@ -93,17 +124,73 @@ public class Controller {
 	    		if(!anagrafica.getCFInserted().equals("")) {
 	    			if(!anagrafica.getTelefonoInserted().equals("") && !anagrafica.getEmailInserted().equals("")) {
 	    				
-	    				credenziali.setVisible(true);
-	    				anagrafica.setVisible(false);
-	    				//INSERIRE METODO GENERAZIONE MATRICOLA
+	    				//no missing info
+	    				return true;
 	    				
-	    			} else { anagrafica.datiErratiMancanti.setVisible(true); }
+	    			} else { return false; }
 	    			
-	    		} else { anagrafica.datiErratiMancanti.setVisible(true); }
+	    		} else { return false; }
 	    		
-	    	}else { anagrafica.datiErratiMancanti.setVisible(true); }
+	    	}else { return false; }
 	    	
-	    }else { anagrafica.datiErratiMancanti.setVisible(true); }
+	    }else { return false; }
+	}	
+	
+	
+	public void EndRegistration(CredenzialiPanel credenziali) {
+		
+		RegisterNewUser(matricolaFinale, credenziali);
+		
+	}
+	
+	public String CreazioneNuovaMatricola(TecnicoDAO CurrentTecnicoDAO) {
+		
+		String matricolaCompleta;
+		
+//		do {
+			
+			Random random = new Random();
+			int value = random.nextInt(999999) + 1000000;
+			
+			matricolaCompleta = "LM" + String.valueOf(value);
+			
+//		} while(!CurrentTecnicoDAO.checkExistingMatricola(matricolaCompleta));
+		
+		return matricolaCompleta;
+	}
+	
+	public void CreazioneTecnicoTemporanea(AnagraficaPanel anagrafica) {
+		
+		this.tecnicoTemp = new Tecnico(this);
+		
+		this.tecnicoTemp.setNome(anagrafica.getNomeInserted());
+		this.tecnicoTemp.setCognome(anagrafica.getCognomeInserted());
+		this.tecnicoTemp.setDataNascita(anagrafica.getDataNascitaInserted());
+		this.tecnicoTemp.setSesso('M');
+		this.tecnicoTemp.setCodiceFiscale(anagrafica.getCFInserted());
+		this.tecnicoTemp.setTelefono(anagrafica.getTelefonoInserted());
+		this.tecnicoTemp.setEmail(anagrafica.getEmailInserted());
+
+	}
+	
+	public void LastRegistrationPageOpened(AnagraficaPanel anagrafica, CredenzialiPanel credenziali) {
+		
+		//CONTROLLO SE LA PASSWORD INSERITA
+		matricolaFinale = CreazioneNuovaMatricola(tecnicoDAO);
+		credenziali.setMatricolaToShow(matricolaFinale);
+		credenziali.setVisible(true);
+		anagrafica.setVisible(false);
+		
+	}
+	
+	public void GoAheadWithRegistration(AnagraficaPanel anagrafica, CredenzialiPanel credenziali) {
+		
+		if(CheckMissingPersonalInfo(anagrafica, credenziali)) {
+
+			CreazioneTecnicoTemporanea(anagrafica);
+			LastRegistrationPageOpened(anagrafica, credenziali);
+			
+		} else { anagrafica.datiErratiMancanti.setVisible(true); }
 		
 	}
 	

@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 public class CredenzialiPanel extends JPanel {
 
 	Controller myController;
+	PasswordComponent passwordComponent;
+	JLabel showMatricola;
 
 	public CredenzialiPanel(Controller controller) {
 
@@ -18,32 +20,43 @@ public class CredenzialiPanel extends JPanel {
 
 		setLayout(null);
 
-		RegisterButton registerButton = new RegisterButton();
+		RegisterButton registerButton = new RegisterButton(myController, this);
 		registerButton.setBounds(110, 620, 390, 50);
 		add(registerButton);
 
 		JLabel benvenuto = new JLabel("Benvenuto!");
 		benvenuto.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 40));
 		benvenuto.setHorizontalAlignment(JLabel.CENTER);
-		benvenuto.setBounds(0, 55, 640, 50);
+		benvenuto.setBounds(0, 60, 640, 50);
 		add(benvenuto);
 
 		JLabel messaggioMatricolaAssegnata = new JLabel("La tua Matricola è:");
 		messaggioMatricolaAssegnata.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 40));
 		messaggioMatricolaAssegnata.setHorizontalAlignment(JLabel.CENTER);
-		messaggioMatricolaAssegnata.setBounds(0, 100, 640, 50);
+		messaggioMatricolaAssegnata.setBounds(0, 105, 640, 50);
 		add(messaggioMatricolaAssegnata);
 
-		JLabel showMatricola = new JLabel("N86004180");
-		showMatricola.setFont(new Font("Arial", Font.BOLD, 55));
+		showMatricola = new JLabel();
+		showMatricola.setFont(new Font("Arial", Font.BOLD, 60));
 		showMatricola.setHorizontalAlignment(JLabel.CENTER);
-		showMatricola.setBounds(0, 195, 640, 60);
+		showMatricola.setBounds(0, 200, 640, 70);
 		add(showMatricola);
 
-		PasswordComponent passwordComponent = new PasswordComponent("Crea una Password");
-		passwordComponent.setBounds(0, 150, 640, 720);
+		passwordComponent = new PasswordComponent("Crea una Password");
+		passwordComponent.setBounds(0, 145, 640, 720);
 		add(passwordComponent);
 
 	}
+	
+	public String getPasswordInserted() {
+		
+		return passwordComponent.getPassword();
+	}
+	
+	public void setMatricolaToShow(String matricolaGenerated) {
+		
+		showMatricola.setText(matricolaGenerated);
+	}
+	
 
 }

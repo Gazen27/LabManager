@@ -29,7 +29,7 @@ public class AvantiButton extends JButton{
 			
 			public void mouseClicked(MouseEvent e) {
 				
-				myController.CheckMissingPersonalInfo(currentAnagrafica, currentCredenziali);
+				myController.GoAheadWithRegistration(currentAnagrafica, currentCredenziali);
 			}
 			
 			public void mouseEntered(MouseEvent e) {

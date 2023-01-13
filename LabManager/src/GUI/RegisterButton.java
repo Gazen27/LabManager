@@ -8,9 +8,15 @@ import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
+import UTILITIES.Controller;
+
 public class RegisterButton extends JButton {
 	
-	public RegisterButton() {
+	Controller myController;
+	
+	public RegisterButton(Controller controller, CredenzialiPanel credenziali) {
+		
+		myController = controller;
 		
 		setText("Registrati");
 		setFont(new Font("Segoe UI", Font.BOLD, 25));
@@ -20,6 +26,11 @@ public class RegisterButton extends JButton {
 		
 		
 		addMouseListener(new MouseAdapter() {
+			
+			public void mouseClicked(MouseEvent e) {
+				
+				myController.EndRegistration(credenziali);
+			}
 			
 			public void mouseEntered(MouseEvent e) {
 				setBackground(new Color(0, 75, 210));
