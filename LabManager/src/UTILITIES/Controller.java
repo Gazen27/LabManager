@@ -89,7 +89,6 @@ public class Controller {
 		loginWindow.setVisible(true);
 		toLoginDialog.dispose();
 	}
-
 	
 	
 ////////////////////////////////////// CHECK MISSING INFO //////////////////////////////////////
