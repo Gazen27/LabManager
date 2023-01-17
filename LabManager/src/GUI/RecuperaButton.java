@@ -29,7 +29,7 @@ public class RecuperaButton extends JButton {
 			
 			public void mouseClicked(MouseEvent e) {
 				
-				myController.CheckMissingRecoveryInfo(currentRecovery);
+				myController.RecoverInformations(currentRecovery);
 			}
 			
 			public void mouseEntered(MouseEvent e) {

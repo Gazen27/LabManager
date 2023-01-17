@@ -30,7 +30,7 @@ public class LoginButton extends JButton {
 			
 			public void mouseClicked(MouseEvent e) {
 				
-				myController.CheckMissingLoginInfo(currentLogin);
+				myController.ExecuteLogin(currentLogin);
 			}
 			
 			public void mouseEntered(MouseEvent e) {

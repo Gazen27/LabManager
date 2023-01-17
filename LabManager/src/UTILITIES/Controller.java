@@ -14,6 +14,10 @@ public class Controller {
 	private Tecnico tecnicoTemp;
 	private TecnicoDAO tecnicoDAO;
 	private String matricolaFinale;
+	private RegisterWindow registerWindow;
+	private LoginWindow loginWindow;
+	private ReturnToLoginPage toLoginDialog;
+	private PasswordRecoveryWindow passwordRecoveryWindow;
 
 	public static void main(String[] args) {
 		
@@ -23,10 +27,20 @@ public class Controller {
 	
 	public Controller() {
 		
-		LoginWindow loginWindow = new LoginWindow(this);
+		loginWindow = new LoginWindow(this);
 		loginWindow.setUndecorated(true);
 		loginWindow.setVisible(true);
+	}
+	
+	
+////////////////////////////////////// CHECK INFORMATION LENGTH //////////////////////////////////////
+	
+	public Boolean CheckCFLength(String CFInserted) {
 		
+		if(CFInserted.length() == 16) {
+			return true;
+			
+		} else return false;
 	}
 	
 	public Boolean CheckPasswordLength(String passwordInserted) {
@@ -38,9 +52,11 @@ public class Controller {
 		
 	}
 	
+////////////////////////////////////// GO TO PAGES //////////////////////////////////////
+	
 	public void GotoLoginPage(JFrame currentPage) {
 		
-		LoginWindow loginWindow = new LoginWindow(this);
+		loginWindow = new LoginWindow(this);
 		loginWindow.setUndecorated(true);
 		loginWindow.setVisible(true);
 		
@@ -49,7 +65,7 @@ public class Controller {
 	
 	public void GotoRegisterPage(JFrame fromLogin) {
 		
-		RegisterWindow registerWindow = new RegisterWindow(this);
+		registerWindow = new RegisterWindow(this);
 		registerWindow.setUndecorated(true);
 		registerWindow.setVisible(true);
 		
@@ -58,39 +74,80 @@ public class Controller {
 	
 	public void GotoPasswordRecoveryPage(JFrame fromLogin) {
 		
-		PasswordRecoveryWindow passwordRecoveryWindow = new PasswordRecoveryWindow(this);
+		passwordRecoveryWindow = new PasswordRecoveryWindow(this);
 		passwordRecoveryWindow.setUndecorated(true);
 		passwordRecoveryWindow.setVisible(true);
 		
 		fromLogin.dispose();
 	}
 	
-	public void CheckMissingLoginInfo(LoginPanel login) {
+	public void ReturnAfterRegistration(JFrame currentWindow) {
+		
+		currentWindow.dispose();
+		loginWindow = new LoginWindow(this);
+		loginWindow.setUndecorated(true);
+		loginWindow.setVisible(true);
+		toLoginDialog.dispose();
+	}
+
+	
+	
+////////////////////////////////////// CHECK MISSING INFO //////////////////////////////////////
+	
+	public Boolean CheckMissingLoginInfo(LoginPanel login) {
 		
 		//Checking if the fields are empty
 		if(!login.getMatricolaLogin().equals("") && !login.getPasswordLogin().equals("")) {
 			
-			//METHOD TO LOGIN
+			return true;
 			
-		} else { login.datiErratiMancanti.setVisible(true); }
+		} else { return false; }
 	}
 	
-	public void CheckMissingRecoveryInfo(PasswordRecoveryPanel recovery) {
+	
+	public Boolean CheckMissingRecoveryInfo(PasswordRecoveryPanel recovery) {
 		
 		//Checking if the fields are empty
 		if(!recovery.getMatricolaInserted().equals("") && !recovery.getNewPasswordInserted().equals("")) {
 			if(!recovery.getEmailInserted().equals("") && !recovery.getTelefonoInserted().equals("")) {
 				if(!recovery.getCFInserted().equals("")) {
 					
-					//INSERIRE METODO RECUPERO PASSWORD
+					return true;
 					
-				} else { recovery.datiErratiMancanti.setVisible(true); }
+				} else { return false; }
 				
-			} else { recovery.datiErratiMancanti.setVisible(true); }
+			} else { return false; }
 			
-		} else { recovery.datiErratiMancanti.setVisible(true); }
+		} else { return false; }
 		
 	} 
+	
+	
+	public Boolean CheckMissingPersonalInfo(AnagraficaPanel anagrafica, CredenzialiPanel credenziali) {
+		
+		//Checking if the fields are empty
+	    if(!anagrafica.getNomeInserted().equals("") && !anagrafica.getCognomeInserted().equals("")) {
+	    	if(!anagrafica.getGiornoInserted().equals("") && !anagrafica.getMeseInserted().equals("") && !anagrafica.getAnnoInserted().equals("")) {
+	    		if(!anagrafica.getCFInserted().equals("")) {
+	    			if(!anagrafica.getTelefonoInserted().equals("") && !anagrafica.getEmailInserted().equals("")) {
+	    				
+	    				if(!anagrafica.getGiornoInserted().equals("GG") && !anagrafica.getMeseInserted().equals("MM") && !anagrafica.getAnnoInserted().equals("YYYY")) {
+	    					
+		    				//no missing info
+		    				return true;
+		    				
+	    				} else { return false; }
+
+	    			} else { return false; }
+	    			
+	    		} else { return false; }
+	    		
+	    	}else { return false; }
+	    	
+	    }else { return false; }
+	}
+	
+////////////////////////////////////// REGISTRATION //////////////////////////////////////
 	
 	public Tecnico CreazioneTecnicoFinale(String matricola, CredenzialiPanel credenziali) {
 		
@@ -112,49 +169,37 @@ public class Controller {
 	public void RegisterNewUser(String newMatricola, CredenzialiPanel currentCredenziali) {
 		
 		Tecnico tecnicoCreato = CreazioneTecnicoFinale(newMatricola, currentCredenziali);
-		TecnicoDAO tecnicoDAO = new TecnicoDAO();
+		tecnicoDAO = new TecnicoDAO(this);
 		tecnicoDAO.creaTecnico(tecnicoCreato);
 	}
-	
-	public Boolean CheckMissingPersonalInfo(AnagraficaPanel anagrafica, CredenzialiPanel credenziali) {
-		
-		//Checking if the fields are empty
-	    if(!anagrafica.getNomeInserted().equals("") && !anagrafica.getCognomeInserted().equals("")) {
-	    	if(!anagrafica.getGiornoInserted().equals("") && !anagrafica.getMeseInserted().equals("") && !anagrafica.getAnnoInserted().equals("")) {
-	    		if(!anagrafica.getCFInserted().equals("")) {
-	    			if(!anagrafica.getTelefonoInserted().equals("") && !anagrafica.getEmailInserted().equals("")) {
-	    				
-	    				//no missing info
-	    				return true;
-	    				
-	    			} else { return false; }
-	    			
-	    		} else { return false; }
-	    		
-	    	}else { return false; }
-	    	
-	    }else { return false; }
-	}	
 	
 	
 	public void EndRegistration(CredenzialiPanel credenziali) {
 		
-		RegisterNewUser(matricolaFinale, credenziali);
+		if(CheckPasswordLength(credenziali.getPasswordInserted())) {
+			
+			RegisterNewUser(matricolaFinale, credenziali);
+			toLoginDialog = new ReturnToLoginPage(this, "Registrazione completata!", registerWindow);
+			toLoginDialog.setLocationRelativeTo(registerWindow);
+			
+		} else { credenziali.passwordBreve.setVisible(true); }
+
 		
 	}
 	
-	public String CreazioneNuovaMatricola(TecnicoDAO CurrentTecnicoDAO) {
+	public String CreazioneNuovaMatricola() {
 		
+		TecnicoDAO CurrentTecnicoDAO = new TecnicoDAO(this);
 		String matricolaCompleta;
 		
-//		do {
+		do {
 			
 			Random random = new Random();
 			int value = random.nextInt(999999) + 1000000;
 			
 			matricolaCompleta = "LM" + String.valueOf(value);
 			
-//		} while(!CurrentTecnicoDAO.checkExistingMatricola(matricolaCompleta));
+		} while(CurrentTecnicoDAO.checkExistingMatricola(matricolaCompleta));
 		
 		return matricolaCompleta;
 	}
@@ -166,7 +211,7 @@ public class Controller {
 		this.tecnicoTemp.setNome(anagrafica.getNomeInserted());
 		this.tecnicoTemp.setCognome(anagrafica.getCognomeInserted());
 		this.tecnicoTemp.setDataNascita(anagrafica.getDataNascitaInserted());
-		this.tecnicoTemp.setSesso('M');
+		this.tecnicoTemp.setSesso(anagrafica.getSessoInserted());
 		this.tecnicoTemp.setCodiceFiscale(anagrafica.getCFInserted());
 		this.tecnicoTemp.setTelefono(anagrafica.getTelefonoInserted());
 		this.tecnicoTemp.setEmail(anagrafica.getEmailInserted());
@@ -175,8 +220,7 @@ public class Controller {
 	
 	public void LastRegistrationPageOpened(AnagraficaPanel anagrafica, CredenzialiPanel credenziali) {
 		
-		//CONTROLLO SE LA PASSWORD INSERITA
-		matricolaFinale = CreazioneNuovaMatricola(tecnicoDAO);
+		matricolaFinale = CreazioneNuovaMatricola();
 		credenziali.setMatricolaToShow(matricolaFinale);
 		credenziali.setVisible(true);
 		anagrafica.setVisible(false);
@@ -192,6 +236,48 @@ public class Controller {
 			
 		} else { anagrafica.datiErratiMancanti.setVisible(true); }
 		
+	}
+	
+////////////////////////////////////// LOGIN //////////////////////////////////////
+	
+	public void ExecuteLogin(LoginPanel currentLogin) {
+		
+		tecnicoDAO = new TecnicoDAO(this);
+		
+		if(this.CheckMissingLoginInfo(currentLogin)) {
+			
+			if(tecnicoDAO.checkMatchingCredentials(currentLogin.getMatricolaLogin(), currentLogin.getPasswordLogin())) {
+				
+				loginWindow.dispose();
+
+				//Creating the main Frame
+				
+			} else { currentLogin.datiErratiMancanti.setVisible(true); }
+			
+		} else { currentLogin.datiErratiMancanti.setVisible(true); }
+
+	}
+	
+////////////////////////////////////// RECOVERY //////////////////////////////////////
+	
+	public void RecoverInformations(PasswordRecoveryPanel currentRecovery) {
+		
+		if(CheckMissingRecoveryInfo(currentRecovery)) {
+			
+			tecnicoDAO = new TecnicoDAO(this);
+			
+			if(tecnicoDAO.checkCorrectRecoveryInfo(currentRecovery)) {
+				
+				if(tecnicoDAO.nuovaPassword(currentRecovery)) {
+					
+					toLoginDialog = new ReturnToLoginPage(this, "Password recuperata!", passwordRecoveryWindow);
+					toLoginDialog.setLocationRelativeTo(registerWindow);
+					
+				} else { currentRecovery.datiErratiMancanti.setVisible(true); }
+				
+			} else { currentRecovery.datiErratiMancanti.setVisible(true); }
+			
+		} else { currentRecovery.datiErratiMancanti.setVisible(true); }
 	}
 	
 }

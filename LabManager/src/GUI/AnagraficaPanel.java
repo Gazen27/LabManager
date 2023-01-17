@@ -156,5 +156,17 @@ public class AnagraficaPanel extends JPanel {
 	public String getEmailInserted() {
 		return emailField.getText();
 	}
+	
+	public char getSessoInserted() {
+		
+		String sesso = (String)sessoComboBox.getSelectedItem();
+		
+		if(sesso.equals("Uomo")) {
+			
+			return 'M';
+			
+		} else { return 'F'; }
+
+	}
 
 }
