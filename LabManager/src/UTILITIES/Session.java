@@ -1,6 +1,6 @@
-package DTO;
+package UTILITIES;
 
-import UTILITIES.Controller;
+import DTO.Tecnico;
 
 public class Session {
 	
@@ -17,7 +17,7 @@ public class Session {
 	
 	public String getUserMatricola() {
 		
-		return user.Matricola;
+		return user.getMatricola();
 	}
 	
 	public String getNomeCompleto() {

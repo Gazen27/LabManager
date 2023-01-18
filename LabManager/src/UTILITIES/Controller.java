@@ -6,7 +6,6 @@ import java.util.Random;
 
 import DAO.TecnicoDAO;
 import DTO.Tecnico;
-import DTO.Session;
 import GUI.*;
 
 public class Controller {

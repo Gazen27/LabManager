@@ -1,12 +1,11 @@
 package GUI;
 
 import UTILITIES.Controller;
+import UTILITIES.Session;
 
 import java.awt.Color;
 
 import javax.swing.JFrame;
-
-import DTO.Session;
 
 public class MainWindow extends JFrame {
 	

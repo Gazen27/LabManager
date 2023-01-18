@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import UTILITIES.Controller;
-import DTO.Session;
+import UTILITIES.Session;
 
 public class LeftMenu extends JPanel {
 
