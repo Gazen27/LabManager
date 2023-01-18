@@ -12,7 +12,6 @@ public class TecnicoDAO {
 	
 	private ConnessioneDB connessioneDB;
 	private Statement statement;
-	private ResultSet resultSet;
 	
 	Controller myController;
 	
@@ -59,6 +58,29 @@ public class TecnicoDAO {
 	}
 
 ////////////////////////////////////// SELECTING //////////////////////////////////////
+	
+	public Tecnico getSingoloTecnico(String matricolaInserted) {
+
+		Tecnico currentTecnico = new Tecnico(myController);
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery("SELECT * FROM tecnico t WHERE t.matricola = '" + matricolaInserted + "'");	
+			
+			rs.next();
+			currentTecnico.setNome(rs.getString("nome"));
+			currentTecnico.setCognome(rs.getString("cognome"));
+			currentTecnico.setMatricola(rs.getString("matricola"));
+			currentTecnico.setPassword(rs.getString("pass"));
+			
+		} catch(SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return currentTecnico;
+		
+	}
 	
 	public Vector<Tecnico> getAllTecnici(){
 

@@ -6,11 +6,12 @@ import java.util.Random;
 
 import DAO.TecnicoDAO;
 import DTO.Tecnico;
+import DTO.Session;
 import GUI.*;
 
 public class Controller {
 	
-	private Tecnico newTecnico;
+	private Tecnico tecnico;
 	private Tecnico tecnicoTemp;
 	private TecnicoDAO tecnicoDAO;
 	private String matricolaFinale;
@@ -30,6 +31,7 @@ public class Controller {
 		loginWindow = new LoginWindow(this);
 		loginWindow.setUndecorated(true);
 		loginWindow.setVisible(true);
+
 	}
 	
 	
@@ -150,19 +152,19 @@ public class Controller {
 	
 	public Tecnico CreazioneTecnicoFinale(String matricola, CredenzialiPanel credenziali) {
 		
-		newTecnico = new Tecnico(this);
+		tecnico = new Tecnico(this);
 		
-		newTecnico.setMatricola(matricola);
-		newTecnico.setPassword(credenziali.getPasswordInserted());
-		newTecnico.setNome(this.tecnicoTemp.getNome());
-		newTecnico.setCognome(this.tecnicoTemp.getCognome());
-		newTecnico.setDataNascita(this.tecnicoTemp.getDataNascita());
-		newTecnico.setSesso(this.tecnicoTemp.getSesso());
-		newTecnico.setCodiceFiscale(this.tecnicoTemp.getCodiceFiscale());
-		newTecnico.setTelefono(this.tecnicoTemp.getTelefono());
-		newTecnico.setEmail(this.tecnicoTemp.getEmail());
+		tecnico.setMatricola(matricola);
+		tecnico.setPassword(credenziali.getPasswordInserted());
+		tecnico.setNome(this.tecnicoTemp.getNome());
+		tecnico.setCognome(this.tecnicoTemp.getCognome());
+		tecnico.setDataNascita(this.tecnicoTemp.getDataNascita());
+		tecnico.setSesso(this.tecnicoTemp.getSesso());
+		tecnico.setCodiceFiscale(this.tecnicoTemp.getCodiceFiscale());
+		tecnico.setTelefono(this.tecnicoTemp.getTelefono());
+		tecnico.setEmail(this.tecnicoTemp.getEmail());
 		
-		return newTecnico;
+		return tecnico;
 	}
 	
 	public void RegisterNewUser(String newMatricola, CredenzialiPanel currentCredenziali) {
@@ -188,7 +190,7 @@ public class Controller {
 	
 	public String CreazioneNuovaMatricola() {
 		
-		TecnicoDAO CurrentTecnicoDAO = new TecnicoDAO(this);
+		tecnicoDAO = new TecnicoDAO(this);
 		String matricolaCompleta;
 		
 		do {
@@ -198,7 +200,7 @@ public class Controller {
 			
 			matricolaCompleta = "LM" + String.valueOf(value);
 			
-		} while(CurrentTecnicoDAO.checkExistingMatricola(matricolaCompleta));
+		} while(tecnicoDAO.checkExistingMatricola(matricolaCompleta));
 		
 		return matricolaCompleta;
 	}
@@ -239,6 +241,16 @@ public class Controller {
 	
 ////////////////////////////////////// LOGIN //////////////////////////////////////
 	
+	public Tecnico getTecnicoFromDB(String matricola) {
+		
+		tecnicoDAO = new TecnicoDAO(this);
+		
+		tecnico = tecnicoDAO.getSingoloTecnico(matricola);
+		
+		return tecnico;
+		
+	}
+	
 	public void ExecuteLogin(LoginPanel currentLogin) {
 		
 		tecnicoDAO = new TecnicoDAO(this);
@@ -248,8 +260,12 @@ public class Controller {
 			if(tecnicoDAO.checkMatchingCredentials(currentLogin.getMatricolaLogin(), currentLogin.getPasswordLogin())) {
 				
 				loginWindow.dispose();
-
-				//Creating the main Frame
+				
+				tecnico = this.getTecnicoFromDB(currentLogin.getMatricolaLogin());
+				Session currentSession = new Session(this, tecnico);
+				
+				MainWindow mainWindow =  new MainWindow(this, currentSession);
+				mainWindow.setVisible(true);
 				
 			} else { currentLogin.datiErratiMancanti.setVisible(true); }
 			
