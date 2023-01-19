@@ -17,7 +17,7 @@ public class GoToPrenotazioni extends JButton {
 	
 	Controller myController;
 
-	public GoToPrenotazioni(Controller controller) {
+	public GoToPrenotazioni(Controller controller, JPanel[] allPages) {
 		
 		myController = controller;
 		
@@ -34,7 +34,7 @@ public class GoToPrenotazioni extends JButton {
 			
 			public void mouseClicked(MouseEvent e) {
 				
-
+				myController.GoToPrenotazioni(allPages);
 			}
 			
 			public void mouseEntered(MouseEvent e) {

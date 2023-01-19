@@ -59,8 +59,9 @@ public class MainWindow extends JFrame {
 		laboratori.setLocation(350, 0);
 		allPanels[0] = laboratori;
 		
-		
-		allPanels[1] = laboratori;
+		PrenotazioniPage prenotazioni = new PrenotazioniPage(myController);
+		prenotazioni.setLocation(350, 0);
+		allPanels[1] = prenotazioni;
 		
 		
 		allPanels[2] = laboratori;
@@ -68,6 +69,7 @@ public class MainWindow extends JFrame {
 		getContentPane().add(exit);
 		getContentPane().add(leftMenu);
 		getContentPane().add(laboratori);
+		getContentPane().add(prenotazioni);
 		
 		
 		getContentPane().add(atomLogo);

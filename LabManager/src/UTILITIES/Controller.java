@@ -85,6 +85,16 @@ public class Controller {
 		allPages[0].setVisible(true);
 	}
 	
+	public void GoToPrenotazioni(JPanel allPages[]) {
+		
+		for(int i = 0; i < 3; i ++) {
+			allPages[i].setVisible(false);
+		}
+		
+		//Setting true to Lab Panel
+		allPages[1].setVisible(true);
+	}
+	
 ////////////////////////////////////// CHECK INFORMATION LENGTH //////////////////////////////////////
 	
 	public Boolean CheckCFLength(String CFInserted) {
