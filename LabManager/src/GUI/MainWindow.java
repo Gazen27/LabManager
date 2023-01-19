@@ -26,11 +26,18 @@ public class MainWindow extends JFrame {
 		
 		leftMenu = new LeftMenu(myController, currentSession);
 		leftMenu.setLocation(0, 0);
-		add(leftMenu);
+
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
 		setVisible(false);
+		
+		ExitButton exit = new ExitButton(myController, this);
+		exit.setBounds(150, 635, 50, 25);
+		
+		add(exit);
+		add(leftMenu);
+
 	}
 
 }

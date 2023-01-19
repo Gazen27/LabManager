@@ -18,6 +18,7 @@ public class Controller {
 	private LoginWindow loginWindow;
 	private ReturnToLoginPage toLoginDialog;
 	private PasswordRecoveryWindow passwordRecoveryWindow;
+	private MainWindow mainWindow;
 
 	public static void main(String[] args) {
 		
@@ -258,12 +259,12 @@ public class Controller {
 			
 			if(tecnicoDAO.checkMatchingCredentials(currentLogin.getMatricolaLogin(), currentLogin.getPasswordLogin())) {
 				
-				loginWindow.dispose();
-				
 				tecnico = this.getTecnicoFromDB(currentLogin.getMatricolaLogin());
 				Session currentSession = new Session(this, tecnico);
 				
-				MainWindow mainWindow =  new MainWindow(this, currentSession);
+				loginWindow.dispose();
+				
+				mainWindow =  new MainWindow(this, currentSession);
 				mainWindow.setVisible(true);
 				
 			} else { currentLogin.datiErratiMancanti.setVisible(true); }

@@ -34,6 +34,5 @@ public class LeftMenu extends JPanel {
 		nomeDisplayed.setHorizontalAlignment(JLabel.CENTER);
 		add(nomeDisplayed);
 		
-		
 	}
 }
