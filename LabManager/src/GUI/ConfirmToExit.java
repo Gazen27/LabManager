@@ -23,6 +23,8 @@ public class ConfirmToExit extends JDialog {
 		setSize(350, 200);
 		getContentPane().setLayout(null);
 		setBackground(new Color(235, 235, 235));
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		setAlwaysOnTop(true);
 		
 		JLabel simpleText = new JLabel("Sei sicuro di voler uscire?");
 		simpleText.setFont(new Font("Arial", Font.BOLD, 21));

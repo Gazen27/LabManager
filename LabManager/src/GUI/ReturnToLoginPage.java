@@ -25,6 +25,8 @@ public class ReturnToLoginPage extends JDialog {
 		setSize(350, 200);
 		getContentPane().setLayout(null);
 		setBackground(new Color(235, 235, 235));
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		setAlwaysOnTop(true);
 		
 		JLabel simpleText = new JLabel(text);
 		simpleText.setFont(new Font("Arial", Font.BOLD, 21));
