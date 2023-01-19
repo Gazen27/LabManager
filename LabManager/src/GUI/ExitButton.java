@@ -28,7 +28,8 @@ public class ExitButton extends JLabel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 						
-				controller.GotoLoginPage(currentFrame);
+				ConfirmToExit confirm = new ConfirmToExit(myController, currentFrame);
+				confirm.setLocationRelativeTo(currentFrame);
 			}
 			
 			public void mouseEntered(MouseEvent e) {
