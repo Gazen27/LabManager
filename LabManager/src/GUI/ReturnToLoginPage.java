@@ -46,6 +46,7 @@ public class ReturnToLoginPage extends JDialog {
 		okayButton.setBackground(new Color(10, 100, 255));
 		okayButton.setBorder(BorderFactory.createLineBorder(new Color(10, 100, 255), 1, true));
 		okayButton.setBounds(140, 107, 50, 30);
+		okayButton.setFocusable(false);
 		getContentPane().add(okayButton);
 		
 		

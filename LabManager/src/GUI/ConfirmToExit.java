@@ -44,6 +44,7 @@ public class ConfirmToExit extends JDialog {
 		esciButton.setBackground(new Color(10, 100, 255));
 		esciButton.setBorder(BorderFactory.createLineBorder(new Color(10, 100, 255), 1, true));
 		esciButton.setBounds(65, 110, 65, 30);
+		esciButton.setFocusable(false);
 		getContentPane().add(esciButton);
 		
 		JButton annullaButton = new JButton("Annulla");
@@ -52,13 +53,15 @@ public class ConfirmToExit extends JDialog {
 		annullaButton.setBackground(new Color(10, 100, 255));
 		annullaButton.setBorder(BorderFactory.createLineBorder(new Color(10, 100, 255), 1, true));
 		annullaButton.setBounds(200, 110, 65, 30);
+		annullaButton.setFocusable(false);
 		getContentPane().add(annullaButton);
 		
 		esciButton.addMouseListener(new MouseAdapter() {
 			
 			public void mouseClicked(MouseEvent e) {
 				
-				myController.GotoLoginPage(currentPage);;
+				myController.GotoLoginPage(currentPage);
+				dispose();
 			}
 			
 			public void mouseEntered(MouseEvent e) {

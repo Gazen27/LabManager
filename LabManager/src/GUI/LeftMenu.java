@@ -13,7 +13,7 @@ public class LeftMenu extends JPanel {
 
 		Controller myController;
 		
-	public LeftMenu(Controller controller, Session currentSession) {
+	public LeftMenu(Controller controller, Session currentSession, JPanel[] allPages) {
 		
 		myController = controller;
 		
@@ -34,5 +34,16 @@ public class LeftMenu extends JPanel {
 		nomeDisplayed.setHorizontalAlignment(JLabel.CENTER);
 		add(nomeDisplayed);
 		
+		GoToLaboratori laboratorio = new GoToLaboratori(myController, allPages);
+		laboratorio.setBounds(10, 300, 330, 50);
+		add(laboratorio);
+		
+		GoToPrenotazioni prenotazioni = new GoToPrenotazioni(myController);
+		prenotazioni.setBounds(10, 348, 330, 50);
+		add(prenotazioni);
+		
+		GoToProfiloPage profilo = new GoToProfiloPage(myController);
+		profilo.setBounds(10, 396, 330, 50);
+		add(profilo);
 	}
 }

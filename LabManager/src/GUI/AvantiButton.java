@@ -24,6 +24,8 @@ public class AvantiButton extends JButton{
 		setBackground(new Color(10, 100, 255));
 		setBorder(BorderFactory.createLineBorder(new Color(10, 100, 255), 1, true));
 		
+		setFocusable(false);
+		
 		//Event to create register window
 		addMouseListener(new MouseAdapter() {
 			
@@ -34,9 +36,12 @@ public class AvantiButton extends JButton{
 			
 			public void mouseEntered(MouseEvent e) {
 				setBackground(new Color(0, 75, 210));
+				setFont(new Font("Segoe UI", Font.BOLD, 23));
 			}
+			
 			public void mouseExited(MouseEvent e) {
 				setBackground(new Color(10, 100, 255));
+				setFont(new Font("Segoe UI", Font.BOLD, 25));
 			}
 		});
 	}

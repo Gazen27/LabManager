@@ -1,6 +1,7 @@
 package UTILITIES;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import java.util.Random;
 
@@ -35,6 +36,55 @@ public class Controller {
 	}
 	
 	
+//////////////////////////////////////GO TO PAGES //////////////////////////////////////
+	
+	public void GotoLoginPage(JFrame currentPage) {
+	
+		loginWindow = new LoginWindow(this);
+		loginWindow.setUndecorated(true);
+		loginWindow.setVisible(true);
+	
+		currentPage.dispose();
+	}
+	
+	public void GotoRegisterPage(JFrame fromLogin) {
+	
+		registerWindow = new RegisterWindow(this);
+		registerWindow.setUndecorated(true);
+		registerWindow.setVisible(true);
+		
+		fromLogin.dispose();
+	}
+	
+	public void GotoPasswordRecoveryPage(JFrame fromLogin) {
+	
+		passwordRecoveryWindow = new PasswordRecoveryWindow(this);
+		passwordRecoveryWindow.setUndecorated(true);
+		passwordRecoveryWindow.setVisible(true);
+		
+		fromLogin.dispose();
+	}
+	
+	public void ReturnAfterRegistration(JFrame currentWindow) {
+	
+		currentWindow.dispose();
+		loginWindow = new LoginWindow(this);
+		loginWindow.setUndecorated(true);
+		loginWindow.setVisible(true);
+		
+		toLoginDialog.dispose();
+	}
+	
+	public void GoToLaboratori(JPanel allPages[]) {
+		
+		for(int i = 0; i < 3; i ++) {
+			allPages[i].setVisible(false);
+		}
+		
+		//Setting true to Lab Panel
+		allPages[0].setVisible(true);
+	}
+	
 ////////////////////////////////////// CHECK INFORMATION LENGTH //////////////////////////////////////
 	
 	public Boolean CheckCFLength(String CFInserted) {
@@ -52,44 +102,6 @@ public class Controller {
 			
 		} else return false;
 		
-	}
-	
-////////////////////////////////////// GO TO PAGES //////////////////////////////////////
-	
-	public void GotoLoginPage(JFrame currentPage) {
-		
-		loginWindow = new LoginWindow(this);
-		loginWindow.setUndecorated(true);
-		loginWindow.setVisible(true);
-		
-		currentPage.dispose();
-	}
-	
-	public void GotoRegisterPage(JFrame fromLogin) {
-		
-		registerWindow = new RegisterWindow(this);
-		registerWindow.setUndecorated(true);
-		registerWindow.setVisible(true);
-		
-		fromLogin.dispose();
-	}
-	
-	public void GotoPasswordRecoveryPage(JFrame fromLogin) {
-		
-		passwordRecoveryWindow = new PasswordRecoveryWindow(this);
-		passwordRecoveryWindow.setUndecorated(true);
-		passwordRecoveryWindow.setVisible(true);
-		
-		fromLogin.dispose();
-	}
-	
-	public void ReturnAfterRegistration(JFrame currentWindow) {
-		
-		currentWindow.dispose();
-		loginWindow = new LoginWindow(this);
-		loginWindow.setUndecorated(true);
-		loginWindow.setVisible(true);
-		toLoginDialog.dispose();
 	}
 	
 	
@@ -147,6 +159,7 @@ public class Controller {
 	    	
 	    }else { return false; }
 	}
+	
 	
 ////////////////////////////////////// REGISTRATION //////////////////////////////////////
 	
