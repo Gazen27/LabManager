@@ -1,5 +1,6 @@
 # Progetto Lab-Manager
-![Banner](https://user-images.githubusercontent.com/43990877/213589259-99c08f58-e529-42c2-a723-40b1b37d75e3.png)
+![Banner](https://user-images.githubusercontent.com/43990877/213589816-9d2e0606-3371-4f0a-b2e3-fc543cb8143e.png)
+
 
 
 
