@@ -1,5 +1,5 @@
 # Progetto Lab-Manager
-[[file:README Files/Banner.png]]
+[[file:README_Files/Banner.png]]
 
 
 # About
