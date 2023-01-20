@@ -1,11 +1,8 @@
 # Progetto Lab-Manager
 ![Banner](https://user-images.githubusercontent.com/43990877/213590461-9bf2f97d-aa42-4859-b72c-5c7dfdda920d.png)
 
-
-
-
-
 # About
-Progetto accademico per la gestione di un laboratorio scientifico.
+Academic project for Napoli's Università Degli Studi Federico II.
+Management Software for a scientific laboratory.
 
-#Languages
+# Languages
