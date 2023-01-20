@@ -7,3 +7,4 @@ Academic project for Napoli's Università degli Studi Federico II.
 Management Software for a scientific laboratory.
 
 # Languages
+![java](https://user-images.githubusercontent.com/43990877/213591687-61493d37-9280-4c45-823b-cc5f9a01dea0.png)
