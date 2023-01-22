@@ -22,7 +22,6 @@ public class TabellaLaboratori extends JScrollPane{
 		colonne.add("Sede");
 		colonne.add("Tecnici");
 		colonne.add("Iscritto");
-		colonne.add("altro");
 		
 		JTable tabella = new JTable();
 	}
