@@ -1,19 +1,28 @@
 package GUI;
 
+import UTILITIES.Controller;
+
+import java.awt.Color;
 import java.util.Vector;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class TabellaLaboratori extends JScrollPane{
 	
 	private Vector<Vector<String>> dati;
 	private Vector<Object> colonne;
+	private DefaultTableModel tableModel;
+	private JTable tabella;
 	
-	public TabellaLaboratori() {
+	Controller myController;
+	
+	public TabellaLaboratori(Controller controller) {
 		
+		myController = controller;
 		
-		
+		setBackground(new Color(235, 235, 235));
 		
 		//Table
 		colonne = new Vector<Object>();
@@ -23,6 +32,10 @@ public class TabellaLaboratori extends JScrollPane{
 		colonne.add("Tecnici");
 		colonne.add("Iscritto");
 		
-		JTable tabella = new JTable();
+		tableModel = new DefaultTableModel(dati, colonne);
+		
+		tabella = new JTable(tableModel);
+		
+		add(tabella);
 	}
 }

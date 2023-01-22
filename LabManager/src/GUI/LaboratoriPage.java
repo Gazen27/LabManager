@@ -21,7 +21,6 @@ public class LaboratoriPage extends JPanel{
 		
 		setLayout(null);
 		
-		Color backgroundColor = new Color(235, 235, 235);
 		setBackground(new Color(235, 235, 235));
 		setSize(930, 720);
 		
@@ -31,6 +30,9 @@ public class LaboratoriPage extends JPanel{
 		pageTitle.setHorizontalAlignment(JLabel.LEFT);
 		add(pageTitle);
 		
+		TabellaLaboratori tabellaLab = new TabellaLaboratori(myController);
+		tabellaLab.setBounds(100, 100, 500, 500);
+		add(tabellaLab);
 		
 		this.setVisible(false);
 	}
