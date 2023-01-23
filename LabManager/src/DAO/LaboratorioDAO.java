@@ -23,6 +23,27 @@ public class LaboratorioDAO {
 		statement = connessioneDB.getStatement();
 	}
 	
+
+////////////////////////////////////// INSERTING //////////////////////////////////////
+	
+	public void iscrizioneTecnico(String matricola, String codice, String tipo) {
+		
+		Integer cod = Integer.parseInt(codice);
+		
+		String values = "('" + matricola + "', " + cod +", '" + tipo +"');";
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery("INSERT INTO lavora(matricolaTecnico, codSede, tipo) VALUES" + values);
+			
+			
+		} catch (SQLException e) {
+			
+			e.getMessage();
+		}
+		
+	}
+	
 ////////////////////////////////////// SELECTING //////////////////////////////////////
 	
 	public Vector<Laboratorio> getAllLaboratori() {
@@ -36,7 +57,7 @@ public class LaboratorioDAO {
 			
 			String queryStart = "select u.codsede, u.tipo, u.nome, u.numerotecnici from locazione l ";
 			String queryMiddle = "INNER JOIN ( select * from laboratorio, sede) AS u ";
-			String queryEnd = "ON u.codlab = l.claboratorio AND u.codsede = l.csede;";
+			String queryEnd = "ON u.tipo = l.tlaboratorio AND u.codsede = l.csede;";
 			
 			ResultSet rs = statement.executeQuery(queryStart + queryMiddle + queryEnd);
 			
@@ -76,7 +97,7 @@ public class LaboratorioDAO {
 			
 			String queryStart = "select u.codsede, u.tipo, u.nome, u.numerotecnici, u.descrizione from locazione l ";
 			String query1 = "INNER JOIN ( select * from laboratorio, sede) AS u ";
-			String query2 = "ON u.codlab = l.claboratorio AND u.codsede = l.csede ";
+			String query2 = "ON u.tipo = l.tlaboratorio AND u.codsede = l.csede ";
 			String queryEnd = "WHERE u.codsede = " + codice + " AND u.tipo = '" + tipo + "';";
 			
 			ResultSet rs = statement.executeQuery(queryStart + query1 + query2 + queryEnd);
@@ -99,6 +120,32 @@ public class LaboratorioDAO {
 			
 			e.getMessage();
 			return lab;
+		}
+	}
+	
+	
+	public Boolean isIscritto(String matricola, String codice, String tipo) {
+		
+		Integer cod = Integer.parseInt(codice);
+		
+		String query1 = "SELECT l.matricolaTecnico from lavora l ";
+		String query2 = "where matricolaTecnico = '" + matricola + "' and codSede = " + cod +" and tipo = '" + tipo + "';";
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery(query1 + query2);
+			
+			rs.next();
+			
+			if(matricola.equals(rs.getString("matricolaTecnico"))) {
+				
+				return true;
+				
+			} else { return false; }
+			
+		} catch(SQLException e) {
+			
+			return false;
 		}
 	}
 }

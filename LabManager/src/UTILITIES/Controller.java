@@ -23,6 +23,10 @@ public class Controller {
 	private ReturnToLoginPage toLoginDialog;
 	private PasswordRecoveryWindow passwordRecoveryWindow;
 	private MainWindow mainWindow;
+	private Session currentSession;
+	private IscrizioneLaboratorio iscriviti;
+	
+	private JPanel[] allPanels;
 	
 	private LaboratorioDAO laboratorioDAO;
 	private Laboratorio laboratorioTemp;
@@ -73,8 +77,42 @@ public class Controller {
 		
 		laboratorioTemp = laboratorioDAO.getSingoloLaboratorio(cod, tipo);
 		
-		IscrizioneLaboratorio iscriviti = new IscrizioneLaboratorio(this, laboratorioTemp);
+		Boolean notIscritto = this.tecnicoIscritto(cod, tipo);
+		
+		iscriviti = new IscrizioneLaboratorio(this, laboratorioTemp, notIscritto);
+		iscriviti.setLocationRelativeTo(mainWindow);
 		iscriviti.setVisible(true);
+		
+	}
+	
+	
+	public void refreshTablePage() {
+		
+		mainWindow =  new MainWindow(this, currentSession);
+		mainWindow.setVisible(true);
+		GoToLaboratori(allPanels);
+	}
+	
+	public void executeIscrizione(String codice, String tipo) {
+		
+		String matricola = currentSession.getUserMatricola();
+		laboratorioDAO.iscrizioneTecnico(matricola, codice, tipo);
+
+		iscriviti.dispose();
+	}
+	
+	
+	public Boolean tecnicoIscritto(String codice, String tipo) {
+		
+		String matricola;
+		
+		matricola = currentSession.getUserMatricola();
+		
+		if(!laboratorioDAO.isIscritto(matricola, codice, tipo)) {
+			
+			return true;
+			
+		} else { return false; }
 	}
 	
 	
@@ -305,7 +343,7 @@ public class Controller {
 			if(tecnicoDAO.checkMatchingCredentials(currentLogin.getMatricolaLogin(), currentLogin.getPasswordLogin())) {
 				
 				tecnico = this.getTecnicoFromDB(currentLogin.getMatricolaLogin());
-				Session currentSession = new Session(this, tecnico);
+				currentSession = new Session(this, tecnico);
 				
 				loginWindow.dispose();
 				
@@ -345,6 +383,10 @@ public class Controller {
 ////////////////////////////////////// GOTO PROGRAM FUNCTIONS //////////////////////////////////////
 	
 	public void GoToLaboratori(JPanel allPages[]) {
+		
+		allPanels = new JPanel[3];
+		
+		allPanels = allPages;
 		
 		for(int i = 0; i < 3; i ++) {
 			allPages[i].setVisible(false);
