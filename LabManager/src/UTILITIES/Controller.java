@@ -58,7 +58,7 @@ public class Controller {
 		for (Laboratorio l : laboratori) {
 			
 			Vector<String> singleVector = new Vector<String>();
-			singleVector.add("00" + l.getCodice());
+			singleVector.add("0" + l.getCodice());
 			singleVector.add(l.getTipo());
 			singleVector.add(l.getSede());
 			singleVector.add(l.getNumeroTecnici());

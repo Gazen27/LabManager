@@ -55,9 +55,9 @@ public class LaboratorioDAO {
 			Integer codice;
 			Integer numero;
 			
-			String queryStart = "select u.codsede, u.tipo, u.nome, u.numerotecnici from locazione l ";
-			String queryMiddle = "INNER JOIN ( select * from laboratorio, sede) AS u ";
-			String queryEnd = "ON u.tipo = l.tlaboratorio AND u.codsede = l.csede;";
+			String queryStart = "select l.tlaboratorio, l.csede, s.nome, l.numerotecnici, l.numeropostazioni, l.responsabile ";
+			String queryMiddle = "from locazione l, sede s where ";
+			String queryEnd = "l.csede=s.codsede order by l.csede;";
 			
 			ResultSet rs = statement.executeQuery(queryStart + queryMiddle + queryEnd);
 			
@@ -65,11 +65,11 @@ public class LaboratorioDAO {
 				
 				Laboratorio lab = new Laboratorio(myController);
 				
-				codice = rs.getInt("codsede");
+				codice = rs.getInt("csede");
 				numero = rs.getInt("numerotecnici");
 				
 				lab.setCodice(codice.toString());
-				lab.setTipo(rs.getString("tipo"));
+				lab.setTipo(rs.getString("tlaboratorio"));
 				lab.setSede(rs.getString("nome"));
 				lab.setNumeroTecnici(numero.toString());
 				
@@ -95,7 +95,7 @@ public class LaboratorioDAO {
 			Integer codice = Integer.parseInt(cod);
 			Integer numero;
 			
-			String queryStart = "select u.codsede, u.tipo, u.nome, u.numerotecnici, u.descrizione from locazione l ";
+			String queryStart = "select l.csede, l.tlaboratorio, u.nome, l.numerotecnici, u.descrizione from locazione l ";
 			String query1 = "INNER JOIN ( select * from laboratorio, sede) AS u ";
 			String query2 = "ON u.tipo = l.tlaboratorio AND u.codsede = l.csede ";
 			String queryEnd = "WHERE u.codsede = " + codice + " AND u.tipo = '" + tipo + "';";
@@ -104,11 +104,11 @@ public class LaboratorioDAO {
 			
 			while(rs.next()) {
 				
-				codice = rs.getInt("codsede");
+				codice = rs.getInt("csede");
 				numero = rs.getInt("numerotecnici");
 				
 				lab.setCodice(codice.toString());
-				lab.setTipo(rs.getString("tipo"));
+				lab.setTipo(rs.getString("tlaboratorio"));
 				lab.setSede(rs.getString("nome"));
 				lab.setNumeroTecnici(numero.toString());
 				lab.setDescrizione(rs.getString("descrizione"));
