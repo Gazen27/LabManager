@@ -19,6 +19,8 @@ public class ComponentTabella extends JScrollPane{
 		
 		myController = controller;
 		
+		setBorder(null);
+		
 		setBackground(new Color(235, 235, 235));
 		setLayout(new ScrollPaneLayout());
 

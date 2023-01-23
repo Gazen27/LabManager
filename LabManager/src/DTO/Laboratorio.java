@@ -13,6 +13,8 @@ public class Laboratorio {
 	private String Sede;
 	private String NumeroTecnici;
 	
+	private String Descrizione;
+	
 	public Laboratorio(Controller controller) {
 		
 		myController = controller;
@@ -57,6 +59,16 @@ public class Laboratorio {
 	public String getNumeroTecnici() {
 		
 		return this.NumeroTecnici;
+	}
+	
+	public void setDescrizione(String descrizione) {
+		
+		this.Descrizione = descrizione;
+	}
+	
+	public String getDescrizione() {
+		
+		return this.Descrizione;
 	}
 	
 }

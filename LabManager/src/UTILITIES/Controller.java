@@ -25,6 +25,7 @@ public class Controller {
 	private MainWindow mainWindow;
 	
 	private LaboratorioDAO laboratorioDAO;
+	private Laboratorio laboratorioTemp;
 
 	public static void main(String[] args) {
 		
@@ -65,7 +66,15 @@ public class Controller {
 		}
 		
 		return doubleVector;
+	}
 	
+	
+	public void iscrivitiLaboratorio(String cod, String tipo) {
+		
+		laboratorioTemp = laboratorioDAO.getSingoloLaboratorio(cod, tipo);
+		
+		IscrizioneLaboratorio iscriviti = new IscrizioneLaboratorio(this, laboratorioTemp);
+		iscriviti.setVisible(true);
 	}
 	
 	
@@ -356,3 +365,6 @@ public class Controller {
 	}
 	
 }
+
+
+

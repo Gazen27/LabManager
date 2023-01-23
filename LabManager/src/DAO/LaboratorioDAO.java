@@ -47,7 +47,6 @@ public class LaboratorioDAO {
 				codice = rs.getInt("codsede");
 				numero = rs.getInt("numerotecnici");
 				
-				
 				lab.setCodice(codice.toString());
 				lab.setTipo(rs.getString("tipo"));
 				lab.setSede(rs.getString("nome"));
@@ -62,6 +61,44 @@ public class LaboratorioDAO {
 		} catch(SQLException e) {
 			e.getMessage();
 			return tuttiLaboratori;
+		}
+	}
+	
+	
+	public Laboratorio getSingoloLaboratorio(String cod, String tipo) {
+		
+		Laboratorio lab = new Laboratorio(myController);
+		
+		try {
+			
+			Integer codice = Integer.parseInt(cod);
+			Integer numero;
+			
+			String queryStart = "select u.codsede, u.tipo, u.nome, u.numerotecnici, u.descrizione from locazione l ";
+			String query1 = "INNER JOIN ( select * from laboratorio, sede) AS u ";
+			String query2 = "ON u.codlab = l.claboratorio AND u.codsede = l.csede ";
+			String queryEnd = "WHERE u.codsede = " + codice + " AND u.tipo = '" + tipo + "';";
+			
+			ResultSet rs = statement.executeQuery(queryStart + query1 + query2 + queryEnd);
+			
+			while(rs.next()) {
+				
+				codice = rs.getInt("codsede");
+				numero = rs.getInt("numerotecnici");
+				
+				lab.setCodice(codice.toString());
+				lab.setTipo(rs.getString("tipo"));
+				lab.setSede(rs.getString("nome"));
+				lab.setNumeroTecnici(numero.toString());
+				lab.setDescrizione(rs.getString("descrizione"));
+			}
+			
+			return lab;
+			
+		} catch(SQLException e) {
+			
+			e.getMessage();
+			return lab;
 		}
 	}
 }

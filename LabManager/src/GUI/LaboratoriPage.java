@@ -31,7 +31,7 @@ public class LaboratoriPage extends JPanel{
 		add(pageTitle);
 		
 		ComponentTabella tabellaLab = new ComponentTabella(myController);
-		tabellaLab.setBounds(30, 100, 800, 500);
+		tabellaLab.setBounds(30, 105, 800, 402);
 		add(tabellaLab);
 		
 		this.setVisible(false);
