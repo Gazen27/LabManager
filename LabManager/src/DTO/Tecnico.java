@@ -7,19 +7,19 @@ public class Tecnico {
 	
 	Controller myController;
 	
-	String Nome;
-	String Cognome;
+	private String Nome;
+	private String Cognome;
 
-	String DataNascita;
+	private String DataNascita;
 	
-	char sesso;
-	String CodiceFiscale;
+	private char sesso;
+	private String CodiceFiscale;
 
-	String Telefono;
-	String Email;
+	private String Telefono;
+	private String Email;
 	
-	String Matricola;
-	String Password = "passwordProva11";
+	private String Matricola;
+	private String Password;
 	
 	
 	public Tecnico(Controller controller) {
@@ -33,7 +33,7 @@ public class Tecnico {
 	}
 
 	public void setNome(String nome) {
-		Nome = nome;
+		this.Nome = nome;
 	}
 
 	public String getCognome() {
@@ -41,7 +41,7 @@ public class Tecnico {
 	}
 
 	public void setCognome(String cognome) {
-		Cognome = cognome;
+		this.Cognome = cognome;
 	}
 
 	public String getDataNascita() {
@@ -49,7 +49,7 @@ public class Tecnico {
 	}
 
 	public void setDataNascita(String dataNascita) {
-		DataNascita = dataNascita;
+		this.DataNascita = dataNascita;
 	}
 
 	public char getSesso() {
@@ -65,7 +65,7 @@ public class Tecnico {
 	}
 
 	public void setCodiceFiscale(String codiceFiscale) {
-		CodiceFiscale = codiceFiscale;
+		this.CodiceFiscale = codiceFiscale;
 	}
 
 	public String getTelefono() {
@@ -73,7 +73,7 @@ public class Tecnico {
 	}
 
 	public void setTelefono(String telefono) {
-		Telefono = telefono;
+		this.Telefono = telefono;
 	}
 
 	public String getEmail() {
@@ -81,7 +81,7 @@ public class Tecnico {
 	}
 
 	public void setEmail(String email) {
-		Email = email;
+		this.Email = email;
 	}
 
 	public String getMatricola() {
@@ -89,7 +89,7 @@ public class Tecnico {
 	}
 
 	public void setMatricola(String matricola) {
-		Matricola = matricola;
+		this.Matricola = matricola;
 	}
 
 	public String getPassword() {
@@ -97,7 +97,7 @@ public class Tecnico {
 	}
 
 	public void setPassword(String password) {
-		Password = password;
+		this.Password = password;
 	}
 	
 }

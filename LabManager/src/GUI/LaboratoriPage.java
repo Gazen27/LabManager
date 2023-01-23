@@ -30,8 +30,8 @@ public class LaboratoriPage extends JPanel{
 		pageTitle.setHorizontalAlignment(JLabel.LEFT);
 		add(pageTitle);
 		
-		TabellaLaboratori tabellaLab = new TabellaLaboratori(myController);
-		tabellaLab.setBounds(100, 100, 500, 500);
+		ComponentTabella tabellaLab = new ComponentTabella(myController);
+		tabellaLab.setBounds(30, 100, 800, 500);
 		add(tabellaLab);
 		
 		this.setVisible(false);

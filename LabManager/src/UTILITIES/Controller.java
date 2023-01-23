@@ -4,8 +4,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import java.util.Random;
+import java.util.Vector;
 
 import DAO.TecnicoDAO;
+import DAO.LaboratorioDAO;
+import DTO.Laboratorio;
 import DTO.Tecnico;
 import GUI.*;
 
@@ -20,6 +23,8 @@ public class Controller {
 	private ReturnToLoginPage toLoginDialog;
 	private PasswordRecoveryWindow passwordRecoveryWindow;
 	private MainWindow mainWindow;
+	
+	private LaboratorioDAO laboratorioDAO;
 
 	public static void main(String[] args) {
 		
@@ -33,6 +38,34 @@ public class Controller {
 		loginWindow.setUndecorated(true);
 		loginWindow.setVisible(true);
 
+	}
+	
+	
+////////////////////////////////////// OTHER //////////////////////////////////////
+	
+	public Vector<Vector<String>> infoLaboratorio() {
+	
+
+		Vector<Vector<String>> doubleVector = new Vector<Vector<String>>();
+		
+		laboratorioDAO = new LaboratorioDAO(this);
+		
+		Vector<Laboratorio> laboratori = laboratorioDAO.getAllLaboratori();
+		
+		for (Laboratorio l : laboratori) {
+			
+			Vector<String> singleVector = new Vector<String>();
+			singleVector.add("00" + l.getCodice());
+			singleVector.add(l.getTipo());
+			singleVector.add(l.getSede());
+			singleVector.add(l.getNumeroTecnici());
+			
+			
+			doubleVector.add(singleVector);
+		}
+		
+		return doubleVector;
+	
 	}
 	
 	
@@ -73,26 +106,6 @@ public class Controller {
 		loginWindow.setVisible(true);
 		
 		toLoginDialog.dispose();
-	}
-	
-	public void GoToLaboratori(JPanel allPages[]) {
-		
-		for(int i = 0; i < 3; i ++) {
-			allPages[i].setVisible(false);
-		}
-		
-		//Setting true to Lab Panel
-		allPages[0].setVisible(true);
-	}
-	
-	public void GoToPrenotazioni(JPanel allPages[]) {
-		
-		for(int i = 0; i < 3; i ++) {
-			allPages[i].setVisible(false);
-		}
-		
-		//Setting true to Lab Panel
-		allPages[1].setVisible(true);
 	}
 	
 ////////////////////////////////////// CHECK INFORMATION LENGTH //////////////////////////////////////
@@ -316,6 +329,30 @@ public class Controller {
 			} else { currentRecovery.datiErratiMancanti.setVisible(true); }
 			
 		} else { currentRecovery.datiErratiMancanti.setVisible(true); }
+	}
+
+	
+	
+////////////////////////////////////// GOTO PROGRAM FUNCTIONS //////////////////////////////////////
+	
+	public void GoToLaboratori(JPanel allPages[]) {
+		
+		for(int i = 0; i < 3; i ++) {
+			allPages[i].setVisible(false);
+		}
+		
+		//Setting true to Lab Panel
+		allPages[0].setVisible(true);
+	}
+	
+	public void GoToPrenotazioni(JPanel allPages[]) {
+		
+		for(int i = 0; i < 3; i ++) {
+			allPages[i].setVisible(false);
+		}
+		
+		//Setting true to Lab Panel
+		allPages[1].setVisible(true);
 	}
 	
 }

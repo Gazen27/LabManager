@@ -1,41 +1,43 @@
 package GUI;
 
-import UTILITIES.Controller;
-
 import java.awt.Color;
 import java.util.Vector;
 
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class TabellaLaboratori extends JScrollPane{
+import UTILITIES.Controller;
+
+public class TabellaLaboratori extends JTable {
 	
-	private Vector<Vector<String>> dati;
-	private Vector<Object> colonne;
+	private Vector<Vector<String>> Dati;
+	private Vector<String> Colonne;
 	private DefaultTableModel tableModel;
-	private JTable tabella;
 	
 	Controller myController;
 	
 	public TabellaLaboratori(Controller controller) {
+		setShowVerticalLines(false);
+		setEnabled(false);
+		setRowSelectionAllowed(false);
 		
 		myController = controller;
 		
 		setBackground(new Color(235, 235, 235));
+		setSize(500, 500);
 		
-		//Table
-		colonne = new Vector<Object>();
-		colonne.add("Codice");
-		colonne.add("Laboratorio");
-		colonne.add("Sede");
-		colonne.add("Tecnici");
-		colonne.add("Iscritto");
+		Colonne = new Vector<String>();
+		Colonne.add("Codice");
+		Colonne.add("Laboratorio");
+		Colonne.add("Sede");
+		Colonne.add("Tecnici");
+		Colonne.add("Iscritto");
 		
-		tableModel = new DefaultTableModel(dati, colonne);
+		this.Dati = myController.infoLaboratorio();
 		
-		tabella = new JTable(tableModel);
+		tableModel = new DefaultTableModel(Dati, Colonne);
 		
-		add(tabella);
+		this.setModel(tableModel);
 	}
+
 }
