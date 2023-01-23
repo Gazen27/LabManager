@@ -26,8 +26,6 @@ public class Controller {
 	private Session currentSession;
 	private IscrizioneLaboratorio iscriviti;
 	
-	private JPanel[] allPanels;
-	
 	private LaboratorioDAO laboratorioDAO;
 	private Laboratorio laboratorioTemp;
 
@@ -38,7 +36,7 @@ public class Controller {
 	}
 	
 	public Controller() {
-		
+
 		loginWindow = new LoginWindow(this);
 		loginWindow.setUndecorated(true);
 		loginWindow.setVisible(true);
@@ -84,20 +82,13 @@ public class Controller {
 		iscriviti.setVisible(true);
 		
 	}
-	
-	
-	public void refreshTablePage() {
-		
-		mainWindow =  new MainWindow(this, currentSession);
-		mainWindow.setVisible(true);
-		GoToLaboratori(allPanels);
-	}
+
 	
 	public void executeIscrizione(String codice, String tipo) {
 		
 		String matricola = currentSession.getUserMatricola();
 		laboratorioDAO.iscrizioneTecnico(matricola, codice, tipo);
-
+		
 		iscriviti.dispose();
 	}
 	
@@ -383,10 +374,6 @@ public class Controller {
 ////////////////////////////////////// GOTO PROGRAM FUNCTIONS //////////////////////////////////////
 	
 	public void GoToLaboratori(JPanel allPages[]) {
-		
-		allPanels = new JPanel[3];
-		
-		allPanels = allPages;
 		
 		for(int i = 0; i < 3; i ++) {
 			allPages[i].setVisible(false);
