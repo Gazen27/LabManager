@@ -163,11 +163,11 @@ public class IscrizioneLaboratorio extends JDialog {
 			}
 			
 			public void mouseEntered(MouseEvent e) {
-				responsabileButton.setFont(new Font("Segoe UI", Font.BOLD, 18));
+				responsabileButton.setFont(new Font("Segoe UI", Font.BOLD, 13));
 				responsabileButton.setBackground(new Color(0, 75, 210));
 			}
 			public void mouseExited(MouseEvent e) {
-				responsabileButton.setFont(new Font("Segoe UI", Font.BOLD, 20));
+				responsabileButton.setFont(new Font("Segoe UI", Font.BOLD, 15));;
 				responsabileButton.setBackground(new Color(10, 100, 255));
 			}
 		});

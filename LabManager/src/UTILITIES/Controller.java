@@ -130,6 +130,8 @@ public class Controller {
 		
 		String matricola = currentSession.getUserMatricola();
 		laboratorioDAO.newResponsabile(matricola, sede, tipo);
+		
+		iscriviti.dispose();
 	}
 	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////
