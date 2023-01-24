@@ -134,6 +134,37 @@ public class Controller {
 		iscriviti.dispose();
 	}
 	
+	
+	public void removeResponsabile(String sede, String tipo) {
+		
+		laboratorioDAO.rimuoviResponsabile(sede, tipo);
+		
+		iscriviti.dispose();
+	}
+	
+	public String currentMatricolaSession() {
+		
+		return currentSession.getUserMatricola();
+	}
+	
+	
+	public Boolean alreadyResponsabile() {
+		
+		String matricola = currentSession.getUserMatricola();
+		
+		Vector<String> responsabili = laboratorioDAO.allResponsabili();
+		
+		if(responsabili.isEmpty()) {
+			
+			return false;
+			
+		} else if(responsabili.contains(matricola)) {
+			
+			return true;
+			
+		} else { return false; }
+	}
+	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////
 	
 	public void GotoLoginPage(JFrame currentPage) {

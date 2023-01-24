@@ -78,6 +78,24 @@ public class LaboratorioDAO {
 		}
 	}
 	
+	
+	public void rimuoviResponsabile(String sede, String tipo) {
+		
+		Integer cod = Integer.parseInt(sede);
+		
+		String query1 = "UPDATE locazione SET responsabile = DEFAULT ";
+		String query2 = "WHERE tlaboratorio = '" + tipo + "' AND csede = " + cod;
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery(query1 + query2);
+			
+		} catch(SQLException e) {
+			
+			e.getMessage();
+		}
+	}
+	
 ////////////////////////////////////// SELECTING //////////////////////////////////////
 	
 	public Vector<Laboratorio> getAllLaboratori() {
@@ -129,7 +147,7 @@ public class LaboratorioDAO {
 			Integer codice = Integer.parseInt(cod);
 			Integer numero;
 			
-			String queryStart = "select l.csede, l.tlaboratorio, u.nome, l.numerotecnici, u.descrizione from locazione l ";
+			String queryStart = "select l.csede, l.tlaboratorio, u.nome, l.numerotecnici, l.responsabile, u.descrizione from locazione l ";
 			String query1 = "INNER JOIN ( select * from laboratorio, sede) AS u ";
 			String query2 = "ON u.tipo = l.tlaboratorio AND u.codsede = l.csede ";
 			String queryEnd = "WHERE u.codsede = " + codice + " AND u.tipo = '" + tipo + "';";
@@ -146,6 +164,7 @@ public class LaboratorioDAO {
 				lab.setSede(rs.getString("nome"));
 				lab.setNumeroTecnici(numero.toString());
 				lab.setDescrizione(rs.getString("descrizione"));
+				lab.setResponsabile(rs.getString("responsabile"));
 			}
 			
 			return lab;
@@ -180,6 +199,28 @@ public class LaboratorioDAO {
 		} catch(SQLException e) {
 			
 			return false;
+		}
+	}
+	
+	
+	public Vector<String> allResponsabili(){
+		
+		Vector<String> tuttiResponsabili = new Vector<String>();
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery("SELECT responsabile FROM locazione;");
+			
+			while(rs.next()) {
+				
+				tuttiResponsabili.add(rs.getString("responsabile"));
+			}
+			
+			return tuttiResponsabili;
+			
+		} catch(SQLException e) {
+			
+			return tuttiResponsabili;
 		}
 	}
 }

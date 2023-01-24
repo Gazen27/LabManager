@@ -64,14 +64,13 @@ public class IscrizioneLaboratorio extends JDialog {
 		getContentPane().add(numTecnici);
 		
 		
-		JButton responsabileButton = new JButton("Responsabile?");
+		JButton responsabileButton = new JButton("Responsabile");
 		responsabileButton.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		responsabileButton.setForeground(Color.WHITE);
 		responsabileButton.setBackground(new Color(10, 100, 255));
 		responsabileButton.setBounds(324, 144, 137, 51);
 		responsabileButton.setFocusable(false);
 		responsabileButton.setEnabled(false);
-		getContentPane().add(responsabileButton);
 		
 		if(!responsabileButton.isEnabled()) {
 			
@@ -82,6 +81,15 @@ public class IscrizioneLaboratorio extends JDialog {
 			responsabileButton.setOpaque(true);
 			responsabileButton.setBorder(BorderFactory.createLineBorder(new Color(10, 100, 255), 1, true));
 		}
+		
+		
+		JButton dimettiButton = new JButton("Rimuovi");
+		dimettiButton.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		dimettiButton.setForeground(Color.WHITE);
+		dimettiButton.setBackground(new Color(10, 100, 255));
+		dimettiButton.setBounds(324, 144, 137, 51);
+		dimettiButton.setFocusable(false);
+		dimettiButton.setEnabled(false);
 		
 		
 		JButton disiscrivitiButton = new JButton("ANNULLA ISCRIZIONE");
@@ -104,13 +112,44 @@ public class IscrizioneLaboratorio extends JDialog {
 		if(notIscritto) {
 			
 			getContentPane().add(iscrivitiButton);
+			getContentPane().add(responsabileButton);
 			
 		} else {
 			
-			responsabileButton.setOpaque(true);
-			responsabileButton.setEnabled(true);
-			responsabileButton.setBackground(new Color(10, 100, 255));
 			getContentPane().add(disiscrivitiButton);
+			
+			String matricola = myController.currentMatricolaSession();
+			
+			if(!myController.alreadyResponsabile()) {
+				
+				//RESPONSABILE DOESN'T EXIST
+				if(laboratorio.getResponsabile() == null) {
+					
+					responsabileButton.setOpaque(true);
+					responsabileButton.setEnabled(true);
+					responsabileButton.setBackground(new Color(10, 100, 255));
+					getContentPane().add(responsabileButton);
+					
+				}
+				
+			} else {
+				
+				if(laboratorio.getResponsabile() == null) {
+					
+					getContentPane().add(responsabileButton);
+				}
+				
+				//YOU ARE RESPONSABILE
+				else if(laboratorio.getResponsabile().equals(matricola)) {
+					
+					dimettiButton.setEnabled(true);
+					dimettiButton.setBackground(new Color(10, 100, 255));
+					getContentPane().add(dimettiButton);
+					
+				} else { getContentPane().add(responsabileButton); }
+				
+			}
+
 		}
 		
 		
@@ -169,6 +208,25 @@ public class IscrizioneLaboratorio extends JDialog {
 			public void mouseExited(MouseEvent e) {
 				responsabileButton.setFont(new Font("Segoe UI", Font.BOLD, 15));;
 				responsabileButton.setBackground(new Color(10, 100, 255));
+			}
+		});
+		
+		
+		dimettiButton.addMouseListener(new MouseAdapter() {
+			
+			public void mouseClicked(MouseEvent e) {
+				
+				myController.removeResponsabile(laboratorio.getCodice(), laboratorio.getTipo());
+				
+			}
+			
+			public void mouseEntered(MouseEvent e) {
+				dimettiButton.setFont(new Font("Segoe UI", Font.BOLD, 13));
+				dimettiButton.setBackground(new Color(0, 75, 210));
+			}
+			public void mouseExited(MouseEvent e) {
+				dimettiButton.setFont(new Font("Segoe UI", Font.BOLD, 15));;
+				dimettiButton.setBackground(new Color(10, 100, 255));
 			}
 		});
 	}
