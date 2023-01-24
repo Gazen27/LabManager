@@ -1,7 +1,5 @@
 package DTO;
 
-import java.util.Vector;
-
 import UTILITIES.Controller;
 
 public class Laboratorio {
@@ -14,6 +12,8 @@ public class Laboratorio {
 	private String NumeroTecnici;
 	
 	private String Descrizione;
+	
+	private String Responsabile;
 	
 	public Laboratorio(Controller controller) {
 		
@@ -69,6 +69,17 @@ public class Laboratorio {
 	public String getDescrizione() {
 		
 		return this.Descrizione;
+	}
+	
+	
+	public void setResponsabile(String responsabile) {
+		
+		this.Responsabile = responsabile;
+	}
+	
+	public String getResponsabile() {
+		
+		return this.Responsabile;
 	}
 	
 }

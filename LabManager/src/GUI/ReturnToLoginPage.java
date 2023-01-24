@@ -35,7 +35,7 @@ public class ReturnToLoginPage extends JDialog {
 		getContentPane().add(simpleText);
 		
 		JLabel simpleText2 = new JLabel("Verrai reindirizzato al Login");
-		simpleText2.setFont(new Font("Arial", Font.BOLD, 18));
+		simpleText2.setFont(new Font("Arial", Font.BOLD, 20));
 		simpleText2.setHorizontalAlignment(JLabel.CENTER);
 		simpleText2.setBounds(0, 47, 334, 50);
 		getContentPane().add(simpleText2);

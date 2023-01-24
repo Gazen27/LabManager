@@ -1,23 +1,21 @@
 package GUI;
 
-import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
+import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import UTILITIES.Controller;
-import UTILITIES.DataFormat;
 
 public class DataComponent extends JComponent {
 	
 	Controller myController;
-	JTextField giornoField;
-	JTextField meseField;
-	JTextField annoField;
+	
+	private JComboBox giornoBox;
+	private JComboBox meseBox;
+	private JTextField annoField;
 
 	public DataComponent(String textToShow, Controller controller) {
 		
@@ -28,62 +26,33 @@ public class DataComponent extends JComponent {
 		JLabel dataLabel = new JLabel(textToShow);
 		dataLabel.setBounds(65, 280, 160, 22);
 		dataLabel.setFont(new Font("Arial", Font.BOLD, 20));
-		
-		giornoField = new JTextField("GG");
-		giornoField.setBounds(65, 310, 80, 30);
-		giornoField.setFont(new Font("Arial", Font.ITALIC,  17));
-		giornoField.setForeground(Color.GRAY);
-	
-		giornoField.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				
-				giornoField.setText("");
-				giornoField.setForeground(Color.black);
-				giornoField.setFont(new Font("Arial", Font.PLAIN, 17));
-			}
-		});
-		
-		meseField = new JTextField("MM");
-		meseField.setBounds(145, 310, 80, 30);
-		meseField.setFont(new Font("Arial", Font.ITALIC,  17));
-		meseField.setForeground(Color.GRAY);
-		
-		meseField.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				
-				meseField.setText("");
-				meseField.setForeground(Color.black);
-				meseField.setFont(new Font("Arial", Font.PLAIN, 17));
-			}
-		});
-		
-		annoField = new JTextField("YYYY");
-		annoField.setBounds(225, 310, 80, 30);
-		annoField.setFont(new Font("Arial", Font.ITALIC,  17));
-		annoField.setForeground(Color.GRAY);
-		
-		annoField.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				
-				annoField.setText("");
-				annoField.setForeground(Color.black);
-				annoField.setFont(new Font("Arial", Font.PLAIN, 17));
-			}
-		});
-		
 		add(dataLabel);
-		add(giornoField);
-		add(meseField);
+		
+		String[] dayList = {"GG", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
+		giornoBox = new JComboBox(dayList);
+		giornoBox.setBounds(65, 310, 70, 30);
+		giornoBox.setFont(new Font("Arial", Font.PLAIN, 17));
+		add(giornoBox);
+		
+		String[] monthList = {"MM", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
+		meseBox = new JComboBox(monthList);
+		meseBox.setBounds(145, 310, 70, 30);
+		meseBox.setFont(new Font("Arial", Font.PLAIN, 17));
+		add(meseBox);
+		
+		annoField = new JTextField();
+		annoField.setBounds(225, 310, 80, 30);
+		annoField.setFont(new Font("Arial", Font.PLAIN, 17));
 		add(annoField);
 		
 	}
 	
 	public String getGiorno() {
-		return giornoField.getText();
+		return (String)giornoBox.getSelectedItem();
 	}
 
 	public String getMese() {
-		return meseField.getText();
+		return (String)meseBox.getSelectedItem();
 	}
 	
 	public String getAnno() {

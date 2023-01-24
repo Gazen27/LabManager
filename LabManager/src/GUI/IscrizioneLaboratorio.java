@@ -152,5 +152,24 @@ public class IscrizioneLaboratorio extends JDialog {
 				disiscrivitiButton.setBackground(new Color(10, 100, 255));
 			}
 		});
+		
+		
+		responsabileButton.addMouseListener(new MouseAdapter() {
+			
+			public void mouseClicked(MouseEvent e) {
+				
+				myController.becomeResponsabile(laboratorio.getCodice(), laboratorio.getTipo());
+				
+			}
+			
+			public void mouseEntered(MouseEvent e) {
+				responsabileButton.setFont(new Font("Segoe UI", Font.BOLD, 18));
+				responsabileButton.setBackground(new Color(0, 75, 210));
+			}
+			public void mouseExited(MouseEvent e) {
+				responsabileButton.setFont(new Font("Segoe UI", Font.BOLD, 20));
+				responsabileButton.setBackground(new Color(10, 100, 255));
+			}
+		});
 	}
 }

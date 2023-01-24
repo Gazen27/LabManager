@@ -60,6 +60,24 @@ public class LaboratorioDAO {
 		}
 	}
 	
+	
+	public void newResponsabile(String matricola, String sede, String tipo) {
+		
+		Integer cod = Integer.parseInt(sede);
+		
+		String query1 = "UPDATE locazione SET responsabile = '" + matricola + "' ";
+		String query2 = "WHERE tlaboratorio = '" + tipo + "' AND csede = " + cod;
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery(query1 + query2);
+			
+		} catch(SQLException e) {
+			
+			e.getMessage();
+		}
+	}
+	
 ////////////////////////////////////// SELECTING //////////////////////////////////////
 	
 	public Vector<Laboratorio> getAllLaboratori() {

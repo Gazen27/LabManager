@@ -58,7 +58,7 @@ public class Controller {
 		for (Laboratorio l : laboratori) {
 			
 			Vector<String> singleVector = new Vector<String>();
-			singleVector.add("0" + l.getCodice());
+			singleVector.add("00" + l.getCodice());
 			singleVector.add(l.getTipo());
 			singleVector.add(l.getSede());
 			singleVector.add(l.getNumeroTecnici());
@@ -123,6 +123,13 @@ public class Controller {
 		mainWindow =  new MainWindow(this, currentSession);
 		mainWindow.setVisible(true);
 		
+	}
+	
+	
+	public void becomeResponsabile(String sede, String tipo) {
+		
+		String matricola = currentSession.getUserMatricola();
+		laboratorioDAO.newResponsabile(matricola, sede, tipo);
 	}
 	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////
@@ -219,16 +226,12 @@ public class Controller {
 		
 		//Checking if the fields are empty
 	    if(!anagrafica.getNomeInserted().equals("") && !anagrafica.getCognomeInserted().equals("")) {
-	    	if(!anagrafica.getGiornoInserted().equals("") && !anagrafica.getMeseInserted().equals("") && !anagrafica.getAnnoInserted().equals("")) {
+	    	if(!anagrafica.getGiornoInserted().equals("GG") && !anagrafica.getMeseInserted().equals("MM") && !anagrafica.getAnnoInserted().equals("")) {
 	    		if(!anagrafica.getCFInserted().equals("")) {
 	    			if(!anagrafica.getTelefonoInserted().equals("") && !anagrafica.getEmailInserted().equals("")) {
-	    				
-	    				if(!anagrafica.getGiornoInserted().equals("GG") && !anagrafica.getMeseInserted().equals("MM") && !anagrafica.getAnnoInserted().equals("YYYY")) {
 	    					
 		    				//no missing info
 		    				return true;
-		    				
-	    				} else { return false; }
 
 	    			} else { return false; }
 	    			
