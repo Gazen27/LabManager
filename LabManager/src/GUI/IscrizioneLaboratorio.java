@@ -77,7 +77,7 @@ public class IscrizioneLaboratorio extends JDialog {
 			
 			responsabileButton.setOpaque(false);
 			
-		} else {
+		} else if(responsabileButton.isEnabled()) {
 			
 			responsabileButton.setOpaque(true);
 			responsabileButton.setBorder(BorderFactory.createLineBorder(new Color(10, 100, 255), 1, true));
@@ -107,8 +107,10 @@ public class IscrizioneLaboratorio extends JDialog {
 			
 		} else {
 			
+			responsabileButton.setOpaque(true);
+			responsabileButton.setEnabled(true);
+			responsabileButton.setBackground(new Color(10, 100, 255));
 			getContentPane().add(disiscrivitiButton);
-
 		}
 		
 		
@@ -129,6 +131,24 @@ public class IscrizioneLaboratorio extends JDialog {
 			public void mouseExited(MouseEvent e) {
 				iscrivitiButton.setFont(new Font("Segoe UI", Font.BOLD, 20));
 				iscrivitiButton.setBackground(new Color(10, 100, 255));
+			}
+		});
+		
+		
+		disiscrivitiButton.addMouseListener(new MouseAdapter() {
+			
+			public void mouseClicked(MouseEvent e) {
+				
+				myController.deleteIscrizione(laboratorio.getCodice(), laboratorio.getTipo());
+			}
+			
+			public void mouseEntered(MouseEvent e) {
+				disiscrivitiButton.setFont(new Font("Segoe UI", Font.BOLD, 18));
+				disiscrivitiButton.setBackground(new Color(0, 75, 210));
+			}
+			public void mouseExited(MouseEvent e) {
+				disiscrivitiButton.setFont(new Font("Segoe UI", Font.BOLD, 20));
+				disiscrivitiButton.setBackground(new Color(10, 100, 255));
 			}
 		});
 	}

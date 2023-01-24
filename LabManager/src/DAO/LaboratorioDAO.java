@@ -24,7 +24,7 @@ public class LaboratorioDAO {
 	}
 	
 
-////////////////////////////////////// INSERTING //////////////////////////////////////
+////////////////////////////////////// INSERTING / DELETING / UPDATING //////////////////////////////////////
 	
 	public void iscrizioneTecnico(String matricola, String codice, String tipo) {
 		
@@ -42,6 +42,22 @@ public class LaboratorioDAO {
 			e.getMessage();
 		}
 		
+	}
+	
+	
+	public void cancellaIscrizione(String matricola, String sede, String tipo) {
+		
+		Integer cod = Integer.parseInt(sede);
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery("DELETE FROM lavora WHERE matricolaTecnico = '" + matricola + "' AND codSede = '" + cod + "' AND tipo = '" + tipo +"';");
+			
+			
+		} catch (SQLException e) {
+			
+			e.getMessage();
+		}
 	}
 	
 ////////////////////////////////////// SELECTING //////////////////////////////////////

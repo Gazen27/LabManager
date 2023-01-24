@@ -107,6 +107,14 @@ public class Controller {
 	}
 	
 	
+	public void deleteIscrizione(String sede, String tipo) {
+		
+		String matricola = currentSession.getUserMatricola();
+		laboratorioDAO.cancellaIscrizione(matricola, sede, tipo);
+		
+		iscriviti.dispose();
+	}
+	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////
 	
 	public void GotoLoginPage(JFrame currentPage) {
