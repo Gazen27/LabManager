@@ -24,11 +24,11 @@ public class LeftMenu extends JPanel {
 		
 		JLabel personLogo = new JLabel(new ImageIcon(getClass().getResource("/MediaFiles/ManShiluette.png")));
 		personLogo.setLocation(95, 20);
-		personLogo.setSize(160, 160);
+		personLogo.setSize(165, 160);
 		add(personLogo);
 		
 		JLabel nomeDisplayed = new JLabel(currentSession.getNomeCompleto());
-		nomeDisplayed.setBounds(0, 195, 350, 30);
+		nomeDisplayed.setBounds(0, 200, 350, 30);
 		nomeDisplayed.setFont(new Font("Arial", Font.BOLD, 27));
 		nomeDisplayed.setForeground(new Color(235, 235, 235));
 		nomeDisplayed.setHorizontalAlignment(JLabel.CENTER);

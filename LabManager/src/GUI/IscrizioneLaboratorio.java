@@ -122,6 +122,7 @@ public class IscrizioneLaboratorio extends JDialog {
 			public void mouseClicked(MouseEvent e) {
 				
 				myController.executeIscrizione(laboratorio.getCodice(), laboratorio.getTipo());
+				
 			}
 			
 			public void mouseEntered(MouseEvent e) {

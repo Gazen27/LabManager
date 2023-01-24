@@ -76,10 +76,6 @@ public class DataComponent extends JComponent {
 		add(meseField);
 		add(annoField);
 		
-//		DataFormat dataTemp = new DataFormat(myController);
-//		dataTemp.setDay(giornoField.getText());
-//		dataTemp.setMonth(meseField.getText());
-//		dataTemp.setYear(annoField.getText());
 	}
 	
 	public String getGiorno() {

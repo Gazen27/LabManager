@@ -90,6 +90,11 @@ public class Controller {
 		laboratorioDAO.iscrizioneTecnico(matricola, codice, tipo);
 		
 		iscriviti.dispose();
+		
+		mainWindow.dispose();
+		
+		mainWindow =  new MainWindow(this, currentSession);
+		mainWindow.setVisible(true);
 	}
 	
 	
@@ -113,6 +118,11 @@ public class Controller {
 		laboratorioDAO.cancellaIscrizione(matricola, sede, tipo);
 		
 		iscriviti.dispose();
+		mainWindow.dispose();
+		
+		mainWindow =  new MainWindow(this, currentSession);
+		mainWindow.setVisible(true);
+		
 	}
 	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////

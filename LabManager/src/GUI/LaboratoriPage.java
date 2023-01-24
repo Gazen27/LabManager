@@ -3,13 +3,10 @@ package GUI;
 import UTILITIES.Controller;
 
 import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.util.Vector;
 
 public class LaboratoriPage extends JPanel{
 
@@ -33,6 +30,11 @@ public class LaboratoriPage extends JPanel{
 		ComponentTabella tabellaLab = new ComponentTabella(myController);
 		tabellaLab.setBounds(30, 105, 800, 402);
 		add(tabellaLab);
+		
+		JLabel info = new JLabel("Clicca su uno dei laboratori per aprirne la pagina e procedere con l'iscrizione");
+		info.setFont(new Font("Arial", Font.ITALIC, 20));
+		info.setBounds(30, 526, 870, 30);
+		add(info);
 		
 		this.setVisible(false);
 	}
