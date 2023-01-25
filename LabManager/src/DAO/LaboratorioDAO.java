@@ -3,7 +3,6 @@ package DAO;
 import UTILITIES.ConnessioneDB;
 import UTILITIES.Controller;
 import DTO.Laboratorio;
-import DTO.Tecnico;
 
 import java.sql.*;
 import java.util.Vector;
@@ -223,4 +222,5 @@ public class LaboratorioDAO {
 			return tuttiResponsabili;
 		}
 	}
+	
 }

@@ -42,77 +42,77 @@ public class LaboratoriPage extends JPanel{
 		add(info);
 		
 		
-		JButton nuovaPostazione = new JButton("Nuova postazione");
-		nuovaPostazione.setBackground(new Color(10, 100, 255));
-		nuovaPostazione.setForeground(Color.WHITE);
-		nuovaPostazione.setFont(new Font("Segoe UI", Font.BOLD, 20));
-		nuovaPostazione.setBounds(70, 575, 300, 50);
-		nuovaPostazione.setFocusable(false);
-		nuovaPostazione.setEnabled(false);
-		add(nuovaPostazione);
+		JButton nuovaPostazioneButton = new JButton("Nuova postazione");
+		nuovaPostazioneButton.setBackground(new Color(10, 100, 255));
+		nuovaPostazioneButton.setForeground(Color.WHITE);
+		nuovaPostazioneButton.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		nuovaPostazioneButton.setBounds(70, 575, 300, 50);
+		nuovaPostazioneButton.setFocusable(false);
+		nuovaPostazioneButton.setEnabled(false);
+		add(nuovaPostazioneButton);
 		
-		if(!nuovaPostazione.isEnabled()) {
+		if(!nuovaPostazioneButton.isEnabled()) {
 			
-			nuovaPostazione.setOpaque(false);
+			nuovaPostazioneButton.setOpaque(false);
 			
-		} else if(nuovaPostazione.isEnabled()) {
+		} else if(nuovaPostazioneButton.isEnabled()) {
 			
-			nuovaPostazione.setOpaque(true);
-			nuovaPostazione.setBorder(BorderFactory.createLineBorder(new Color(10, 100, 255), 1, true));
+			nuovaPostazioneButton.setOpaque(true);
+			nuovaPostazioneButton.setBorder(BorderFactory.createLineBorder(new Color(10, 100, 255), 1, true));
 		}
 		
 		if(!myController.alreadyResponsabile()) {
 		
-			nuovaPostazione.setEnabled(false);;
-			nuovaPostazione.setOpaque(false);
+			nuovaPostazioneButton.setEnabled(false);;
+			nuovaPostazioneButton.setOpaque(false);
 			
 		} else { 
 			
-			nuovaPostazione.setEnabled(true);;
-			nuovaPostazione.setOpaque(true);
+			nuovaPostazioneButton.setEnabled(true);;
+			nuovaPostazioneButton.setOpaque(true);
 		}
 		
 		
 		
-		JButton aggiungiStrumento = new JButton("Aggiungi strumento");
-		aggiungiStrumento.setBackground(new Color(10, 100, 255));
-		aggiungiStrumento.setForeground(Color.WHITE);
-		aggiungiStrumento.setFont(new Font("Segoe UI", Font.BOLD, 20));
-		aggiungiStrumento.setBounds(490, 575, 300, 50);
-		aggiungiStrumento.setFocusable(false);
-		aggiungiStrumento.setEnabled(false);
-		add(aggiungiStrumento);
+		JButton aggiungiStrumentoButton = new JButton("Aggiungi strumento");
+		aggiungiStrumentoButton.setBackground(new Color(10, 100, 255));
+		aggiungiStrumentoButton.setForeground(Color.WHITE);
+		aggiungiStrumentoButton.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		aggiungiStrumentoButton.setBounds(490, 575, 300, 50);
+		aggiungiStrumentoButton.setFocusable(false);
+		aggiungiStrumentoButton.setEnabled(false);
+		add(aggiungiStrumentoButton);
 
-		if(!aggiungiStrumento.isEnabled()) {
+		if(!aggiungiStrumentoButton.isEnabled()) {
 			
-			aggiungiStrumento.setOpaque(false);
+			aggiungiStrumentoButton.setOpaque(false);
 			
-		} else if(aggiungiStrumento.isEnabled()) {
+		} else if(aggiungiStrumentoButton.isEnabled()) {
 			
-			aggiungiStrumento.setOpaque(true);
-			aggiungiStrumento.setBorder(BorderFactory.createLineBorder(new Color(10, 100, 255), 1, true));
+			aggiungiStrumentoButton.setOpaque(true);
+			aggiungiStrumentoButton.setBorder(BorderFactory.createLineBorder(new Color(10, 100, 255), 1, true));
 		}
 		
 		
 ////////////////////////////////////// LISTENER //////////////////////////////////////
 		
-		if(nuovaPostazione.isEnabled()) {
+		if(nuovaPostazioneButton.isEnabled()) {
 			
-			nuovaPostazione.addMouseListener(new MouseAdapter() {
+			nuovaPostazioneButton.addMouseListener(new MouseAdapter() {
 				
 				public void mouseClicked(MouseEvent e) {
 					
-					
+					myController.GotoSceltaSede();
 				}
 				
 				public void mouseEntered(MouseEvent e) {
-					nuovaPostazione.setBackground(new Color(0, 75, 210));
-					nuovaPostazione.setFont(new Font("Segoe UI", Font.BOLD, 18));
+					nuovaPostazioneButton.setBackground(new Color(0, 75, 210));
+					nuovaPostazioneButton.setFont(new Font("Segoe UI", Font.BOLD, 18));
 				}
 				
 				public void mouseExited(MouseEvent e) {
-					nuovaPostazione.setBackground(new Color(10, 100, 255));
-					nuovaPostazione.setFont(new Font("Segoe UI", Font.BOLD, 20));
+					nuovaPostazioneButton.setBackground(new Color(10, 100, 255));
+					nuovaPostazioneButton.setFont(new Font("Segoe UI", Font.BOLD, 20));
 				}
 			});
 
@@ -120,9 +120,9 @@ public class LaboratoriPage extends JPanel{
 
 		
 		
-		if(aggiungiStrumento.isEnabled()) {
+		if(aggiungiStrumentoButton.isEnabled()) {
 			
-			aggiungiStrumento.addMouseListener(new MouseAdapter() {
+			aggiungiStrumentoButton.addMouseListener(new MouseAdapter() {
 				
 				public void mouseClicked(MouseEvent e) {
 					
@@ -130,13 +130,13 @@ public class LaboratoriPage extends JPanel{
 				}
 				
 				public void mouseEntered(MouseEvent e) {
-					aggiungiStrumento.setBackground(new Color(0, 75, 210));
-					aggiungiStrumento.setFont(new Font("Segoe UI", Font.BOLD, 18));
+					aggiungiStrumentoButton.setBackground(new Color(0, 75, 210));
+					aggiungiStrumentoButton.setFont(new Font("Segoe UI", Font.BOLD, 18));
 				}
 				
 				public void mouseExited(MouseEvent e) {
-					aggiungiStrumento.setBackground(new Color(10, 100, 255));
-					aggiungiStrumento.setFont(new Font("Segoe UI", Font.BOLD, 20));
+					aggiungiStrumentoButton.setBackground(new Color(10, 100, 255));
+					aggiungiStrumentoButton.setFont(new Font("Segoe UI", Font.BOLD, 20));
 				}
 			});
 

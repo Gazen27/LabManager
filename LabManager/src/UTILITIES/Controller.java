@@ -8,7 +8,9 @@ import java.util.Vector;
 
 import DAO.TecnicoDAO;
 import DAO.LaboratorioDAO;
+import DAO.SedeDAO;
 import DTO.Laboratorio;
+import DTO.Sede;
 import DTO.Tecnico;
 import GUI.*;
 
@@ -28,6 +30,10 @@ public class Controller {
 	
 	private LaboratorioDAO laboratorioDAO;
 	private Laboratorio laboratorioTemp;
+	private Sede sedeTEMP;
+	private SedeDAO sedeDAO;
+	
+	private ScegliSede scegliSede;
 
 	public static void main(String[] args) {
 		
@@ -44,7 +50,7 @@ public class Controller {
 	}
 	
 	
-////////////////////////////////////// OTHER //////////////////////////////////////
+////////////////////////////////////// GESTIONE LABORATORI //////////////////////////////////////
 	
 	public Vector<Vector<String>> infoLaboratorio() {
 	
@@ -163,6 +169,20 @@ public class Controller {
 			return true;
 			
 		} else { return false; }
+	}
+	
+	
+////////////////////////////////////// GESTIONE POSTAZIONI //////////////////////////////////////
+	
+	
+	public void GotoSceltaSede() {
+		
+		sedeDAO = new SedeDAO(this);
+		Vector<String> allSedi = sedeDAO.allNomiSedi();
+		
+		scegliSede = new ScegliSede(this, allSedi);
+		scegliSede.setVisible(true);
+		scegliSede.setLocationRelativeTo(mainWindow);
 	}
 	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////
