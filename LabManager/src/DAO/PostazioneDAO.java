@@ -6,7 +6,6 @@ import DTO.Postazione;
 
 
 import java.sql.*;
-import java.util.Vector;
 
 public class PostazioneDAO {
 	
@@ -27,15 +26,12 @@ public class PostazioneDAO {
 	
 	public void newPostazione(Postazione postazione) {
 		
-		Integer sede = postazione.getSedeAppartenenza();
-		
 		String query1 = "INSERT INTO postazione(laboratorioPostazione, sedePostazione, maxStrumenti) VALUES('";
 		String query2 = postazione.getLaboratorioAppartenenza() + "', " + postazione.getSedeAppartenenza() + ", " + postazione.getMaxStrumenti() + ");";
 		
 		try {
 			
-			ResultSet rs = statement.executeQuery(query1 + query2);
-			
+			statement.executeQuery(query1 + query2);
 			
 		} catch (SQLException e) {
 			
