@@ -54,7 +54,7 @@ public class MainWindow extends JFrame {
 		leftMenu.setLocation(0, 0);
 		
 		CurrentDate currentDate = new CurrentDate();
-		currentDate.setBounds(1124, 645, 130, 25);
+		currentDate.setBounds(1125, 645, 130, 25);
 		getContentPane().add(currentDate);
 		
 ///////////////////////// PANELS /////////////////////////

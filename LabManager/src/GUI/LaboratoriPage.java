@@ -42,11 +42,11 @@ public class LaboratoriPage extends JPanel{
 		add(info);
 		
 		
-		JButton nuovaPostazione = new JButton("Aggiungi postazione");
+		JButton nuovaPostazione = new JButton("Nuova postazione");
 		nuovaPostazione.setBackground(new Color(10, 100, 255));
 		nuovaPostazione.setForeground(Color.WHITE);
 		nuovaPostazione.setFont(new Font("Segoe UI", Font.BOLD, 20));
-		nuovaPostazione.setBounds(60, 575, 750, 50);
+		nuovaPostazione.setBounds(70, 575, 300, 50);
 		nuovaPostazione.setFocusable(false);
 		nuovaPostazione.setEnabled(false);
 		add(nuovaPostazione);
@@ -71,27 +71,76 @@ public class LaboratoriPage extends JPanel{
 			nuovaPostazione.setEnabled(true);;
 			nuovaPostazione.setOpaque(true);
 		}
-
-
-
-		nuovaPostazione.addMouseListener(new MouseAdapter() {
-			
-			public void mouseClicked(MouseEvent e) {
-				
-				
-			}
-			
-			public void mouseEntered(MouseEvent e) {
-				nuovaPostazione.setBackground(new Color(0, 75, 210));
-				nuovaPostazione.setFont(new Font("Segoe UI", Font.BOLD, 18));
-			}
-			
-			public void mouseExited(MouseEvent e) {
-				nuovaPostazione.setBackground(new Color(10, 100, 255));
-				nuovaPostazione.setFont(new Font("Segoe UI", Font.BOLD, 20));
-			}
-		});
 		
+		
+		
+		JButton aggiungiStrumento = new JButton("Aggiungi strumento");
+		aggiungiStrumento.setBackground(new Color(10, 100, 255));
+		aggiungiStrumento.setForeground(Color.WHITE);
+		aggiungiStrumento.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		aggiungiStrumento.setBounds(490, 575, 300, 50);
+		aggiungiStrumento.setFocusable(false);
+		aggiungiStrumento.setEnabled(false);
+		add(aggiungiStrumento);
+
+		if(!aggiungiStrumento.isEnabled()) {
+			
+			aggiungiStrumento.setOpaque(false);
+			
+		} else if(aggiungiStrumento.isEnabled()) {
+			
+			aggiungiStrumento.setOpaque(true);
+			aggiungiStrumento.setBorder(BorderFactory.createLineBorder(new Color(10, 100, 255), 1, true));
+		}
+		
+		
+////////////////////////////////////// LISTENER //////////////////////////////////////
+		
+		if(nuovaPostazione.isEnabled()) {
+			
+			nuovaPostazione.addMouseListener(new MouseAdapter() {
+				
+				public void mouseClicked(MouseEvent e) {
+					
+					
+				}
+				
+				public void mouseEntered(MouseEvent e) {
+					nuovaPostazione.setBackground(new Color(0, 75, 210));
+					nuovaPostazione.setFont(new Font("Segoe UI", Font.BOLD, 18));
+				}
+				
+				public void mouseExited(MouseEvent e) {
+					nuovaPostazione.setBackground(new Color(10, 100, 255));
+					nuovaPostazione.setFont(new Font("Segoe UI", Font.BOLD, 20));
+				}
+			});
+
+		}
+
+		
+		
+		if(aggiungiStrumento.isEnabled()) {
+			
+			aggiungiStrumento.addMouseListener(new MouseAdapter() {
+				
+				public void mouseClicked(MouseEvent e) {
+					
+					
+				}
+				
+				public void mouseEntered(MouseEvent e) {
+					aggiungiStrumento.setBackground(new Color(0, 75, 210));
+					aggiungiStrumento.setFont(new Font("Segoe UI", Font.BOLD, 18));
+				}
+				
+				public void mouseExited(MouseEvent e) {
+					aggiungiStrumento.setBackground(new Color(10, 100, 255));
+					aggiungiStrumento.setFont(new Font("Segoe UI", Font.BOLD, 20));
+				}
+			});
+
+		}
 
 	}
 }
