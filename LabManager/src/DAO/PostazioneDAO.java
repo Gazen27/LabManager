@@ -39,7 +39,7 @@ public class PostazioneDAO {
 			
 		} catch (SQLException e) {
 			
-			e.printStackTrace();
+			e.getMessage();
 		}
 		
 	}
