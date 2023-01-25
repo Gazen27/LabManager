@@ -73,4 +73,25 @@ public class SedeDAO {
 			return tutteSedi;
 		}
 	}
+	
+	
+	public Integer sedeScelta(String responsabile) {
+		
+		Integer sede = 0;
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery("SELECT l.csede FROM locazione l WHERE l.responsabile = '" + responsabile + "';");
+			
+			rs.next();
+			sede = rs.getInt("csede");
+			
+			return sede;
+			
+		} catch (SQLException e) {
+			
+			e.getMessage();
+			return sede;
+		}
+	}
 }

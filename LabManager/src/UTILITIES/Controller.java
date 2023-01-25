@@ -6,12 +6,8 @@ import javax.swing.JPanel;
 import java.util.Random;
 import java.util.Vector;
 
-import DAO.TecnicoDAO;
-import DAO.LaboratorioDAO;
-import DAO.SedeDAO;
-import DTO.Laboratorio;
-import DTO.Sede;
-import DTO.Tecnico;
+import DAO.*;
+import DTO.*;
 import GUI.*;
 
 public class Controller {
@@ -30,8 +26,12 @@ public class Controller {
 	
 	private LaboratorioDAO laboratorioDAO;
 	private Laboratorio laboratorioTemp;
-	private Sede sedeTEMP;
 	private SedeDAO sedeDAO;
+	
+	private Postazione currentPostazione;
+	private PostazioneDAO postazioneDAO;
+	
+	private NuovaPostazione nuovaPostazione;
 	
 	private ScegliSede scegliSede;
 
@@ -173,6 +173,51 @@ public class Controller {
 	
 	
 ////////////////////////////////////// GESTIONE POSTAZIONI //////////////////////////////////////
+	
+	
+	public Integer sedeResponsabile() {
+		
+		sedeDAO = new SedeDAO(this);
+		
+		Integer sedeR = sedeDAO.sedeScelta(currentSession.getUserMatricola());
+		
+		return sedeR;
+	}
+	
+	
+	public String labResponsabile() {
+		
+		laboratorioDAO = new LaboratorioDAO(this);
+		
+		String labR = laboratorioDAO.tipoLaboratorioScelto(currentSession.getUserMatricola());
+		
+		return labR;
+	}
+	
+	
+	public void openNuovaPostazionePage() {
+		
+		Integer sede = this.sedeResponsabile();
+		String lab = this.labResponsabile();
+		
+		nuovaPostazione = new NuovaPostazione(this, lab, sede);
+		nuovaPostazione.setLocationRelativeTo(mainWindow);
+		nuovaPostazione.setVisible(true);
+	}
+	
+	
+	public void createNewPostazione(String lab, Integer sede, Integer maxStrumenti) {
+		
+		currentPostazione = new Postazione(this);
+		
+		currentPostazione.setLaboratorioAppartenenza(lab);
+		currentPostazione.setSedeAppartenenza(sede);
+		currentPostazione.setMaxStrumenti(maxStrumenti);
+		
+		postazioneDAO = new PostazioneDAO(this);
+		
+		postazioneDAO.newPostazione(currentPostazione);
+	}
 	
 	
 	public void GotoSceltaSede() {
@@ -442,7 +487,7 @@ public class Controller {
 			
 		} else { currentRecovery.datiErratiMancanti.setVisible(true); }
 	}
-
+	
 	
 	
 ////////////////////////////////////// GOTO PROGRAM FUNCTIONS //////////////////////////////////////
@@ -468,6 +513,3 @@ public class Controller {
 	}
 	
 }
-
-
-

@@ -102,7 +102,7 @@ public class LaboratoriPage extends JPanel{
 				
 				public void mouseClicked(MouseEvent e) {
 					
-					myController.GotoSceltaSede();
+					myController.openNuovaPostazionePage();
 				}
 				
 				public void mouseEntered(MouseEvent e) {

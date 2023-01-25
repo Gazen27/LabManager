@@ -223,4 +223,25 @@ public class LaboratorioDAO {
 		}
 	}
 	
+	
+	public String tipoLaboratorioScelto(String responsabile) {
+		
+		String lab = "";
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery("SELECT l.tlaboratorio FROM locazione l WHERE l.responsabile = '" + responsabile + "';");
+			
+			rs.next();
+			lab = rs.getString("tlaboratorio");
+			
+			return lab;
+			
+		} catch (SQLException e) {
+			
+			e.getMessage();
+			return lab;
+		}
+	}
+	
 }

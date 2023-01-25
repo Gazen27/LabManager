@@ -7,7 +7,7 @@ public class Postazione {
 	Controller myController;
 	
 	private String LaboratorioAppartenenza;
-	private String SedeAppartenenza;
+	private Integer SedeAppartenenza;
 	private Integer maxStrumenti;
 	private Integer currentStrumenti;
 	
@@ -27,12 +27,12 @@ public class Postazione {
 		this.LaboratorioAppartenenza = laboratorioAppartenenza;
 	}
 	
-	public String getSedeAppartenenza() {
+	public Integer getSedeAppartenenza() {
 		
 		return this.SedeAppartenenza;
 	}
 
-	public void setSedeAppartenenza(String sedeAppartenenza) {
+	public void setSedeAppartenenza(Integer sedeAppartenenza) {
 		
 		this.SedeAppartenenza = sedeAppartenenza;
 	}
