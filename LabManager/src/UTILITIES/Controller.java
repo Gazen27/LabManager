@@ -1,6 +1,7 @@
 package UTILITIES;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import java.util.Random;
@@ -217,6 +218,8 @@ public class Controller {
 		postazioneDAO = new PostazioneDAO(this);
 		
 		postazioneDAO.newPostazione(currentPostazione);
+		
+		nuovaPostazione.dispose();
 	}
 	
 	
