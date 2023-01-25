@@ -1,7 +1,6 @@
 package DTO;
 
 import UTILITIES.Controller;
-import UTILITIES.DataFormat;
 
 public class Tecnico {
 	

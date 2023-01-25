@@ -182,7 +182,7 @@ public class LaboratorioDAO {
 		Integer cod = Integer.parseInt(codice);
 		
 		String query1 = "SELECT l.matricolaTecnico from lavora l ";
-		String query2 = "where matricolaTecnico = '" + matricola + "' and codSede = " + cod +" and tipo = '" + tipo + "';";
+		String query2 = "where matricolaTecnico = '" + matricola + "' and codSede = " + cod + " and tipo = '" + tipo + "';";
 		
 		try {
 			
