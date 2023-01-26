@@ -383,7 +383,7 @@ public class Controller {
 	} 
 	
 	
-	public Boolean CheckMissingPersonalInfo(AnagraficaPanel anagrafica, CredenzialiPanel credenziali) {
+	public Boolean CheckMissingPersonalInfo(AnagraficaPanel anagrafica) {
 		
 		//Checking if the fields are empty
 	    if(!anagrafica.getNomeInserted().equals("") && !anagrafica.getCognomeInserted().equals("")) {
@@ -487,7 +487,7 @@ public class Controller {
 	
 	public void GoAheadWithRegistration(AnagraficaPanel anagrafica, CredenzialiPanel credenziali) {
 		
-		if(CheckMissingPersonalInfo(anagrafica, credenziali)) {
+		if(CheckMissingPersonalInfo(anagrafica)) {
 			
 			CreazioneTecnicoTemporanea(anagrafica);
 			LastRegistrationPageOpened(anagrafica, credenziali);
