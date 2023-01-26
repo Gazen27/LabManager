@@ -19,13 +19,16 @@ import java.util.Vector;
 public class AggiungiStrumento extends JDialog {
 
 	Controller myController;
-	public JLabel errorMessage;
+	public JLabel errorMessage1;
+	public JLabel errorMessage2;
+	
+	
 	private JTextField tipoStrumento;
 	private JTextField tempoMax;
 	private JComboBox postazioneAssegnata;
 	private JTextArea descrizione;
 	
-	public AggiungiStrumento(Controller controller, Vector<Integer> postazioniAssociate) {
+	public AggiungiStrumento(Controller controller, Vector<Integer> postazioniAssociate, String tipoLaboratorio) {
 		
 		myController = controller;
 		
@@ -38,8 +41,8 @@ public class AggiungiStrumento extends JDialog {
 		
 		setModalityType(JDialog.ModalityType.APPLICATION_MODAL);
 		
-		JLabel titolo = new JLabel("Aggiungi nuovo strumento");
-		titolo.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 25));
+		JLabel titolo = new JLabel("Aggiungi nuovo strumento: " + tipoLaboratorio);
+		titolo.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 24));
 		titolo.setHorizontalAlignment(JLabel.CENTER);
 		titolo.setBounds(0, 15, 500, 35);
 		getContentPane().add(titolo);
@@ -114,13 +117,21 @@ public class AggiungiStrumento extends JDialog {
 		aggiungi.setFocusable(false);
 		getContentPane().add(aggiungi);
 		
-		errorMessage = new JLabel("Questa postazione ha già troppi strumenti!");
-		errorMessage.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 19));
-		errorMessage.setForeground(Color.RED);
-		errorMessage.setHorizontalAlignment(JLabel.CENTER);
-		errorMessage.setBounds(0, 330, 484, 29);
-		errorMessage.setVisible(false);
-		getContentPane().add(errorMessage);
+		errorMessage1 = new JLabel("Questa postazione ha già troppi strumenti!");
+		errorMessage1.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 19));
+		errorMessage1.setForeground(Color.RED);
+		errorMessage1.setHorizontalAlignment(JLabel.CENTER);
+		errorMessage1.setBounds(0, 330, 484, 29);
+		errorMessage1.setVisible(false);
+		getContentPane().add(errorMessage1);
+		
+		errorMessage2 = new JLabel("Dati inseriti errati o mancanti!");
+		errorMessage2.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 19));
+		errorMessage2.setForeground(Color.RED);
+		errorMessage2.setHorizontalAlignment(JLabel.CENTER);
+		errorMessage2.setBounds(0, 330, 484, 29);
+		errorMessage2.setVisible(false);
+		getContentPane().add(errorMessage2);
 		
 ////////////////////////////////////// LISTENER //////////////////////////////////////
 		
@@ -140,7 +151,7 @@ public class AggiungiStrumento extends JDialog {
 				aggiungi.setBackground(new Color(10, 100, 255));
 			}
 		});
-		
+
 	}
 	
 	public String getTipoStrumento() {

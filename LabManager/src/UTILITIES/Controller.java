@@ -247,13 +247,30 @@ public class Controller {
 	
 ////////////////////////////////////// GESTIONE STRUMENTI //////////////////////////////////////
 	
+	
+	public Boolean strumentoNotEmpty(AggiungiStrumento pageStrumento) {
+		
+		if(!pageStrumento.getTipoStrumento().equals("")) {
+			if(!pageStrumento.getTempoMax().equals("")) {
+				if(!pageStrumento.getDescrizione().equals("")) {
+					
+					return true;
+					
+				} else { return false; }
+				
+			} else { return false; }
+			
+		} else { return false; }
+		
+	}
+	
 	public void openAggiungiStrumento() {
 		
 		Vector<Integer> allPostazioni = this.getAllPostazioniResponsabile();
 		
 		if(!allPostazioni.isEmpty()) {
 			
-			aggiungiStrumento = new AggiungiStrumento(this, allPostazioni);
+			aggiungiStrumento = new AggiungiStrumento(this, allPostazioni, labResponsabile());
 			aggiungiStrumento.setLocationRelativeTo(mainWindow);
 			aggiungiStrumento.setVisible(true);
 			
@@ -268,13 +285,13 @@ public class Controller {
 	
 	
 	public Strumento newStrumento() {
-		
-		strumentoTEMP = new Strumento(this);
-		strumentoTEMP.setTipo(aggiungiStrumento.getTipoStrumento());
-		strumentoTEMP.setMaxUtilizzo(aggiungiStrumento.getTempoMax());
-		strumentoTEMP.setPostazioneAssegnata(aggiungiStrumento.getPostazioneAssegnata());
-		strumentoTEMP.setDescrizione(aggiungiStrumento.getDescrizione());
-		
+			
+			strumentoTEMP = new Strumento(this);
+			strumentoTEMP.setTipo(aggiungiStrumento.getTipoStrumento());
+			strumentoTEMP.setMaxUtilizzo(aggiungiStrumento.getTempoMax());
+			strumentoTEMP.setPostazioneAssegnata(aggiungiStrumento.getPostazioneAssegnata());
+			strumentoTEMP.setDescrizione(aggiungiStrumento.getDescrizione());
+
 		return strumentoTEMP;
 	}
 	
@@ -283,13 +300,22 @@ public class Controller {
 		
 		strumentoDAO = new StrumentoDAO(this);
 		
-		if(!strumentoDAO.newStrumento(this.newStrumento())) {
+		if(this.strumentoNotEmpty(aggiungiStrumento)) {
 			
-			aggiungiStrumento.dispose();
+			if(!strumentoDAO.newStrumento(this.newStrumento())) {
+				
+				aggiungiStrumento.dispose();
+				
+			} else {
+				
+				aggiungiStrumento.errorMessage1.setVisible(true);
+				aggiungiStrumento.errorMessage2.setVisible(false);
+			}
 			
-		} else {
+		} else { 
 			
-			aggiungiStrumento.errorMessage.setVisible(true);
+			aggiungiStrumento.errorMessage1.setVisible(false);
+			aggiungiStrumento.errorMessage2.setVisible(true);
 		}
 	}
 	
