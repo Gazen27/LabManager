@@ -7,6 +7,7 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JTextArea;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -24,6 +25,7 @@ public class AggiungiStrumento extends JDialog {
 		setSize(500, 350);
 		setFocusable(false);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setAlwaysOnTop(true);
 		
 		JLabel titolo = new JLabel("Aggiungi nuovo strumento");
 		titolo.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 25));
@@ -44,7 +46,7 @@ public class AggiungiStrumento extends JDialog {
 		
 		JTextField tipoStrumento = new JTextField();
 		tipoStrumento.setFont(new Font("Arial", Font.PLAIN, 18));
-		tipoStrumento.setHorizontalAlignment(JTextField.RIGHT);
+		tipoStrumento.setHorizontalAlignment(JTextField.LEFT);
 		tipoStrumento.setBounds(85, 83, 215, 25);
 		getContentPane().add(tipoStrumento);
 		
@@ -69,10 +71,28 @@ public class AggiungiStrumento extends JDialog {
 		JLabel codicePostazione = new JLabel("• Codice postazione: ");
 		codicePostazione.setFont(new Font("Arial", Font.BOLD, 20));
 		codicePostazione.setHorizontalAlignment(JLabel.LEFT);
-		codicePostazione.setBounds(10, 180, 276, 30);
+		codicePostazione.setBounds(10, 180, 200, 30);
 		getContentPane().add(codicePostazione);
 		
 		JComboBox postazioneAssegnata = new JComboBox();
 		postazioneAssegnata.setFont(new Font("Arial", Font.ITALIC, 18));
+		postazioneAssegnata.setBounds(220, 183, 75, 25);
+		getContentPane().add(postazioneAssegnata);
+		
+		JLabel descrizioneText = new JLabel("• Descrizione: ");
+		descrizioneText.setFont(new Font("Arial", Font.BOLD, 20));
+		descrizioneText.setHorizontalAlignment(JLabel.LEFT);
+		descrizioneText.setBounds(10, 230, 136, 30);
+		getContentPane().add(descrizioneText);
+		
+		JTextArea descrizione = new JTextArea();
+		descrizione.setFont(new Font("Arial", Font.PLAIN, 18));
+		descrizione.setBounds(150, 233, 320, 67);
+		descrizione.setLineWrap(true);
+		descrizione.setWrapStyleWord(true);
+		getContentPane().add(descrizione);
+		
+		
+		//TODO: adding listeners and buttons. resizing the JDialog. Commit notturno, buonanotte
 	}
 }

@@ -135,7 +135,7 @@ public class LaboratoriPage extends JPanel{
 				
 				public void mouseClicked(MouseEvent e) {
 					
-					
+					myController.openAggiungiStrumento();
 				}
 				
 				public void mouseEntered(MouseEvent e) {

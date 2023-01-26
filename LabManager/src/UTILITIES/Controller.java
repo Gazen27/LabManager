@@ -33,6 +33,7 @@ public class Controller {
 	private PostazioneDAO postazioneDAO;
 	
 	private NuovaPostazione nuovaPostazione;
+	private AggiungiStrumento aggiungiStrumento;
 	
 	private ScegliSede scegliSede;
 
@@ -231,6 +232,16 @@ public class Controller {
 		scegliSede = new ScegliSede(this, allSedi);
 		scegliSede.setVisible(true);
 		scegliSede.setLocationRelativeTo(mainWindow);
+	}
+	
+	
+////////////////////////////////////// GESTIONE STRUMENTI //////////////////////////////////////
+	
+	public void openAggiungiStrumento() {
+		
+		aggiungiStrumento = new AggiungiStrumento(this);
+		aggiungiStrumento.setLocationRelativeTo(mainWindow);
+		aggiungiStrumento.setVisible(true);
 	}
 	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////
