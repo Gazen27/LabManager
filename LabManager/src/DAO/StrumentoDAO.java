@@ -5,6 +5,8 @@ import UTILITIES.Controller;
 
 import java.sql.*;
 
+import DTO.Strumento;
+
 public class StrumentoDAO {
 	
 	private ConnessioneDB connessioneDB;
@@ -22,8 +24,19 @@ public class StrumentoDAO {
 	
 ////////////////////////////////////// INSERTING //////////////////////////////////////
 	
-//	public Boolean newStrumento(Integer postazione) {
-//		
-//		
-//	}
+	public Boolean newStrumento(Strumento strumentoTEMP) {
+		
+		String queryStart = "INSERT INTO strumento(tipo, descrizioneStrumento, utilizzoMax, postazioneAssegnata) ";
+		String values = "VALUES('" + strumentoTEMP.getTipo() + "', '" + strumentoTEMP.getDescrizione() + "', " + strumentoTEMP.getMaxUtilizzo() + ", " + strumentoTEMP.getPostazioneAssegnata() + ");";
+		
+		try {
+			
+			statement.executeQuery(queryStart + values);
+			return true;
+			
+		} catch(SQLException e) {
+			
+			return false;
+		}
+	}
 }

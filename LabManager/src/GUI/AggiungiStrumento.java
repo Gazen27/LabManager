@@ -20,7 +20,11 @@ import java.util.Vector;
 public class AggiungiStrumento extends JDialog {
 
 	Controller myController;
-	JLabel errorMessage;
+	public JLabel errorMessage;
+	private JTextField tipoStrumento;
+	private JTextField tempoMax;
+	private JComboBox postazioneAssegnata;
+	private JTextArea descrizione;
 	
 	public AggiungiStrumento(Controller controller, Vector<Integer> postazioniAssociate) {
 		
@@ -52,7 +56,7 @@ public class AggiungiStrumento extends JDialog {
 		tipoStrumentoText.setBounds(10, 80, 75, 30);
 		getContentPane().add(tipoStrumentoText);
 		
-		JTextField tipoStrumento = new JTextField();
+		tipoStrumento = new JTextField();
 		tipoStrumento.setFont(new Font("Arial", Font.PLAIN, 18));
 		tipoStrumento.setHorizontalAlignment(JTextField.LEFT);
 		tipoStrumento.setBounds(85, 83, 215, 25);
@@ -65,7 +69,7 @@ public class AggiungiStrumento extends JDialog {
 		tempoMaxText.setBounds(10, 130, 276, 30);
 		getContentPane().add(tempoMaxText);
 		
-		JTextField tempoMax = new JTextField();
+		tempoMax = new JTextField();
 		tempoMax.setFont(new Font("Arial", Font.PLAIN, 18));
 		tempoMax.setHorizontalAlignment(JTextField.RIGHT);
 		tempoMax.setBounds(290, 133, 50, 25);
@@ -84,7 +88,7 @@ public class AggiungiStrumento extends JDialog {
 		codicePostazione.setBounds(10, 180, 200, 30);
 		getContentPane().add(codicePostazione);
 		
-		JComboBox postazioneAssegnata = new JComboBox(postazioniAssociate);
+		postazioneAssegnata = new JComboBox(postazioniAssociate);
 		postazioneAssegnata.setFont(new Font("Arial", Font.ITALIC, 18));
 		postazioneAssegnata.setBounds(220, 183, 75, 25);
 		getContentPane().add(postazioneAssegnata);
@@ -95,7 +99,7 @@ public class AggiungiStrumento extends JDialog {
 		descrizioneText.setBounds(10, 230, 136, 30);
 		getContentPane().add(descrizioneText);
 		
-		JTextArea descrizione = new JTextArea();
+		descrizione = new JTextArea();
 		descrizione.setFont(new Font("Arial", Font.PLAIN, 18));
 		descrizione.setBounds(150, 233, 320, 85);
 		descrizione.setLineWrap(true);
@@ -125,7 +129,7 @@ public class AggiungiStrumento extends JDialog {
 			
 			public void mouseClicked(MouseEvent e) {
 				
-				
+				myController.aggiungiStrumento();
 			}
 			
 			public void mouseEntered(MouseEvent e) {
@@ -138,6 +142,29 @@ public class AggiungiStrumento extends JDialog {
 			}
 		});
 		
+	}
+	
+	public String getTipoStrumento() {
 		
+		return tipoStrumento.getText();
+	}
+	
+	public Integer getTempoMax() {
+		
+		String tempo = tempoMax.getText();
+		
+		return Integer.parseInt(tempo);
+	}
+	
+	public Integer getPostazioneAssegnata() {
+		
+		String pos = (String)postazioneAssegnata.getSelectedItem();
+		
+		return Integer.parseInt(pos);
+	}
+	
+	public String getDescrizione() {
+		
+		return descrizione.getText();
 	}
 }

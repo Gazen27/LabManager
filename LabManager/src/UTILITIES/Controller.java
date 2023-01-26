@@ -36,6 +36,9 @@ public class Controller {
 	private AggiungiStrumento aggiungiStrumento;
 	private NessunaPostazioneAssociata nessunaPostazione;
 	
+	private Strumento strumentoTEMP;
+	private StrumentoDAO strumentoDAO;
+	
 	private ScegliSede scegliSede;
 
 	public static void main(String[] args) {
@@ -261,7 +264,34 @@ public class Controller {
 			nessunaPostazione.setLocationRelativeTo(mainWindow);
 			nessunaPostazione.setVisible(true);
 		}
-
+	
+	}
+	
+	
+	public Strumento newStrumento() {
+		
+		strumentoTEMP = new Strumento(this);
+		strumentoTEMP.setTipo(aggiungiStrumento.getTipoStrumento());
+		strumentoTEMP.setMaxUtilizzo(aggiungiStrumento.getTempoMax());
+		strumentoTEMP.setPostazioneAssegnata(aggiungiStrumento.getPostazioneAssegnata());
+		strumentoTEMP.setDescrizione(aggiungiStrumento.getDescrizione());
+		
+		return strumentoTEMP;
+	}
+	
+	
+	public void aggiungiStrumento() {
+		
+		strumentoDAO = new StrumentoDAO(this);
+		
+		if(strumentoDAO.newStrumento(this.newStrumento())) {
+			
+			aggiungiStrumento.dispose();
+			
+		} else {
+			
+			aggiungiStrumento.errorMessage.setVisible(true);
+		}
 	}
 	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////
