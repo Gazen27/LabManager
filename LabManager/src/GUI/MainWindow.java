@@ -63,16 +63,21 @@ public class MainWindow extends JFrame {
 		laboratori.setLocation(350, 0);
 		allPanels[0] = laboratori;
 		
+		StrumentiPage strumentiPage = new StrumentiPage(myController);
+		strumentiPage.setLocation(350, 0);
+		allPanels[1] = strumentiPage;
+		
+		
+		
 		PrenotazioniPage prenotazioni = new PrenotazioniPage(myController);
 		prenotazioni.setLocation(350, 0);
-		allPanels[1] = prenotazioni;
+		allPanels[2] = prenotazioni;
 		
-		
-		allPanels[2] = laboratori;
 		
 		getContentPane().add(exit);
 		getContentPane().add(leftMenu);
 		getContentPane().add(laboratori);
+		getContentPane().add(strumentiPage);
 		getContentPane().add(prenotazioni);
 		
 		

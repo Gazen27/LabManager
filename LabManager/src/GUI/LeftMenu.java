@@ -38,12 +38,14 @@ public class LeftMenu extends JPanel {
 		laboratorio.setBounds(10, 310, 330, 50);
 		add(laboratorio);
 		
-		GoToPrenotazioni prenotazioni = new GoToPrenotazioni(myController, allPages);
-		prenotazioni.setBounds(10, 358, 330, 50);
-		add(prenotazioni);
+		GoToStrumenti profilo = new GoToStrumenti(myController, allPages);
+		profilo.setBounds(10, 358, 330, 50);
 		
-		GoToProfiloPage profilo = new GoToProfiloPage(myController);
-		profilo.setBounds(10, 406, 330, 50);
 		add(profilo);
+		
+		GoToPrenotazioni prenotazioni = new GoToPrenotazioni(myController, allPages);
+		prenotazioni.setBounds(10, 406, 330, 50);
+		
+		add(prenotazioni);
 	}
 }

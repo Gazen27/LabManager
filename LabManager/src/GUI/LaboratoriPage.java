@@ -32,7 +32,7 @@ public class LaboratoriPage extends JPanel{
 		pageTitle.setHorizontalAlignment(JLabel.LEFT);
 		add(pageTitle);
 		
-		ComponentTabella tabellaLab = new ComponentTabella(myController);
+		ComponentTabellaLaboratori tabellaLab = new ComponentTabellaLaboratori(myController);
 		tabellaLab.setBounds(30, 105, 800, 402);
 		add(tabellaLab);
 		

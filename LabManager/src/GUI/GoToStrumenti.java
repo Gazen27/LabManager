@@ -8,17 +8,18 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
 
-public class GoToProfiloPage extends JButton {
+public class GoToStrumenti extends JButton {
 
 	Controller myController;
 	
-	public GoToProfiloPage(Controller controller) {
+	public GoToStrumenti(Controller controller, JPanel[] allPages) {
 		
 		myController = controller;
 		
-		setText("Profilo");
+		setText("Strumenti");
 		setBackground(new Color(10, 100, 255));
 		setFont(new Font("Arial", Font.BOLD, 25));
 		setForeground(Color.WHITE);
@@ -31,7 +32,7 @@ public class GoToProfiloPage extends JButton {
 			
 			public void mouseClicked(MouseEvent e) {
 				
-
+				myController.GoToStrumenti(allPages);
 			}
 			
 			public void mouseEntered(MouseEvent e) {

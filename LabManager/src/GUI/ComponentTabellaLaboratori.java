@@ -9,13 +9,13 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneLayout;
 
 
-public class ComponentTabella extends JScrollPane{
+public class ComponentTabellaLaboratori extends JScrollPane{
 
 	private TabellaLaboratori tabella;
 	
 	Controller myController;
 	
-	public ComponentTabella(Controller controller) {
+	public ComponentTabellaLaboratori(Controller controller) {
 		
 		myController = controller;
 		

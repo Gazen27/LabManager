@@ -456,7 +456,6 @@ public class Controller {
 		tecnicoDAO.creaTecnico(tecnicoCreato);
 	}
 	
-	
 	public void EndRegistration(CredenzialiPanel credenziali) {
 		
 		if(CheckPasswordLength(credenziali.getPasswordInserted())) {
@@ -592,14 +591,24 @@ public class Controller {
 		allPages[0].setVisible(true);
 	}
 	
+	public void GoToStrumenti(JPanel allPages[]) {
+		
+		for(int i = 0; i < 3; i ++) {
+			allPages[i].setVisible(false);
+		}
+		
+		//Setting true to Strumenti Panel
+		allPages[1].setVisible(true);
+	}
+	
 	public void GoToPrenotazioni(JPanel allPages[]) {
 		
 		for(int i = 0; i < 3; i ++) {
 			allPages[i].setVisible(false);
 		}
 		
-		//Setting true to Lab Panel
-		allPages[1].setVisible(true);
+		//Setting true to Prenotazioni Panel
+		allPages[2].setVisible(true);
 	}
 	
 }
