@@ -61,18 +61,6 @@ public class LaboratoriPage extends JPanel{
 			nuovaPostazioneButton.setBorder(BorderFactory.createLineBorder(new Color(10, 100, 255), 1, true));
 		}
 		
-		if(!myController.alreadyResponsabile()) {
-		
-			nuovaPostazioneButton.setEnabled(false);;
-			nuovaPostazioneButton.setOpaque(false);
-			
-		} else { 
-			
-			nuovaPostazioneButton.setEnabled(true);;
-			nuovaPostazioneButton.setOpaque(true);
-		}
-		
-		
 		
 		JButton aggiungiStrumentoButton = new JButton("Aggiungi strumento");
 		aggiungiStrumentoButton.setBackground(new Color(10, 100, 255));
@@ -91,6 +79,27 @@ public class LaboratoriPage extends JPanel{
 			
 			aggiungiStrumentoButton.setOpaque(true);
 			aggiungiStrumentoButton.setBorder(BorderFactory.createLineBorder(new Color(10, 100, 255), 1, true));
+		}
+		
+		
+		
+		if(!myController.alreadyResponsabile()) {
+			
+			nuovaPostazioneButton.setEnabled(false);;
+			nuovaPostazioneButton.setOpaque(false);
+			
+			
+			aggiungiStrumentoButton.setEnabled(false);;
+			aggiungiStrumentoButton.setOpaque(false);
+			
+		} else { 
+			
+			nuovaPostazioneButton.setEnabled(true);;
+			nuovaPostazioneButton.setOpaque(true);
+			
+			
+			aggiungiStrumentoButton.setEnabled(true);;
+			aggiungiStrumentoButton.setOpaque(true);
 		}
 		
 		
