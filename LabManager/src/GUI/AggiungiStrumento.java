@@ -1,7 +1,6 @@
 package GUI;
 
 import UTILITIES.Controller;
-import DTO.Strumento;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -149,18 +148,14 @@ public class AggiungiStrumento extends JDialog {
 		return tipoStrumento.getText();
 	}
 	
-	public Integer getTempoMax() {
+	public String getTempoMax() {
 		
-		String tempo = tempoMax.getText();
-		
-		return Integer.parseInt(tempo);
+		return tempoMax.getText();
 	}
 	
 	public Integer getPostazioneAssegnata() {
 		
-		String pos = (String)postazioneAssegnata.getSelectedItem();
-		
-		return Integer.parseInt(pos);
+		return (Integer)postazioneAssegnata.getSelectedItem();
 	}
 	
 	public String getDescrizione() {

@@ -1,7 +1,6 @@
 package UTILITIES;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import java.util.Random;
@@ -284,7 +283,7 @@ public class Controller {
 		
 		strumentoDAO = new StrumentoDAO(this);
 		
-		if(strumentoDAO.newStrumento(this.newStrumento())) {
+		if(!strumentoDAO.newStrumento(this.newStrumento())) {
 			
 			aggiungiStrumento.dispose();
 			

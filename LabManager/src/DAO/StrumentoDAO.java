@@ -24,10 +24,13 @@ public class StrumentoDAO {
 	
 ////////////////////////////////////// INSERTING //////////////////////////////////////
 	
+	//TODO: go into the catch clause.
 	public Boolean newStrumento(Strumento strumentoTEMP) {
 		
+		Integer usage = Integer.parseInt(strumentoTEMP.getMaxUtilizzo());
+		
 		String queryStart = "INSERT INTO strumento(tipo, descrizioneStrumento, utilizzoMax, postazioneAssegnata) ";
-		String values = "VALUES('" + strumentoTEMP.getTipo() + "', '" + strumentoTEMP.getDescrizione() + "', " + strumentoTEMP.getMaxUtilizzo() + ", " + strumentoTEMP.getPostazioneAssegnata() + ");";
+		String values = "VALUES('" + strumentoTEMP.getTipo() + "', '" + strumentoTEMP.getDescrizione() + "', " + usage + ", " + strumentoTEMP.getPostazioneAssegnata() + ");";
 		
 		try {
 			
@@ -39,4 +42,7 @@ public class StrumentoDAO {
 			return false;
 		}
 	}
+	
+	
+	
 }

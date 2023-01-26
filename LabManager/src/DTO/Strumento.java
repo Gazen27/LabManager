@@ -5,7 +5,7 @@ import UTILITIES.Controller;
 public class Strumento {
 
 	private String Tipo;
-	private Integer MaxUtilizzo; 
+	private String MaxUtilizzo; 
 	private Integer PostazioneAssegnata;
 	private String Descrizione;
 	
@@ -24,11 +24,11 @@ public class Strumento {
 		Tipo = tipo;
 	}
 
-	public Integer getMaxUtilizzo() {
+	public String getMaxUtilizzo() {
 		return MaxUtilizzo;
 	}
 
-	public void setMaxUtilizzo(Integer maxUtilizzo) {
+	public void setMaxUtilizzo(String maxUtilizzo) {
 		MaxUtilizzo = maxUtilizzo;
 	}
 
