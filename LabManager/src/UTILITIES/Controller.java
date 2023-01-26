@@ -217,7 +217,6 @@ public class Controller {
 		currentPostazione.setMaxStrumenti(maxStrumenti);
 		
 		postazioneDAO = new PostazioneDAO(this);
-		
 		postazioneDAO.newPostazione(currentPostazione);
 		
 		nuovaPostazione.dispose();
@@ -435,10 +434,11 @@ public class Controller {
 		
 	}
 	
+	
 	public void GoAheadWithRegistration(AnagraficaPanel anagrafica, CredenzialiPanel credenziali) {
 		
 		if(CheckMissingPersonalInfo(anagrafica, credenziali)) {
-
+			
 			CreazioneTecnicoTemporanea(anagrafica);
 			LastRegistrationPageOpened(anagrafica, credenziali);
 			

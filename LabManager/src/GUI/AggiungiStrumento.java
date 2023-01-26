@@ -92,7 +92,6 @@ public class AggiungiStrumento extends JDialog {
 		descrizione.setWrapStyleWord(true);
 		getContentPane().add(descrizione);
 		
-		
-		//TODO: adding listeners and buttons. resizing the JDialog. Commit notturno, buonanotte
+		//TODO: adding listeners and buttons. resizing the JDialog.
 	}
 }
