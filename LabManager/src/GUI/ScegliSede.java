@@ -30,6 +30,8 @@ public class ScegliSede extends JDialog {
 		setResizable(false);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
+		setModalityType(JDialog.ModalityType.APPLICATION_MODAL);
+		
 		setBackground(new Color(235, 235, 235));
 		
 		JLabel message = new JLabel("Seleziona una sede");

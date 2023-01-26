@@ -3,6 +3,8 @@ package GUI;
 import UTILITIES.Controller;
 import DTO.Strumento;
 
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -11,21 +13,27 @@ import javax.swing.JTextArea;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Vector;
 
 public class AggiungiStrumento extends JDialog {
 
 	Controller myController;
+	JLabel errorMessage;
 	
-	public AggiungiStrumento(Controller controller) {
+	public AggiungiStrumento(Controller controller, Vector<Integer> postazioniAssociate) {
 		
 		myController = controller;
 		
 		setTitle("Nuovo Strumento");
 		getContentPane().setLayout(null);
-		setSize(500, 350);
+		setSize(500, 475);
 		setFocusable(false);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setAlwaysOnTop(true);
+		
+		setModalityType(JDialog.ModalityType.APPLICATION_MODAL);
 		
 		JLabel titolo = new JLabel("Aggiungi nuovo strumento");
 		titolo.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 25));
@@ -48,6 +56,7 @@ public class AggiungiStrumento extends JDialog {
 		tipoStrumento.setFont(new Font("Arial", Font.PLAIN, 18));
 		tipoStrumento.setHorizontalAlignment(JTextField.LEFT);
 		tipoStrumento.setBounds(85, 83, 215, 25);
+		tipoStrumento.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		getContentPane().add(tipoStrumento);
 		
 		JLabel tempoMaxText = new JLabel("• Tempo di utilizzo massimo: ");
@@ -60,6 +69,7 @@ public class AggiungiStrumento extends JDialog {
 		tempoMax.setFont(new Font("Arial", Font.PLAIN, 18));
 		tempoMax.setHorizontalAlignment(JTextField.RIGHT);
 		tempoMax.setBounds(290, 133, 50, 25);
+		tempoMax.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		getContentPane().add(tempoMax);
 		
 		JLabel oreText = new JLabel("ore");
@@ -74,7 +84,7 @@ public class AggiungiStrumento extends JDialog {
 		codicePostazione.setBounds(10, 180, 200, 30);
 		getContentPane().add(codicePostazione);
 		
-		JComboBox postazioneAssegnata = new JComboBox();
+		JComboBox postazioneAssegnata = new JComboBox(postazioniAssociate);
 		postazioneAssegnata.setFont(new Font("Arial", Font.ITALIC, 18));
 		postazioneAssegnata.setBounds(220, 183, 75, 25);
 		getContentPane().add(postazioneAssegnata);
@@ -87,11 +97,47 @@ public class AggiungiStrumento extends JDialog {
 		
 		JTextArea descrizione = new JTextArea();
 		descrizione.setFont(new Font("Arial", Font.PLAIN, 18));
-		descrizione.setBounds(150, 233, 320, 67);
+		descrizione.setBounds(150, 233, 320, 85);
 		descrizione.setLineWrap(true);
 		descrizione.setWrapStyleWord(true);
+		descrizione.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		getContentPane().add(descrizione);
 		
-		//TODO: adding listeners and buttons. resizing the JDialog.
+		JButton aggiungi = new JButton("Aggiungi");
+		aggiungi.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		aggiungi.setForeground(Color.WHITE);
+		aggiungi.setBackground(new Color(10, 100, 255));
+		aggiungi.setBounds(85, 370, 300, 51);
+		aggiungi.setFocusable(false);
+		getContentPane().add(aggiungi);
+		
+		errorMessage = new JLabel("Questa postazione ha già troppi strumenti!");
+		errorMessage.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 19));
+		errorMessage.setForeground(Color.RED);
+		errorMessage.setHorizontalAlignment(JLabel.CENTER);
+		errorMessage.setBounds(0, 330, 484, 29);
+		errorMessage.setVisible(false);
+		getContentPane().add(errorMessage);
+		
+////////////////////////////////////// LISTENER //////////////////////////////////////
+		
+		aggiungi.addMouseListener(new MouseAdapter() {
+			
+			public void mouseClicked(MouseEvent e) {
+				
+				
+			}
+			
+			public void mouseEntered(MouseEvent e) {
+				aggiungi.setFont(new Font("Segoe UI", Font.BOLD, 18));
+				aggiungi.setBackground(new Color(0, 75, 210));
+			}
+			public void mouseExited(MouseEvent e) {
+				aggiungi.setFont(new Font("Segoe UI", Font.BOLD, 20));;
+				aggiungi.setBackground(new Color(10, 100, 255));
+			}
+		});
+		
+		
 	}
 }

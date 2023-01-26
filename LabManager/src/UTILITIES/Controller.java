@@ -34,6 +34,7 @@ public class Controller {
 	
 	private NuovaPostazione nuovaPostazione;
 	private AggiungiStrumento aggiungiStrumento;
+	private NessunaPostazioneAssociata nessunaPostazione;
 	
 	private ScegliSede scegliSede;
 
@@ -223,6 +224,14 @@ public class Controller {
 	}
 	
 	
+	public Vector<Integer> getAllPostazioniResponsabile(){
+		
+		postazioneDAO = new PostazioneDAO(this);
+		Vector<Integer> postazioni = postazioneDAO.getAllPostazioniAssociate(currentSession.getUserMatricola());
+		
+		return postazioni;
+	}
+	
 	public void GotoSceltaSede() {
 		
 		sedeDAO = new SedeDAO(this);
@@ -238,9 +247,21 @@ public class Controller {
 	
 	public void openAggiungiStrumento() {
 		
-		aggiungiStrumento = new AggiungiStrumento(this);
-		aggiungiStrumento.setLocationRelativeTo(mainWindow);
-		aggiungiStrumento.setVisible(true);
+		Vector<Integer> allPostazioni = this.getAllPostazioniResponsabile();
+		
+		if(!allPostazioni.isEmpty()) {
+			
+			aggiungiStrumento = new AggiungiStrumento(this, allPostazioni);
+			aggiungiStrumento.setLocationRelativeTo(mainWindow);
+			aggiungiStrumento.setVisible(true);
+			
+		} else {
+			
+			nessunaPostazione = new NessunaPostazioneAssociata();
+			nessunaPostazione.setLocationRelativeTo(mainWindow);
+			nessunaPostazione.setVisible(true);
+		}
+
 	}
 	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////

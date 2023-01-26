@@ -6,6 +6,7 @@ import DTO.Postazione;
 
 
 import java.sql.*;
+import java.util.Vector;
 
 public class PostazioneDAO {
 	
@@ -38,5 +39,33 @@ public class PostazioneDAO {
 			e.getMessage();
 		}
 		
+	}
+	
+	
+////////////////////////////////////// SELECTING //////////////////////////////////////
+	
+	public Vector<Integer> getAllPostazioniAssociate(String responsabile) {
+		
+		Vector<Integer> codice = new Vector<Integer>();
+		
+		String query1 = "select po.codpostazione from postazione po inner join locazione l ";
+		String query2 = "on po.laboratoriopostazione = l.tlaboratorio and po.sedepostazione = l.csede ";
+		String query3 = "and l.responsabile = '" + responsabile + "';";
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery(query1 + query2 + query3);
+			
+			while(rs.next()) {
+				
+				codice.add(rs.getInt("codpostazione"));
+			}
+			
+			return codice;
+			
+		} catch(SQLException e) {
+			
+			return codice;
+		}
 	}
 }

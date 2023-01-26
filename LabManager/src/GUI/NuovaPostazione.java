@@ -30,6 +30,8 @@ public class NuovaPostazione extends JDialog {
 		getContentPane().setLayout(null);
 		setSize(500, 300);
 		
+		setModalityType(JDialog.ModalityType.APPLICATION_MODAL);
+		
 		setBackground(new Color(235, 235, 235));
 		
 		JLabel topLine = new JLabel("_________________________________________________________");

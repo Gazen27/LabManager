@@ -7,7 +7,6 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.BorderFactory;
 import javax.swing.*;
 
 
@@ -25,6 +24,8 @@ public class ConfirmToExit extends JDialog {
 		setBackground(new Color(235, 235, 235));
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setAlwaysOnTop(true);
+		
+		setModalityType(JDialog.ModalityType.APPLICATION_MODAL);
 		
 		JLabel simpleText = new JLabel("Sei sicuro di voler uscire?");
 		simpleText.setFont(new Font("Arial", Font.BOLD, 21));

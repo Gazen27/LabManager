@@ -28,6 +28,8 @@ public class ReturnToLoginPage extends JDialog {
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setAlwaysOnTop(true);
 		
+		setModalityType(JDialog.ModalityType.APPLICATION_MODAL);
+		
 		JLabel simpleText = new JLabel(text);
 		simpleText.setFont(new Font("Arial", Font.BOLD, 21));
 		simpleText.setHorizontalAlignment(JLabel.CENTER);

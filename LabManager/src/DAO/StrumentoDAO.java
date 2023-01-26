@@ -20,5 +20,10 @@ public class StrumentoDAO {
 		statement = connessioneDB.getStatement();
 	}
 	
+////////////////////////////////////// INSERTING //////////////////////////////////////
 	
+//	public Boolean newStrumento(Integer postazione) {
+//		
+//		
+//	}
 }

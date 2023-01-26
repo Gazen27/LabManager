@@ -33,6 +33,8 @@ public class IscrizioneLaboratorio extends JDialog {
 		setResizable(false);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
+		setModalityType(JDialog.ModalityType.APPLICATION_MODAL);
+		
 		JLabel line = new JLabel("   _______________________________________________________");
 		line.setFont(new Font("Arial", Font.BOLD, 15));
 		line.setBounds(10, 105, 460, 20);
