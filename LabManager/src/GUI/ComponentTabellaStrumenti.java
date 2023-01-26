@@ -9,13 +9,13 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneLayout;
 
 
-public class ComponentTabellaLaboratori extends JScrollPane{
+public class ComponentTabellaStrumenti extends JScrollPane{
 
-	private TabellaLaboratori tabella;
+	private TabellaStrumenti tabellaStrumenti;
 	
 	Controller myController;
 	
-	public ComponentTabellaLaboratori(Controller controller) {
+	public ComponentTabellaStrumenti(Controller controller) {
 		
 		myController = controller;
 		
@@ -24,9 +24,9 @@ public class ComponentTabellaLaboratori extends JScrollPane{
 		setBackground(new Color(235, 235, 235));
 		setLayout(new ScrollPaneLayout());
 
-		tabella = new TabellaLaboratori(myController);
+		tabellaStrumenti = new TabellaStrumenti(myController);
 		
-		setViewportView(tabella);
+		setViewportView(tabellaStrumenti);
 	}
 	
 }

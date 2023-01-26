@@ -29,6 +29,8 @@ public class StrumentiPage extends JPanel {
 		pageTitle.setHorizontalAlignment(JLabel.LEFT);
 		add(pageTitle);
 		
-		
+		ComponentTabellaStrumenti tabellaStr = new ComponentTabellaStrumenti(myController);
+		tabellaStr.setBounds(30, 105, 800, 402);
+		add(tabellaStr);
 	}
 }
