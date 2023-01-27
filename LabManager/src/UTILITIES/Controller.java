@@ -426,6 +426,15 @@ public class Controller {
 		toLoginDialog.dispose();
 	}
 	
+	
+////////////////////////////////////// GESTIONE PRENOTAZIONI //////////////////////////////////////
+	
+	
+	public void goToEffettuaPrenotazione() {
+		
+		
+	}
+	
 ////////////////////////////////////// CHECK INFORMATION LENGTH //////////////////////////////////////
 	
 	public Boolean CheckCFLength(String CFInserted) {

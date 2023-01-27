@@ -58,11 +58,11 @@ public class TabellaStrumentiScelti extends JTable {
 		
 		this.getColumnModel().getColumn(0).setCellRenderer(new CenterRenderer());
 		
-		this.getColumnModel().getColumn(0).setMinWidth(100);
-		this.getColumnModel().getColumn(0).setMaxWidth(100);
+		this.getColumnModel().getColumn(0).setMinWidth(90);
+		this.getColumnModel().getColumn(0).setMaxWidth(90);
 		
-		this.getColumnModel().getColumn(1).setMinWidth(180);
-		this.getColumnModel().getColumn(1).setMaxWidth(180);
+		this.getColumnModel().getColumn(1).setMinWidth(170);
+		this.getColumnModel().getColumn(1).setMaxWidth(170);
 		
 		
 		//VISUALIZZA LA PAGINA DELLO STRUMENTO SCELTO

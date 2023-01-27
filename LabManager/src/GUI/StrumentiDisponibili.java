@@ -38,7 +38,7 @@ public class StrumentiDisponibili extends JDialog {
 		
 		
 		ComponentTabellaStrumentiScelti tabellaStr = new ComponentTabellaStrumentiScelti(myController, sedeScelta);
-		tabellaStr.setBounds(25, 105, 540, 402);
+		tabellaStr.setBounds(25, 85, 540, 300);
 		add(tabellaStr);
 		
 		
