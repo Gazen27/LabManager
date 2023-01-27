@@ -59,7 +59,7 @@ public class SedeDAO {
 		
 		try {
 			
-			ResultSet rs = statement.executeQuery("SELECT s.nome FROM sede s INNER JOIN lavora l ON s.codsede = l.codsede WHERE l.matricolaTecnico = '" + matricola + "';");
+			ResultSet rs = statement.executeQuery("SELECT DISTINCT s.nome FROM sede s INNER JOIN lavora l ON s.codsede = l.codsede WHERE l.matricolaTecnico = '" + matricola + "';");
 			
 			while(rs.next()) {
 				
