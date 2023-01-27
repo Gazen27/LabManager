@@ -74,7 +74,7 @@ public class TabellaStrumentiScelti extends JTable {
         		
         		Integer codiceStrumento = Integer.parseInt((String)tableModel.getValueAt(index, 0));
         		
-        		//TODO: APRI PRENOTAZIONE
+        		myController.goToEffettuaPrenotazione(codiceStrumento);
             }
             
         });

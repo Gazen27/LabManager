@@ -41,6 +41,7 @@ public class Controller {
 	private ScegliSede scegliSede;
 	
 	private StrumentiDisponibili strumentiDisponibili;
+	private EffettuaPrenotazione effettuaPrenotazione;
 
 	public static void main(String[] args) {
 		
@@ -387,6 +388,31 @@ public class Controller {
 		scegliSede.dispose();
 	}
 	
+	
+	public Strumento getStrumentoSelezionato(Integer codiceStrumento) {
+		
+		strumentoDAO = new StrumentoDAO(this);
+		
+		Strumento strumentoTEMP = strumentoDAO.getStrumentoSelezionato(codiceStrumento);
+		
+		return strumentoTEMP;
+	}
+	
+	
+////////////////////////////////////// GESTIONE PRENOTAZIONI //////////////////////////////////////
+	
+	
+	public void goToEffettuaPrenotazione(Integer codiceStrumento) {
+
+		Strumento strumento = this.getStrumentoSelezionato(codiceStrumento);
+		
+		effettuaPrenotazione = new EffettuaPrenotazione(this, strumento);
+		effettuaPrenotazione.setLocationRelativeTo(mainWindow);
+		effettuaPrenotazione.setVisible(true);
+		
+		strumentiDisponibili.dispose();
+	}
+	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////
 	
 	public void GotoLoginPage(JFrame currentPage) {
@@ -426,14 +452,6 @@ public class Controller {
 		toLoginDialog.dispose();
 	}
 	
-	
-////////////////////////////////////// GESTIONE PRENOTAZIONI //////////////////////////////////////
-	
-	
-	public void goToEffettuaPrenotazione() {
-		
-		
-	}
 	
 ////////////////////////////////////// CHECK INFORMATION LENGTH //////////////////////////////////////
 	

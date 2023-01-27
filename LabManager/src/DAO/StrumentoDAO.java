@@ -117,4 +117,29 @@ public class StrumentoDAO {
 		}
 	}
 	
+	
+	public Strumento getStrumentoSelezionato(Integer codice) {
+		
+		Strumento strumento = new Strumento(myController);
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery("SELECT * FROM strumento WHERE codStrumento = " + codice);
+			
+			rs.next();
+				
+			strumento.setCodice(codice);
+			strumento.setTipo(rs.getString("tipo"));
+			strumento.setMaxUtilizzo("utilizzoMax");
+			strumento.setPostazioneAssegnata(rs.getInt("postazioneAssegnata"));
+			strumento.setDescrizione(rs.getString("descrizioneStrumento"));
+			
+			return strumento;
+			
+		} catch (SQLException e) {
+			
+			return strumento;
+		}
+	}
+	
 }
