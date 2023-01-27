@@ -69,6 +69,7 @@ public class Controller {
 		for (Laboratorio l : laboratori) {
 			
 			Vector<String> singleVector = new Vector<String>();
+			
 			singleVector.add("00" + l.getCodice());
 			singleVector.add(l.getTipo());
 			singleVector.add(l.getSede());
@@ -317,6 +318,30 @@ public class Controller {
 			aggiungiStrumento.errorMessage1.setVisible(false);
 			aggiungiStrumento.errorMessage2.setVisible(true);
 		}
+	}
+	
+	
+	public Vector<Vector<String>> infoStrumento() {
+		
+		Vector<Vector<String>> doubleVector = new Vector<Vector<String>>();
+		
+		strumentoDAO = new StrumentoDAO(this);
+		
+		Vector<Strumento> strumenti = strumentoDAO.getAllStrumenti();
+		
+		for (Strumento s : strumenti) {
+			
+			Vector<String> singleVector = new Vector<String>();
+			
+			singleVector.add("00" + s.getCodice().toString());
+			singleVector.add(s.getTipo());
+			singleVector.add(s.getLaboratorioAssegnato() + " - " + "00" + s.getSedeAssegnata().toString());
+			singleVector.add(s.getDescrizione());
+			
+			doubleVector.add(singleVector);
+		}
+		
+		return doubleVector;
 	}
 	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////

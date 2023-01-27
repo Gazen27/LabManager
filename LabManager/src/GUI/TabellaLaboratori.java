@@ -8,6 +8,7 @@ import java.util.Vector;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import UTILITIES.CenterRenderer;
 import UTILITIES.Controller;
 import java.awt.event.MouseEvent;
 
@@ -29,6 +30,8 @@ public class TabellaLaboratori extends JTable {
 		
 		setBackground(new Color(235, 235, 235));
 		setSize(500, 500);
+		
+		this.setDefaultRenderer(Object.class, new CenterRenderer());
 		
 		Colonne = new Vector<String>();
 		Colonne.add("Codice");
@@ -54,6 +57,11 @@ public class TabellaLaboratori extends JTable {
 		this.setRowHeight(26);
 		
 		this.setRowSelectionAllowed(true);	
+		
+		this.getColumnModel().getColumn(0).setCellRenderer(new CenterRenderer());
+		
+		this.getColumnModel().getColumn(0).setMinWidth(100);
+		this.getColumnModel().getColumn(0).setMaxWidth(100);
 		
 		
 		//ISCRIVITI AL LABORATORIO SCELTO

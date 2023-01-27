@@ -4,11 +4,16 @@ import UTILITIES.Controller;
 
 public class Strumento {
 
+	private Integer codice;
+
 	private String Tipo;
 	private String MaxUtilizzo; 
 	private Integer PostazioneAssegnata;
 	private String Descrizione;
 	
+	private Integer SedeAssegnata;
+	private String LaboratorioAssegnato;
+
 	Controller myController; 
 	
 	public Strumento(Controller controller) {
@@ -46,6 +51,31 @@ public class Strumento {
 
 	public void setDescrizione(String descrizione) {
 		Descrizione = descrizione;
+	}
+	
+	
+	public Integer getSedeAssegnata() {
+		return this.SedeAssegnata;
+	}
+
+	public void setSedeAssegnata(Integer sedeAssegnata) {
+		this.SedeAssegnata = sedeAssegnata;
+	}
+
+	public String getLaboratorioAssegnato() {
+		return this.LaboratorioAssegnato;
+	}
+
+	public void setLaboratorioAssegnato(String laboratorioAssegnato) {
+		this.LaboratorioAssegnato = laboratorioAssegnato;
+	}
+	
+	public Integer getCodice() {
+		return codice;
+	}
+
+	public void setCodice(Integer codice) {
+		this.codice = codice;
 	}
 	
 }

@@ -54,13 +54,13 @@ public class NuovaPostazione extends JDialog {
 		getContentPane().add(sede);
 		
 		JLabel nuovo = new JLabel("Crea nuova postazione");
-		nuovo.setFont(new Font("Arial", Font.BOLD, 24));
+		nuovo.setFont(new Font("Arial", Font.BOLD, 23));
 		nuovo.setHorizontalAlignment(JLabel.LEFT);
 		nuovo.setBounds(10, 100, 275, 35);
 		getContentPane().add(nuovo);
 		
-		JLabel numeroStrumentiMax = new JLabel("Numero massimo di strumenti:");
-		numeroStrumentiMax.setFont(new Font("Arial", Font.BOLD, 24));
+		JLabel numeroStrumentiMax = new JLabel("• Numero massimo di strumenti:");
+		numeroStrumentiMax.setFont(new Font("Arial", Font.BOLD, 23));
 		numeroStrumentiMax.setHorizontalAlignment(JLabel.LEFT);
 		numeroStrumentiMax.setBounds(10, 140, 360, 35);
 		getContentPane().add(numeroStrumentiMax);
@@ -69,8 +69,8 @@ public class NuovaPostazione extends JDialog {
 		Integer[] lista = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 		
 		maxStrumenti = new JComboBox(lista);
-		maxStrumenti.setFont(new Font("Arial", Font.BOLD, 20));
-		maxStrumenti.setBounds(380, 145, 75, 25);
+		maxStrumenti.setFont(new Font("Arial", Font.BOLD, 19));
+		maxStrumenti.setBounds(380, 146, 75, 25);
 		getContentPane().add(maxStrumenti);
 		
 		
