@@ -56,7 +56,9 @@ public class ScegliSede extends JDialog {
 			
 			public void mouseClicked(MouseEvent e) {
 				
+				String sedeScelta = (String)listaSedi.getSelectedItem();
 				
+				myController.goToStrumentiDisponibili(sedeScelta);
 			}
 			
 			public void mouseEntered(MouseEvent e) {

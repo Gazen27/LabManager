@@ -48,6 +48,7 @@ public class StrumentiPage extends JPanel {
 		prenotaStrumentoButton.setBackground(new Color(10, 100, 255));
 		prenotaStrumentoButton.setForeground(Color.WHITE);
 		prenotaStrumentoButton.setBounds(155, 585, 550, 50);
+		prenotaStrumentoButton.setFocusable(false);
 		add(prenotaStrumentoButton);
 		
 		

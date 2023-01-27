@@ -13,7 +13,7 @@ public class StrumentiDisponibili extends JDialog {
 
 	Controller myController;
 	
-	StrumentiDisponibili(Controller controller, String sedeScelta){
+	public StrumentiDisponibili(Controller controller, String sedeScelta){
 		
 		myController = controller;
 		
@@ -21,6 +21,7 @@ public class StrumentiDisponibili extends JDialog {
 		getContentPane().setLayout(null);
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setResizable(false);
 		
 		setBackground(new Color(235, 235, 235));
 		
@@ -36,8 +37,8 @@ public class StrumentiDisponibili extends JDialog {
 		getContentPane().add(line);
 		
 		
-		ComponentTabellaStrumentiScelti tabellaStr = new ComponentTabellaStrumentiScelti(myController);
-		tabellaStr.setBounds(30, 105, 800, 402);
+		ComponentTabellaStrumentiScelti tabellaStr = new ComponentTabellaStrumentiScelti(myController, sedeScelta);
+		tabellaStr.setBounds(25, 105, 540, 402);
 		add(tabellaStr);
 		
 		

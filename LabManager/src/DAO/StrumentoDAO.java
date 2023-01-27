@@ -83,4 +83,38 @@ public class StrumentoDAO {
 		}
 	}
 	
+	
+	public Vector<Strumento> getAllStrumentiScelti(String sede) {
+		
+		Vector<Strumento> tuttiStrumentiScelti = new Vector<Strumento>();
+		
+		try {
+			
+			String queryStart = "select s.codstrumento, s.tipo, s.descrizionestrumento ";
+			String queryMiddle = "from strumento s INNER JOIN postazioneLocazione cp ";
+			String queryEnd = "ON s.postazioneAssegnata = cp.codPostazione AND cp.nome = '" + sede + "';";
+			
+			ResultSet rs = statement.executeQuery(queryStart + queryMiddle + queryEnd);
+			
+			while(rs.next()) {
+				
+				Strumento str = new Strumento(myController);
+				
+				str.setCodice(rs.getInt("codstrumento"));
+				str.setTipo(rs.getString("tipo"));
+				str.setDescrizione(rs.getString("descrizionestrumento"));
+				
+				tuttiStrumentiScelti.add(str);
+
+			}
+			
+			return tuttiStrumentiScelti;
+			
+		} catch(SQLException e) {
+			
+			e.getMessage();
+			return tuttiStrumentiScelti;
+		}
+	}
+	
 }

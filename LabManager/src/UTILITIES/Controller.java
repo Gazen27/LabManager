@@ -39,6 +39,8 @@ public class Controller {
 	private StrumentoDAO strumentoDAO;
 	
 	private ScegliSede scegliSede;
+	
+	private StrumentiDisponibili strumentiDisponibili;
 
 	public static void main(String[] args) {
 		
@@ -144,6 +146,10 @@ public class Controller {
 		laboratorioDAO.newResponsabile(matricola, sede, tipo);
 		
 		iscriviti.dispose();
+		mainWindow.dispose();
+		
+		mainWindow =  new MainWindow(this, currentSession);
+		mainWindow.setVisible(true);
 	}
 	
 	
@@ -152,6 +158,10 @@ public class Controller {
 		laboratorioDAO.rimuoviResponsabile(sede, tipo);
 		
 		iscriviti.dispose();
+		mainWindow.dispose();
+		
+		mainWindow =  new MainWindow(this, currentSession);
+		mainWindow.setVisible(true);
 	}
 	
 	public String currentMatricolaSession() {
@@ -342,6 +352,39 @@ public class Controller {
 		}
 		
 		return doubleVector;
+	}
+	
+	
+	public Vector<Vector<String>> infoStrumentoScelto(String sedeSelezionata) {
+		
+		Vector<Vector<String>> doubleVector = new Vector<Vector<String>>();
+		
+		strumentoDAO = new StrumentoDAO(this);
+		
+		Vector<Strumento> strumentiScelti = strumentoDAO.getAllStrumentiScelti(sedeSelezionata);
+		
+		for (Strumento s : strumentiScelti) {
+			
+			Vector<String> singleVector = new Vector<String>();
+			
+			singleVector.add("00" + s.getCodice().toString());
+			singleVector.add(s.getTipo());
+			singleVector.add(s.getDescrizione());
+			
+			doubleVector.add(singleVector);
+		}
+		
+		return doubleVector;
+	}
+	
+	
+	public void goToStrumentiDisponibili(String sedeSelezionata) {
+		
+		strumentiDisponibili = new StrumentiDisponibili(this, sedeSelezionata);
+		strumentiDisponibili.setLocationRelativeTo(mainWindow);
+		strumentiDisponibili.setVisible(true);
+		
+		scegliSede.dispose();
 	}
 	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////

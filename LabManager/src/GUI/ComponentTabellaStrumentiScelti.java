@@ -15,7 +15,7 @@ public class ComponentTabellaStrumentiScelti extends JScrollPane{
 	
 	Controller myController;
 	
-	public ComponentTabellaStrumentiScelti(Controller controller) {
+	public ComponentTabellaStrumentiScelti(Controller controller, String sedeSelezionata) {
 		
 		myController = controller;
 		
@@ -24,7 +24,7 @@ public class ComponentTabellaStrumentiScelti extends JScrollPane{
 		setBackground(new Color(235, 235, 235));
 		setLayout(new ScrollPaneLayout());
 
-//		tabellaStrumentiScelti = new TabellaStrumenti(myController);
+		tabellaStrumentiScelti = new TabellaStrumentiScelti(myController, sedeSelezionata);
 		
 		setViewportView(tabellaStrumentiScelti);
 	}

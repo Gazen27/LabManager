@@ -20,7 +20,7 @@ public class TabellaStrumentiScelti extends JTable {
 	
 	Controller myController;
 	
-	public TabellaStrumentiScelti(Controller controller) {
+	public TabellaStrumentiScelti(Controller controller, String sedeSelezionata) {
 		
 		myController = controller;
 		
@@ -37,7 +37,7 @@ public class TabellaStrumentiScelti extends JTable {
 		Colonne.add("Strumento");
 		Colonne.add("Descrizione");
 		
-		this.Info = myController.infoStrumento();
+		this.Info = myController.infoStrumentoScelto(sedeSelezionata);
 		
 		tableModel = new DefaultTableModel(Info, Colonne);
 		
@@ -64,8 +64,6 @@ public class TabellaStrumentiScelti extends JTable {
 		this.getColumnModel().getColumn(1).setMinWidth(180);
 		this.getColumnModel().getColumn(1).setMaxWidth(180);
 		
-		this.getColumnModel().getColumn(2).setMinWidth(125);
-		this.getColumnModel().getColumn(2).setMaxWidth(125);
 		
 		//VISUALIZZA LA PAGINA DELLO STRUMENTO SCELTO
         this.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -76,7 +74,7 @@ public class TabellaStrumentiScelti extends JTable {
         		
         		Integer codiceStrumento = Integer.parseInt((String)tableModel.getValueAt(index, 0));
         		
-        		//TODO: APRI PAGINA STRUMENTO
+        		//TODO: APRI PRENOTAZIONE
             }
             
         });
