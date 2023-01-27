@@ -2,21 +2,24 @@ package GUI;
 
 import java.awt.Font;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import javax.swing.JLabel;
 
 public class CurrentDate extends JLabel {
 	
-	private SimpleDateFormat sdf;
-	private String date;
+	LocalDate date;
 
 	public CurrentDate() {
 		
-		sdf = new SimpleDateFormat("dd / MM / yyyy");
-		date = sdf.format(new Date());
+		LocalDate date = LocalDate.now();
 		
-		setText(date);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd - MM - yyyy");
+		String formattedDate = date.format(formatter);
+		
+		setText(formattedDate);
 		setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 17));
 		setHorizontalAlignment(JLabel.CENTER);
 	}
