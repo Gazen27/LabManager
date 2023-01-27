@@ -53,13 +53,13 @@ public class SedeDAO {
 	}
 	
 	
-	public Vector<String> allNomiSedi(){
+	public Vector<String> allNomiSediIscritto(String matricola){
 		
 		Vector<String> tutteSedi = new Vector<String>();
 		
 		try {
 			
-			ResultSet rs = statement.executeQuery("SELECT nome FROM sede");
+			ResultSet rs = statement.executeQuery("SELECT s.nome FROM sede s INNER JOIN lavora l ON s.codsede = l.codsede WHERE l.matricolaTecnico = '" + matricola + "';");
 			
 			while(rs.next()) {
 				
@@ -94,4 +94,6 @@ public class SedeDAO {
 			return sede;
 		}
 	}
+	
+	
 }

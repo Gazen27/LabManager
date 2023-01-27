@@ -3,6 +3,7 @@ package DAO;
 import UTILITIES.ConnessioneDB;
 import UTILITIES.Controller;
 import DTO.Laboratorio;
+import DTO.Sede;
 
 import java.sql.*;
 import java.util.Vector;

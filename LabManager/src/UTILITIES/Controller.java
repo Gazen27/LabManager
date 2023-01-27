@@ -238,11 +238,11 @@ public class Controller {
 	public void GotoSceltaSede() {
 		
 		sedeDAO = new SedeDAO(this);
-		Vector<String> allSedi = sedeDAO.allNomiSedi();
+		Vector<String> allSedi = sedeDAO.allNomiSediIscritto(currentSession.getUserMatricola());
 		
 		scegliSede = new ScegliSede(this, allSedi);
-		scegliSede.setVisible(true);
 		scegliSede.setLocationRelativeTo(mainWindow);
+		scegliSede.setVisible(true);
 	}
 	
 	

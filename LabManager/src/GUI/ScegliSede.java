@@ -2,6 +2,7 @@ package GUI;
 
 import UTILITIES.Controller;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -10,7 +11,8 @@ import DTO.Sede;
 
 import java.awt.Color;
 import java.awt.Font;
-
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Vector;
 
 public class ScegliSede extends JDialog {
@@ -30,8 +32,6 @@ public class ScegliSede extends JDialog {
 		setResizable(false);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
-		setModalityType(JDialog.ModalityType.APPLICATION_MODAL);
-		
 		setBackground(new Color(235, 235, 235));
 		
 		JLabel message = new JLabel("Seleziona una sede");
@@ -43,5 +43,31 @@ public class ScegliSede extends JDialog {
 		JComboBox listaSedi = new JComboBox(allSedi);
 		listaSedi.setBounds(10, 55, 150, 30);
 		add(listaSedi);
+		
+		JButton avantiButton = new JButton("Avanti");
+		avantiButton.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		avantiButton.setBackground(new Color(10, 100, 255));
+		avantiButton.setForeground(Color.WHITE);
+		avantiButton.setBounds(180, 55, 85, 30);
+		add(avantiButton);
+		
+		
+		avantiButton.addMouseListener(new MouseAdapter() {
+			
+			public void mouseClicked(MouseEvent e) {
+				
+				
+			}
+			
+			public void mouseEntered(MouseEvent e) {
+				avantiButton.setBackground(new Color(0, 75, 210));
+				avantiButton.setFont(new Font("Segoe UI", Font.BOLD, 13));
+			}
+			
+			public void mouseExited(MouseEvent e) {
+				avantiButton.setBackground(new Color(10, 100, 255));
+				avantiButton.setFont(new Font("Segoe UI", Font.BOLD, 15));
+			}
+		});
 	}
 }
