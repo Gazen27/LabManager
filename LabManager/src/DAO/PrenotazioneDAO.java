@@ -6,6 +6,8 @@ import DTO.Prenotazione;
 import DTO.Sede;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Vector;
 
 public class PrenotazioneDAO {
@@ -23,8 +25,7 @@ public class PrenotazioneDAO {
 		statement = connessioneDB.getStatement();
 	}
 		
-////////////////////////////////////// INSERTING //////////////////////////////////////
-	
+////////////////////////////////////// INSERTING //////////////////////////////////////	
 	
 	public void nuovaPrenotazione(Prenotazione prenotazione) {
 		
@@ -43,4 +44,34 @@ public class PrenotazioneDAO {
 		
 	}
 	
+	
+////////////////////////////////////// SELECTING //////////////////////////////////////
+	
+	public Vector<LocalDate> getAllDatePrenotateScelte(Integer codiceStrumento){
+		
+		Vector<LocalDate> tutteDate = null;
+		
+		Date data = null;
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery("select dataprenotazione from prenotazioni where strumentoprenotato = " + codiceStrumento);
+			
+			while(rs.next()) {
+				
+				data = rs.getDate("dataprenotazione");
+				
+				//CONVERTO DA TIPO DATE A TIPO LOCALDATE
+				LocalDate dataConvertita = LocalDate.ofInstant(data.toInstant(), ZoneId.systemDefault());
+				
+				tutteDate.add(dataConvertita);
+			}
+			
+			return tutteDate;
+			
+		} catch(SQLException e) {
+			
+			return tutteDate;
+		}
+	}
 }
