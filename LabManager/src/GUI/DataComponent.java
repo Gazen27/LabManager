@@ -64,5 +64,20 @@ public class DataComponent extends JComponent {
 	public String getDataCompleta() {
 		return this.getGiorno() + "-" + this.getMese() + "-" + this.getAnno();
 	}
+	
+	public void setGiorno(String giorno) {
+		
+		this.giornoBox.setSelectedItem(giorno);
+	}
+	
+	public void setMese(String mese) {
+		
+		this.meseBox.setSelectedItem(mese);
+	}
+	
+	public void setAnno(String anno) {
+		
+		this.annoField.setText(anno);
+	}
 
 }

@@ -57,7 +57,7 @@ public class GestisciElimina extends JDialog {
 			
 			public void mouseClicked(MouseEvent e) {
 				
-				
+				myController.openGestionePrenotazioni(prenotazione);
 			}
 			
 			public void mouseEntered(MouseEvent e) {

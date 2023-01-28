@@ -68,4 +68,32 @@ public class PrenotazionePersonale {
 	public void setTempoPrenotato(Integer tempoPrenotato) {
 		this.tempoPrenotato = tempoPrenotato;
 	}
+	
+	public String getSingoloGiorno() {
+		
+		Integer day = dataPrenotazione.getDayOfMonth();
+		if(day < 10) {
+			
+			return "0" + day.toString();
+			
+		} else { return day.toString(); }
+
+	}
+	
+	public String getSingoloMese() {
+		
+		Integer month = dataPrenotazione.getMonthValue();
+		if(month < 10) {
+			
+			return "0" + month.toString();
+			
+		} else { return month.toString(); }
+
+	}
+	
+	public String getSingoloAnno() {
+		
+		Integer year = dataPrenotazione.getYear();
+		return year.toString();
+	}
 }

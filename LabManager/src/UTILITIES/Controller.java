@@ -55,6 +55,7 @@ public class Controller {
 	private PrenotazionePersonaleDAO prenotazionePersDAO;
 	
 	private GestisciElimina sceltaPrenotazione;
+	private GestionePrenotazione gestionePrenotazione;
 	private ConfermaEliminazione confermaEliminazione;
 
 	public static void main(String[] args) {
@@ -563,6 +564,15 @@ public class Controller {
 		confermaEliminazione = new ConfermaEliminazione(this, prenotazione);
 		confermaEliminazione.setLocationRelativeTo(mainWindow);
 		confermaEliminazione.setVisible(true);
+	}
+	
+	
+	public void openGestionePrenotazioni(PrenotazionePersonale prenotazione) {
+		
+		gestionePrenotazione = new GestionePrenotazione(this, prenotazione);
+		gestionePrenotazione.setLocationRelativeTo(mainWindow);
+		gestionePrenotazione.setVisible(true);
+		sceltaPrenotazione.dispose();
 	}
 	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////
