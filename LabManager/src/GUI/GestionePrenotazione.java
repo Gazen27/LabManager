@@ -12,6 +12,8 @@ import javax.swing.JButton;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class GestionePrenotazione extends JDialog {
 
@@ -19,6 +21,8 @@ public class GestionePrenotazione extends JDialog {
 	
 	private JTextField tempoPrenotatoField;
 	private DataComponent dataComponent;
+	
+	public JLabel datiErratiMancanti; 
 	
 	public GestionePrenotazione(Controller controller, PrenotazionePersonale prenotazione) {
 		
@@ -102,5 +106,53 @@ public class GestionePrenotazione extends JDialog {
 		dataComponent.setAnno(prenotazione.getSingoloAnno());
 		getContentPane().add(dataComponent);
 		
+		datiErratiMancanti = new JLabel("Dati inseriti non validi o mancanti!");
+		datiErratiMancanti.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 25));
+		datiErratiMancanti.setForeground(Color.RED);
+		datiErratiMancanti.setHorizontalAlignment(JLabel.CENTER);
+		datiErratiMancanti.setBounds(0, 330, 584, 35);
+		datiErratiMancanti.setVisible(false);
+		getContentPane().add(datiErratiMancanti);
+		
+		JButton conferma = new JButton("Conferma modifiche");
+		conferma.setFont(new Font("Segoe UI", Font.BOLD, 25));
+		conferma.setForeground(Color.WHITE);
+		conferma.setBackground(buttonColor);
+		conferma.setBounds(130, 376, 304, 62);
+		getContentPane().add(conferma);
+		
+		
+		conferma.addMouseListener(new MouseAdapter() {
+			
+			public void mouseClicked(MouseEvent e) {
+				
+				
+			}
+			
+			public void mouseEntered(MouseEvent e) {
+				conferma.setBackground(new Color(0, 75, 210));
+				conferma.setFont(new Font("Segoe UI", Font.BOLD, 23));
+			}
+			
+			public void mouseExited(MouseEvent e) {
+				conferma.setBackground(new Color(10, 100, 255));
+				conferma.setFont(new Font("Segoe UI", Font.BOLD, 25));
+			}
+		});
+	}
+	
+	public String getDay() {
+		
+		return dataComponent.getGiorno();
+	}
+	
+	public String getMonth() {
+		
+		return dataComponent.getMese();
+	}
+	
+	public String getYear() {
+		
+		return dataComponent.getAnno();
 	}
 }

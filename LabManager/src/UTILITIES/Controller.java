@@ -435,7 +435,7 @@ public class Controller {
 		
 		if(!effettuaPrenotazione.getCampoTempo().equals("")) {
 			if(!effettuaPrenotazione.getCampoYear().equals("")) {
-				if(!effettuaPrenotazione.getCampoDay().equals("GG") &&  !effettuaPrenotazione.getCampoMonth().equals("MM")) {
+				if(!effettuaPrenotazione.getCampoDay().equals("GG") && !effettuaPrenotazione.getCampoMonth().equals("MM")) {
 					
 					return true;
 					
@@ -573,6 +573,12 @@ public class Controller {
 		gestionePrenotazione.setLocationRelativeTo(mainWindow);
 		gestionePrenotazione.setVisible(true);
 		sceltaPrenotazione.dispose();
+	}
+	
+	
+	public void controlloCampiGestione() {
+		
+		
 	}
 	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////

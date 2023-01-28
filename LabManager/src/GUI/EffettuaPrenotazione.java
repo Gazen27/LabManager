@@ -37,6 +37,8 @@ public class EffettuaPrenotazione extends JDialog {
 	private Integer month;
 	private Integer day;
 	
+	private LocalDate today = LocalDate.now();
+	
 	public EffettuaPrenotazione(Controller controller, Strumento strumento) {
 		
 		myController = controller;
@@ -159,9 +161,18 @@ public class EffettuaPrenotazione extends JDialog {
 				
 				if(myController.prenotazioneCompleted()) {
 					
-					if(!(getTempoInserted() > oreMax)) {
+					if(!getDataInserted().isBefore(today)) {
 						
-						myController.prenotaStrumento(strumento, getTempoInserted(), getDataInserted());
+						if(!(getTempoInserted() > oreMax)) {
+							
+							myController.prenotaStrumento(strumento, getTempoInserted(), getDataInserted());
+							
+						} else {
+							
+							datiMancantiErrrati.setVisible(true);
+							dataEsistente.setVisible(false);
+							title.setVisible(false);
+						}
 						
 					} else {
 						
