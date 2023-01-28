@@ -36,11 +36,10 @@ public class StrumentiPage extends JPanel {
 		tabellaStr.setBounds(30, 105, 800, 402);
 		add(tabellaStr);
 		
-		
 		JLabel info = new JLabel("Clicca su uno strumento per aprire la sua pagina di riepilogo");
 		info.setHorizontalAlignment(JLabel.LEFT);
 		info.setFont(new Font("Arial", Font.ITALIC, 20));
-		info.setBounds(30, 520, 870, 30);
+		info.setBounds(30, 518, 870, 30);
 		add(info);
 		
 		PrenotaButton prenotaStrumentoButton = new PrenotaButton(myController);

@@ -49,6 +49,9 @@ public class Controller {
 	
 	private Prenotazione prenotazione;
 	private PrenotazioneDAO prenotazioneDAO;
+	
+	private PrenotazionePersonale prenotazionePersonale;
+	private PrenotazionePersonaleDAO prenotazionePersDAO;
 
 	public static void main(String[] args) {
 		
@@ -484,6 +487,32 @@ public class Controller {
 			
 		}
 
+	}
+	
+	
+	public Vector<Vector<String>> infoPrenotazione() {
+		
+		Vector<Vector<String>> doubleVector = new Vector<Vector<String>>();
+		
+		prenotazionePersDAO = new PrenotazionePersonaleDAO(this);
+		
+		Vector<PrenotazionePersonale> prenotaizoniPersonali = prenotazionePersDAO.getAllPrenotazioni(currentSession.getUserMatricola());
+		
+		for (PrenotazionePersonale p : prenotaizoniPersonali) {
+			
+			Vector<String> singleVector = new Vector<String>();
+			
+			singleVector.add("00" + p.getCodicePrenotazione().toString());
+			singleVector.add(p.getStrumentoCompleto());
+			singleVector.add(p.getLaboratorioSede());
+			singleVector.add(p.getPostazioneAssegnata().toString());
+			singleVector.add(p.getDataPrenotazione().toString());
+			singleVector.add(p.getTempoPrenotato().toString());
+			
+			doubleVector.add(singleVector);
+		}
+		
+		return doubleVector;
 	}
 	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////

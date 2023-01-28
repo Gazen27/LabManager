@@ -27,6 +27,10 @@ public class PrenotazioniPage extends JPanel {
 		pageTitle.setHorizontalAlignment(JLabel.LEFT);
 		add(pageTitle);
 		
+		ComponentTabellaPrenotazioni tabellaPren = new ComponentTabellaPrenotazioni(myController);
+		tabellaPren.setBounds(30, 105, 800, 402);
+		add(tabellaPren);
+		
 		PrenotaButton prenotaStrumentoButton = new PrenotaButton(myController);
 		prenotaStrumentoButton.setBounds(155, 585, 550, 50);
 		add(prenotaStrumentoButton);
