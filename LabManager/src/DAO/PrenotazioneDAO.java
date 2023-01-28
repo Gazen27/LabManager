@@ -38,7 +38,7 @@ public class PrenotazioneDAO {
 			
 		} catch (SQLException e) {
 			
-			e.printStackTrace();
+			e.getMessage();
 		}
 		
 	}

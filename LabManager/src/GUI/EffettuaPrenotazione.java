@@ -4,12 +4,10 @@ import UTILITIES.Controller;
 
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import DTO.Strumento;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 import java.awt.Color;
@@ -30,6 +28,10 @@ public class EffettuaPrenotazione extends JDialog {
 	
 	private JTextField tempoField;
 	private DataComponent dataFields;
+	
+	
+	public JLabel datiMancanti;
+	public JLabel title;
 	
 	private Integer year;
 	private Integer month;
@@ -54,10 +56,11 @@ public class EffettuaPrenotazione extends JDialog {
 		getContentPane().setLayout(null);
 		setBackground(sfondo);
 		
-		JLabel title = new JLabel("Nuova prenotazione");
+		title = new JLabel("Nuova prenotazione");
 		title.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 25));
 		title.setHorizontalAlignment(JLabel.CENTER);
 		title.setBounds(0, 10, 504, 39);
+		title.setVisible(true);
 		getContentPane().add(title);
 		
 		JLabel strumentoDaPrenotare = new JLabel("• Strumento: 00" + codice + " - " + tipo);
@@ -131,13 +134,30 @@ public class EffettuaPrenotazione extends JDialog {
 		prenotaButton.setBackground(new Color(10, 100, 255));
 		prenotaButton.setBounds(340, 340, 130, 53);
 		getContentPane().add(prenotaButton);
+		
+		datiMancanti = new JLabel("Dati mancanti!");
+		datiMancanti.setHorizontalAlignment(JLabel.CENTER);
+		datiMancanti.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 25));
+		datiMancanti.setForeground(Color.RED);
+		datiMancanti.setBounds(0, 10, 504, 39);
+		datiMancanti.setVisible(false);
+		getContentPane().add(datiMancanti);
 
 		
 		prenotaButton.addMouseListener(new MouseAdapter() {
 			
 			public void mouseClicked(MouseEvent e) {
 				
-				myController.prenotaStrumento(strumento, getTempoInserted(), getDataInserted());
+				if(myController.prenotazioneCompleted()) {
+					
+					myController.prenotaStrumento(strumento, getTempoInserted(), getDataInserted());
+					
+				} else {
+					
+					datiMancanti.setVisible(true);
+					title.setVisible(false);
+				}
+				
 			}
 			
 			public void mouseEntered(MouseEvent e) {
@@ -172,5 +192,28 @@ public class EffettuaPrenotazione extends JDialog {
 		return data;
 	}
 	
+	
+	public String getCampoTempo() {
+		
+		return tempoField.getText();
+	}
+	
+	
+	public String getCampoDay() {
+		
+		return dataFields.getGiorno();
+	}
+	
+	public String getCampoMonth() {
+		
+		return dataFields.getMese();
+	}
+
+	
+	public String getCampoYear() {
+		
+		return dataFields.getAnno();
+	}
+
 
 }

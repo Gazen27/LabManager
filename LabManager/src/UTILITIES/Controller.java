@@ -423,21 +423,37 @@ public class Controller {
 	}
 	
 	
+	public Boolean prenotazioneCompleted() {
+		
+		if(!effettuaPrenotazione.getCampoTempo().equals("")) {
+			if(!effettuaPrenotazione.getCampoYear().equals("")) {
+				if(!effettuaPrenotazione.getCampoDay().equals("GG") &&  !effettuaPrenotazione.getCampoMonth().equals("MM")) {
+					
+					return true;
+					
+				} else { return false; }
+				
+			} else { return false; }
+			
+		} else { return false; }
+	}
+	
+	
 	public void prenotaStrumento(Strumento strumento, Integer tempo, LocalDate data) {
-		
-		prenotazioneDAO = new PrenotazioneDAO(this);
-		
-		prenotazione = new Prenotazione();
-		
-		prenotazione.setCodiceStrumentoPrenotato(strumento.getCodice());
-		prenotazione.setCodicePostazionePrenotata(strumento.getPostazioneAssegnata());
-		prenotazione.setMatricolaPrenotata(currentSession.getUserMatricola());
-		prenotazione.setDataPrenotazione(data);
-		prenotazione.setOrePrenotate(tempo);
-		
-		prenotazioneDAO.nuovaPrenotazione(prenotazione);
-		
-		effettuaPrenotazione.dispose();
+			
+			prenotazioneDAO = new PrenotazioneDAO(this);
+			prenotazione = new Prenotazione();
+			
+			prenotazione.setCodiceStrumentoPrenotato(strumento.getCodice());
+			prenotazione.setCodicePostazionePrenotata(strumento.getPostazioneAssegnata());
+			prenotazione.setMatricolaPrenotata(currentSession.getUserMatricola());
+			prenotazione.setDataPrenotazione(data);
+			prenotazione.setOrePrenotate(tempo);
+			
+			prenotazioneDAO.nuovaPrenotazione(prenotazione);
+			
+			effettuaPrenotazione.dispose();
+
 	}
 	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////
