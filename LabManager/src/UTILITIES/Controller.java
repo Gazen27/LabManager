@@ -1,8 +1,12 @@
+
+//TODO: AGGIUNGERE CONTROLLO MISSING INFO SU PRENOTAZIONE E CONTROLLO DATA CORRETTA
+
 package UTILITIES;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import java.time.LocalDate;
 import java.util.Random;
 import java.util.Vector;
 
@@ -35,13 +39,16 @@ public class Controller {
 	private AggiungiStrumento aggiungiStrumento;
 	private NessunaPostazioneAssociata nessunaPostazione;
 	
-	private Strumento strumentoTEMP;
+	private Strumento strumento;
 	private StrumentoDAO strumentoDAO;
 	
 	private ScegliSede scegliSede;
 	
 	private StrumentiDisponibili strumentiDisponibili;
 	private EffettuaPrenotazione effettuaPrenotazione;
+	
+	private Prenotazione prenotazione;
+	private PrenotazioneDAO prenotazioneDAO;
 
 	public static void main(String[] args) {
 		
@@ -298,13 +305,13 @@ public class Controller {
 	
 	public Strumento newStrumento() {
 			
-			strumentoTEMP = new Strumento(this);
-			strumentoTEMP.setTipo(aggiungiStrumento.getTipoStrumento());
-			strumentoTEMP.setMaxUtilizzo(aggiungiStrumento.getTempoMax());
-			strumentoTEMP.setPostazioneAssegnata(aggiungiStrumento.getPostazioneAssegnata());
-			strumentoTEMP.setDescrizione(aggiungiStrumento.getDescrizione());
+			strumento = new Strumento(this);
+			strumento.setTipo(aggiungiStrumento.getTipoStrumento());
+			strumento.setMaxUtilizzo(aggiungiStrumento.getTempoMax());
+			strumento.setPostazioneAssegnata(aggiungiStrumento.getPostazioneAssegnata());
+			strumento.setDescrizione(aggiungiStrumento.getDescrizione());
 
-		return strumentoTEMP;
+		return strumento;
 	}
 	
 	
@@ -395,6 +402,8 @@ public class Controller {
 		
 		Strumento strumentoTEMP = strumentoDAO.getStrumentoSelezionato(codiceStrumento);
 		
+		
+		
 		return strumentoTEMP;
 	}
 	
@@ -404,13 +413,31 @@ public class Controller {
 	
 	public void goToEffettuaPrenotazione(Integer codiceStrumento) {
 
-		Strumento strumento = this.getStrumentoSelezionato(codiceStrumento);
+		strumento = this.getStrumentoSelezionato(codiceStrumento);
 		
 		effettuaPrenotazione = new EffettuaPrenotazione(this, strumento);
 		effettuaPrenotazione.setLocationRelativeTo(mainWindow);
 		effettuaPrenotazione.setVisible(true);
 		
 		strumentiDisponibili.dispose();
+	}
+	
+	
+	public void prenotaStrumento(Strumento strumento, Integer tempo, LocalDate data) {
+		
+		prenotazioneDAO = new PrenotazioneDAO(this);
+		
+		prenotazione = new Prenotazione();
+		
+		prenotazione.setCodiceStrumentoPrenotato(strumento.getCodice());
+		prenotazione.setCodicePostazionePrenotata(strumento.getPostazioneAssegnata());
+		prenotazione.setMatricolaPrenotata(currentSession.getUserMatricola());
+		prenotazione.setDataPrenotazione(data);
+		prenotazione.setOrePrenotate(tempo);
+		
+		prenotazioneDAO.nuovaPrenotazione(prenotazione);
+		
+		effettuaPrenotazione.dispose();
 	}
 	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////

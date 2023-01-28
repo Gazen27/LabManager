@@ -127,10 +127,12 @@ public class StrumentoDAO {
 			ResultSet rs = statement.executeQuery("SELECT * FROM strumento WHERE codStrumento = " + codice);
 			
 			rs.next();
+			
+			Integer utilizzo = rs.getInt("utilizzoMax");
 				
-			strumento.setCodice(codice);
+			strumento.setCodice(rs.getInt("codStrumento"));
 			strumento.setTipo(rs.getString("tipo"));
-			strumento.setMaxUtilizzo("utilizzoMax");
+			strumento.setMaxUtilizzo(utilizzo.toString());
 			strumento.setPostazioneAssegnata(rs.getInt("postazioneAssegnata"));
 			strumento.setDescrizione(rs.getString("descrizioneStrumento"));
 			

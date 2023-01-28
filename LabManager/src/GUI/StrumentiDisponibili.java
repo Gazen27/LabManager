@@ -40,7 +40,6 @@ public class StrumentiDisponibili extends JDialog {
 		tabellaStr.setBounds(25, 85, 540, 300);
 		add(tabellaStr);
 		
-		
 		JLabel info = new JLabel("Clicca su uno strumento per aprire la sua pagina di riepilogo");
 		info.setHorizontalAlignment(JLabel.LEFT);
 		info.setFont(new Font("Arial", Font.ITALIC, 20));

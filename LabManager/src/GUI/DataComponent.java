@@ -32,12 +32,14 @@ public class DataComponent extends JComponent {
 		giornoBox = new JComboBox(dayList);
 		giornoBox.setBounds(65, 310, 70, 30);
 		giornoBox.setFont(new Font("Arial", Font.PLAIN, 17));
+		giornoBox.setFocusable(false);
 		add(giornoBox);
 		
 		String[] monthList = {"MM", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
 		meseBox = new JComboBox(monthList);
 		meseBox.setBounds(145, 310, 70, 30);
 		meseBox.setFont(new Font("Arial", Font.PLAIN, 17));
+		meseBox.setFocusable(false);
 		add(meseBox);
 		
 		annoField = new JTextField();
