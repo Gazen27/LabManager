@@ -52,6 +52,8 @@ public class Controller {
 	
 	private PrenotazionePersonale prenotazionePersonale;
 	private PrenotazionePersonaleDAO prenotazionePersDAO;
+	
+	private GestisciElimina sceltaPrenotazione;
 
 	public static void main(String[] args) {
 		
@@ -513,6 +515,27 @@ public class Controller {
 		}
 		
 		return doubleVector;
+	}
+	
+	
+	public PrenotazionePersonale getPrenotazioneCompleta(String codice) {
+		
+		prenotazionePersDAO = new PrenotazionePersonaleDAO(this);
+		
+		prenotazionePersonale = prenotazionePersDAO.getPrenotazioneSelezionata(codice);
+		
+		return prenotazionePersonale;
+		
+	}
+	
+	
+	public void openGestisciElimina(String codice) {
+		
+		PrenotazionePersonale prenotazioneSelezionata = this.getPrenotazioneCompleta(codice);
+		
+		sceltaPrenotazione = new GestisciElimina(this, prenotazioneSelezionata);
+		sceltaPrenotazione.setLocationRelativeTo(mainWindow);
+		sceltaPrenotazione.setVisible(true);
 	}
 	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////

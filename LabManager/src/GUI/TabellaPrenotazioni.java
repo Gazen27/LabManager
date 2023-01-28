@@ -74,7 +74,9 @@ public class TabellaPrenotazioni extends JTable {
             	
         		int index = getSelectedRow();
         		
-//        		myController.iscrivitiLaboratorio(codice, t);
+        		String codice = tableModel.getValueAt(index, 0).toString();
+        		
+        		myController.openGestisciElimina(codice);
             }
             
         });
