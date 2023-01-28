@@ -31,6 +31,12 @@ public class PrenotazioniPage extends JPanel {
 		tabellaPren.setBounds(30, 105, 800, 402);
 		add(tabellaPren);
 		
+		JLabel info = new JLabel("Clicca su una prenotazione per aprirne la pagina di gestione");
+		info.setHorizontalAlignment(JLabel.LEFT);
+		info.setFont(new Font("Arial", Font.ITALIC, 20));
+		info.setBounds(30, 518, 870, 30);
+		add(info);
+		
 		PrenotaButton prenotaStrumentoButton = new PrenotaButton(myController);
 		prenotaStrumentoButton.setBounds(155, 585, 550, 50);
 		add(prenotaStrumentoButton);
