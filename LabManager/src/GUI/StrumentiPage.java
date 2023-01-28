@@ -43,31 +43,9 @@ public class StrumentiPage extends JPanel {
 		info.setBounds(30, 520, 870, 30);
 		add(info);
 		
-		JButton prenotaStrumentoButton = new JButton("Effettua prenotazione");
-		prenotaStrumentoButton.setFont(new Font("Segoe UI", Font.BOLD, 25));
-		prenotaStrumentoButton.setBackground(new Color(10, 100, 255));
-		prenotaStrumentoButton.setForeground(Color.WHITE);
+		PrenotaButton prenotaStrumentoButton = new PrenotaButton(myController);
 		prenotaStrumentoButton.setBounds(155, 585, 550, 50);
-		prenotaStrumentoButton.setFocusable(false);
 		add(prenotaStrumentoButton);
 		
-		
-		prenotaStrumentoButton.addMouseListener(new MouseAdapter() {
-			
-			public void mouseClicked(MouseEvent e) {
-				
-				myController.GotoSceltaSede();
-			}
-			
-			public void mouseEntered(MouseEvent e) {
-				prenotaStrumentoButton.setBackground(new Color(0, 75, 210));
-				prenotaStrumentoButton.setFont(new Font("Segoe UI", Font.BOLD, 23));
-			}
-			
-			public void mouseExited(MouseEvent e) {
-				prenotaStrumentoButton.setBackground(new Color(10, 100, 255));
-				prenotaStrumentoButton.setFont(new Font("Segoe UI", Font.BOLD, 25));
-			}
-		});
 	}
 }

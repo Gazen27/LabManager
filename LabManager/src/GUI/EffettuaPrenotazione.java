@@ -29,8 +29,8 @@ public class EffettuaPrenotazione extends JDialog {
 	private JTextField tempoField;
 	private DataComponent dataFields;
 	
-	
-	public JLabel datiMancanti;
+	public JLabel dataEsistente;
+	public JLabel datiMancantiErrrati;
 	public JLabel title;
 	
 	private Integer year;
@@ -135,13 +135,22 @@ public class EffettuaPrenotazione extends JDialog {
 		prenotaButton.setBounds(340, 340, 130, 53);
 		getContentPane().add(prenotaButton);
 		
-		datiMancanti = new JLabel("Dati mancanti!");
-		datiMancanti.setHorizontalAlignment(JLabel.CENTER);
-		datiMancanti.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 25));
-		datiMancanti.setForeground(Color.RED);
-		datiMancanti.setBounds(0, 10, 504, 39);
-		datiMancanti.setVisible(false);
-		getContentPane().add(datiMancanti);
+		datiMancantiErrrati = new JLabel("Dati mancanti o errati!");
+		datiMancantiErrrati.setHorizontalAlignment(JLabel.CENTER);
+		datiMancantiErrrati.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 25));
+		datiMancantiErrrati.setForeground(Color.RED);
+		datiMancantiErrrati.setBounds(0, 10, 504, 39);
+		datiMancantiErrrati.setVisible(false);
+		getContentPane().add(datiMancantiErrrati);
+		
+		
+		dataEsistente = new JLabel("Strumento già occupato nella data inserita!");
+		dataEsistente.setHorizontalAlignment(JLabel.CENTER);
+		dataEsistente.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 25));
+		dataEsistente.setForeground(Color.RED);
+		dataEsistente.setBounds(0, 10, 504, 39);
+		dataEsistente.setVisible(false);
+		getContentPane().add(dataEsistente);
 
 		
 		prenotaButton.addMouseListener(new MouseAdapter() {
@@ -150,11 +159,21 @@ public class EffettuaPrenotazione extends JDialog {
 				
 				if(myController.prenotazioneCompleted()) {
 					
-					myController.prenotaStrumento(strumento, getTempoInserted(), getDataInserted());
+					if(!(getTempoInserted() > oreMax)) {
+						
+						myController.prenotaStrumento(strumento, getTempoInserted(), getDataInserted());
+						
+					} else {
+						
+						datiMancantiErrrati.setVisible(true);
+						dataEsistente.setVisible(false);
+						title.setVisible(false);
+					}
 					
 				} else {
 					
-					datiMancanti.setVisible(true);
+					datiMancantiErrrati.setVisible(true);
+					dataEsistente.setVisible(false);
 					title.setVisible(false);
 				}
 				

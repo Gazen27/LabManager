@@ -439,7 +439,29 @@ public class Controller {
 	}
 	
 	
+	public Boolean controlloDatePrenotate(Strumento strumento) {
+		
+		prenotazioneDAO = new PrenotazioneDAO(this);
+		
+		Integer codiceStrumento = strumento.getCodice();
+		
+		Vector<LocalDate> tutteDate = prenotazioneDAO.getAllDatePrenotateScelte(codiceStrumento);
+		
+		if(!tutteDate.isEmpty()) {
+			
+			if(tutteDate.contains(effettuaPrenotazione.getDataInserted())) {
+				
+				return false;
+				
+			} else {return true;}
+			
+		} else {return true;}
+	}
+	
+	
 	public void prenotaStrumento(Strumento strumento, Integer tempo, LocalDate data) {
+			
+		if(this.controlloDatePrenotate(strumento)) {
 			
 			prenotazioneDAO = new PrenotazioneDAO(this);
 			prenotazione = new Prenotazione();
@@ -453,6 +475,14 @@ public class Controller {
 			prenotazioneDAO.nuovaPrenotazione(prenotazione);
 			
 			effettuaPrenotazione.dispose();
+			
+		} else {
+			
+			effettuaPrenotazione.dataEsistente.setVisible(true);
+			effettuaPrenotazione.datiMancantiErrrati.setVisible(false);
+			effettuaPrenotazione.title.setVisible(false);
+			
+		}
 
 	}
 	

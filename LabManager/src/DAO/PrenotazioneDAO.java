@@ -8,6 +8,7 @@ import DTO.Sede;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Vector;
 
 public class PrenotazioneDAO {
@@ -36,10 +37,11 @@ public class PrenotazioneDAO {
 		try {
 			
 			statement.executeQuery(queryStart + values1 + values2);
+			System.out.println("CIAO");
 			
 		} catch (SQLException e) {
 			
-			e.getMessage();
+			e.getMessage();	
 		}
 		
 	}
@@ -49,9 +51,11 @@ public class PrenotazioneDAO {
 	
 	public Vector<LocalDate> getAllDatePrenotateScelte(Integer codiceStrumento){
 		
-		Vector<LocalDate> tutteDate = null;
+		Vector<LocalDate> tutteDate = new Vector<LocalDate>();
 		
-		Date data = null;
+		String data = null;
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		
 		try {
 			
@@ -59,10 +63,10 @@ public class PrenotazioneDAO {
 			
 			while(rs.next()) {
 				
-				data = rs.getDate("dataprenotazione");
+				data = rs.getDate("dataprenotazione").toString();
 				
-				//CONVERTO DA TIPO DATE A TIPO LOCALDATE
-				LocalDate dataConvertita = LocalDate.ofInstant(data.toInstant(), ZoneId.systemDefault());
+				//CONVERTO DA TIPO STRING A TIPO LOCALDATE
+				LocalDate dataConvertita = LocalDate.parse(data, formatter);
 				
 				tutteDate.add(dataConvertita);
 			}
