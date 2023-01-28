@@ -4,6 +4,7 @@
 package UTILITIES;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import java.time.LocalDate;
@@ -54,6 +55,7 @@ public class Controller {
 	private PrenotazionePersonaleDAO prenotazionePersDAO;
 	
 	private GestisciElimina sceltaPrenotazione;
+	private ConfermaEliminazione confermaEliminazione;
 
 	public static void main(String[] args) {
 		
@@ -480,6 +482,10 @@ public class Controller {
 			prenotazioneDAO.nuovaPrenotazione(prenotazione);
 			
 			effettuaPrenotazione.dispose();
+			mainWindow.dispose();
+			mainWindow =  new MainWindow(this, currentSession);
+			mainWindow.setVisible(true);
+			
 			
 		} else {
 			
@@ -507,7 +513,7 @@ public class Controller {
 			singleVector.add("00" + p.getCodicePrenotazione().toString());
 			singleVector.add(p.getStrumentoCompleto());
 			singleVector.add(p.getLaboratorioSede());
-			singleVector.add(p.getPostazioneAssegnata().toString());
+			singleVector.add("00" + p.getPostazioneAssegnata().toString());
 			singleVector.add(p.getDataPrenotazione().toString());
 			singleVector.add(p.getTempoPrenotato().toString());
 			
@@ -536,6 +542,27 @@ public class Controller {
 		sceltaPrenotazione = new GestisciElimina(this, prenotazioneSelezionata);
 		sceltaPrenotazione.setLocationRelativeTo(mainWindow);
 		sceltaPrenotazione.setVisible(true);
+	}
+	
+	
+	public void eliminaPrenotazione(PrenotazionePersonale prenotazione) {
+		
+		prenotazionePersDAO = new PrenotazionePersonaleDAO(this);
+		prenotazionePersDAO.deletePrenotazione(prenotazione);
+		
+		confermaEliminazione.dispose();
+		sceltaPrenotazione.dispose();
+		mainWindow.dispose();
+		mainWindow =  new MainWindow(this, currentSession);
+		mainWindow.setVisible(true);	
+	}
+	
+	
+	public void requestConfirm(PrenotazionePersonale prenotazione) {
+		
+		confermaEliminazione = new ConfermaEliminazione(this, prenotazione);
+		confermaEliminazione.setLocationRelativeTo(mainWindow);
+		confermaEliminazione.setVisible(true);
 	}
 	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////

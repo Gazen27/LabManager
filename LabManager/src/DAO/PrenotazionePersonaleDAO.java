@@ -26,10 +26,27 @@ public class PrenotazionePersonaleDAO {
 	}
 	
 	
+////////////////////////////////////// DELETE / UPDATING //////////////////////////////////////	
+	
+	public void deletePrenotazione(PrenotazionePersonale prenotazione) {
+		
+		try {
+			
+			statement.executeQuery("DELETE FROM prenotazioni WHERE codicePrenotazione = " + prenotazione.getCodicePrenotazione());
+			
+		} catch(SQLException e) {
+			
+			e.getMessage();
+		}
+	}
+	
+	
+////////////////////////////////////// SELECTING ////////////////////////////////////// 
+	
 	public Vector<PrenotazionePersonale> getAllPrenotazioni(String matricola){
 		
 		Vector<PrenotazionePersonale> allPrenotazioni = new Vector<PrenotazionePersonale>();
-		PrenotazionePersonale prenotazione = new PrenotazionePersonale();
+		PrenotazionePersonale prenotazione;
 		
 		String data = null;
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -46,6 +63,8 @@ public class PrenotazionePersonaleDAO {
 			ResultSet rs = statement.executeQuery(query1 + query2 + query3);
 			
 			while(rs.next()) {
+				
+				prenotazione = new PrenotazionePersonale();
 				
 				data = rs.getDate("dataPrenotazione").toString();
 				

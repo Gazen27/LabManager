@@ -9,6 +9,8 @@ import javax.swing.JDialog;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class GestisciElimina extends JDialog {
 	
@@ -20,7 +22,7 @@ public class GestisciElimina extends JDialog {
 		
 		Color sfondo = new Color(235, 235, 235);
 		
-		setSize(350, 220);
+		setSize(350, 225);
 		setAlwaysOnTop(true);
 		setResizable(false);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -49,6 +51,45 @@ public class GestisciElimina extends JDialog {
 		elimina.setBounds(40, 120, 255, 40);
 		elimina.setFocusable(false);
 		add(elimina);
+		
+		
+		gestisci.addMouseListener(new MouseAdapter() {
+			
+			public void mouseClicked(MouseEvent e) {
+				
+				
+			}
+			
+			public void mouseEntered(MouseEvent e) {
+				gestisci.setFont(new Font("Segoe UI", Font.BOLD, 18));
+				gestisci.setBackground(new Color(0, 75, 210));
+			}
+			
+			public void mouseExited(MouseEvent e) {
+				gestisci.setFont(new Font("Segoe UI", Font.BOLD, 20));
+				gestisci.setBackground(new Color(10, 100, 255));
+			}
+		});
+		
+		
+		
+		elimina.addMouseListener(new MouseAdapter() {
+			
+			public void mouseClicked(MouseEvent e) {
+				
+				myController.requestConfirm(prenotazione);
+			}
+			
+			public void mouseEntered(MouseEvent e) {
+				elimina.setBackground(new Color(200, 30, 30));
+				elimina.setFont(new Font("Segoe UI", Font.BOLD, 18));
+			}
+			
+			public void mouseExited(MouseEvent e) {
+				elimina.setBackground(new Color(255, 70, 70));
+				elimina.setFont(new Font("Segoe UI", Font.BOLD, 20));
+			}
+		});
 		
 	}
 }

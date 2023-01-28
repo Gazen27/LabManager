@@ -33,7 +33,7 @@ public class SedeDAO {
 		Sede newSede = new Sede(myController);
 		
 		try {
-			
+
 			ResultSet rs = statement.executeQuery("SELECT codsede, nome FROM sede");
 			
 			while(rs.next()) {
