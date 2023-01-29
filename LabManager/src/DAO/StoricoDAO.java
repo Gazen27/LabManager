@@ -6,9 +6,6 @@ import UTILITIES.Controller;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Vector;
-
-import DTO.PrenotazionePersonale;
 
 public class StoricoDAO {
 	
