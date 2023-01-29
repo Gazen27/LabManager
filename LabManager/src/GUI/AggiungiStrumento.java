@@ -22,7 +22,6 @@ public class AggiungiStrumento extends JDialog {
 	public JLabel errorMessage1;
 	public JLabel errorMessage2;
 	
-	
 	private JTextField tipoStrumento;
 	private JTextField tempoMax;
 	private JComboBox postazioneAssegnata;

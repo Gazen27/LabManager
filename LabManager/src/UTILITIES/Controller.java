@@ -61,6 +61,8 @@ public class Controller {
 	private RiepilogoStrumento riepilogo;
 	private Storico storico;
 	private StoricoDAO storicoDAO;
+	
+	private CalendarioPrenotazione calendario;
 
 	public static void main(String[] args) {
 		
@@ -656,6 +658,18 @@ public class Controller {
 		riepilogo = new RiepilogoStrumento(this, storico);
 		riepilogo.setLocationRelativeTo(mainWindow);
 		riepilogo.setVisible(true);
+	}
+	
+	
+	public void openCalendario(Integer codiceStrumento, String tipoStrumento) {
+		
+		String strumentoCompleto = "00" + codiceStrumento + " - " + tipoStrumento;
+		
+		calendario = new CalendarioPrenotazione(this, strumentoCompleto);
+		calendario.setLocationRelativeTo(mainWindow);
+		calendario.setVisible(true);
+		
+		riepilogo.dispose();
 	}
 	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////

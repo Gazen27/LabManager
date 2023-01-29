@@ -95,7 +95,7 @@ public class RiepilogoStrumento extends JDialog {
 			
 			public void mouseClicked(MouseEvent e) {
 				
-				
+				myController.openCalendario(storico.getCodiceStrumento(), storico.getTipoStrumento());
 			}
 			
 			public void mouseEntered(MouseEvent e) {
