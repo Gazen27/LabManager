@@ -75,8 +75,10 @@ public class TabellaStrumenti extends JTable {
             	
         		int index = getSelectedRow();
         		
-        		Integer codiceStrumento = Integer.parseInt((String)tableModel.getValueAt(index, 0));	
-        		myController.openRiepilogoStrumento(codiceStrumento);
+        		Integer codiceStrumento = Integer.parseInt((String)tableModel.getValueAt(index, 0));
+        		String nomeStrumento = tableModel.getValueAt(index, 1).toString();
+        		
+        		myController.openRiepilogoStrumento(nomeStrumento, codiceStrumento);
             }
             
         });

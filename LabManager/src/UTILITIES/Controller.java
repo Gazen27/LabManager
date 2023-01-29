@@ -631,12 +631,17 @@ public class Controller {
 	
 ////////////////////////////////////// RIEPILOGO //////////////////////////////////////
 	
-	public void openRiepilogoStrumento(Integer codiceStrumento) {
+	public void openRiepilogoStrumento(String nomeStrumento, Integer codiceStrumento) {
 		
 		storicoDAO = new StoricoDAO(this);
 		
-//		storico = storicoDAO.getStoricoStrumento(codiceStrumento);
-//		
+		storico = new Storico();
+		storico.setCodiceStrumento(codiceStrumento);
+		storico.setTipoStrumento(nomeStrumento);
+		storico.setUtilizzoMese(storicoDAO.utilizzoMensile(codiceStrumento));
+		storico.setUtilizzoAnno(storicoDAO.utilizzoAnnuale(codiceStrumento));
+		
+		
 //		riepilogo = new RiepilogoStrumento();
 //		riepilogo.setLocationRelativeTo(mainWindow);
 //		riepilogo.setVisible(true);
