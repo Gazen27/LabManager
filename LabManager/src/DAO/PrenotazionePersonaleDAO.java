@@ -41,6 +41,18 @@ public class PrenotazionePersonaleDAO {
 	}
 	
 	
+	public void updatePrenotazione(Integer codice, Integer tempoAggiornato, LocalDate dataAggiornata) {
+		
+		try {
+			
+			statement.executeQuery("UPDATE prenotazioni SET oreprenotate = " + tempoAggiornato + ", dataprenotazione = '" + dataAggiornata + "' WHERE codiceprenotazione = " + codice + ";");
+			
+		} catch(SQLException e) {
+			
+			e.getMessage();
+		}
+	}
+	
 ////////////////////////////////////// SELECTING ////////////////////////////////////// 
 	
 	public Vector<PrenotazionePersonale> getAllPrenotazioni(String matricola){
@@ -54,7 +66,7 @@ public class PrenotazionePersonaleDAO {
 		String strumentoCompleto;
 		String laboratorioSede;
 		
-		String query1 = "SELECT pr.codicePrenotazione, pr.dataPrenotazione, pr.oreprenotate, sc.codstrumento, sc.tipo, sc.postazioneassegnata, sc.laboratoriopostazione, sc.nome ";
+		String query1 = "SELECT pr.codicePrenotazione, pr.dataPrenotazione, pr.oreprenotate, sc.codstrumento, sc.tipo, sc.postazioneassegnata, sc.laboratoriopostazione, sc.nome, sc.utilizzoMax ";
 		String query2 = "FROM prenotazioni pr INNER JOIN strumentoCompleto sc ON pr.strumentoPrenotato = sc.codstrumento ";
 		String query3 = "WHERE pr.matricolaprenotata = '" + matricola + "';";
 		
@@ -81,6 +93,8 @@ public class PrenotazionePersonaleDAO {
 				prenotazione.setPostazioneAssegnata(rs.getInt("postazioneassegnata"));
 				prenotazione.setLaboratorioSede(laboratorioSede);
 				
+				prenotazione.setTempoMaxStrumento(rs.getInt("utilizzoMax"));
+				
 				allPrenotazioni.add(prenotazione);
 			}
 			
@@ -106,7 +120,7 @@ public class PrenotazionePersonaleDAO {
 		
 		PrenotazionePersonale prenotazione = new PrenotazionePersonale();
 		
-		String query1 = "SELECT pr.dataPrenotazione, pr.oreprenotate, sc.codstrumento, sc.tipo, sc.postazioneassegnata, sc.laboratoriopostazione, sc.nome ";
+		String query1 = "SELECT pr.dataPrenotazione, pr.oreprenotate, sc.codstrumento, sc.tipo, sc.postazioneassegnata, sc.laboratoriopostazione, sc.nome, sc.utilizzoMax ";
 		String query2 = "FROM prenotazioni pr INNER JOIN strumentoCompleto sc ON pr.strumentoPrenotato = sc.codstrumento ";
 		String query3 = "WHERE pr.codicePrenotazione = " + codice;
 		
@@ -130,6 +144,8 @@ public class PrenotazionePersonaleDAO {
 			prenotazione.setStrumentoCompleto(strumentoCompleto);
 			prenotazione.setPostazioneAssegnata(rs.getInt("postazioneassegnata"));
 			prenotazione.setLaboratorioSede(laboratorioSede);
+			
+			prenotazione.setTempoMaxStrumento(rs.getInt("utilizzoMax"));
 			
 			return prenotazione;
 			

@@ -12,6 +12,9 @@ public class PrenotazionePersonale {
 	private LocalDate dataPrenotazione;
 	private Integer tempoPrenotato;
 	
+	private Integer tempoMaxStrumento;
+	
+	
 	public PrenotazionePersonale() {
 		
 	}
@@ -95,5 +98,15 @@ public class PrenotazionePersonale {
 		
 		Integer year = dataPrenotazione.getYear();
 		return year.toString();
+	}
+	
+	public void setTempoMaxStrumento(Integer tempoMax) {
+		
+		this.tempoMaxStrumento = tempoMax;
+	}
+	
+	public Integer getTempoMaxStrumento() {
+		
+		return this.tempoMaxStrumento;
 	}
 }

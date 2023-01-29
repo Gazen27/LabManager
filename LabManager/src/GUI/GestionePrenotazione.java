@@ -14,6 +14,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.LocalDate;
 
 public class GestionePrenotazione extends JDialog {
 
@@ -21,12 +22,17 @@ public class GestionePrenotazione extends JDialog {
 	
 	private JTextField tempoPrenotatoField;
 	private DataComponent dataComponent;
-	
-	public JLabel datiErratiMancanti; 
+	private JLabel datiErratiMancanti; 
+	private Integer oreMax;
+	private String mySubstring;
+	private Integer codiceStrumento;
+	private JLabel dataOccupata;
 	
 	public GestionePrenotazione(Controller controller, PrenotazionePersonale prenotazione) {
 		
 		myController = controller;
+		
+		oreMax = prenotazione.getTempoMaxStrumento();
 		
 		Color sfondo = new Color(235, 235, 235);
 		Color buttonColor = new Color(10, 100 ,255);
@@ -114,18 +120,57 @@ public class GestionePrenotazione extends JDialog {
 		datiErratiMancanti.setVisible(false);
 		getContentPane().add(datiErratiMancanti);
 		
+		dataOccupata = new JLabel("Quella data è già occupata!");
+		dataOccupata.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 25));
+		dataOccupata.setForeground(Color.RED);
+		dataOccupata.setHorizontalAlignment(JLabel.CENTER);
+		dataOccupata.setBounds(0, 330, 584, 35);
+		dataOccupata.setVisible(false);
+		getContentPane().add(dataOccupata);
+		
 		JButton conferma = new JButton("Conferma modifiche");
 		conferma.setFont(new Font("Segoe UI", Font.BOLD, 25));
 		conferma.setForeground(Color.WHITE);
 		conferma.setBackground(buttonColor);
 		conferma.setBounds(130, 376, 304, 62);
+		conferma.setFocusable(false);
 		getContentPane().add(conferma);
+		
+		mySubstring = prenotazione.getStrumentoCompleto().substring(0, 3);
+		codiceStrumento = Integer.parseInt(mySubstring);
 		
 		
 		conferma.addMouseListener(new MouseAdapter() {
 			
 			public void mouseClicked(MouseEvent e) {
 				
+				if(myController.campiGestioneCompleted()) {
+					
+					if(!(getTempoInt() > oreMax)) {
+						
+						if(myController.checkDate(codiceStrumento)) {
+							
+							myController.aggiornaPrenotazione(prenotazione.getCodicePrenotazione(), getTempoInt(), getDataUpdated());
+							
+						} else {
+							
+							datiErratiMancanti.setVisible(false);
+							dataOccupata.setVisible(true);
+						}
+						
+						
+					} else { 
+						
+						dataOccupata.setVisible(false);
+						datiErratiMancanti.setVisible(true);
+					}
+					
+					
+				} else { 
+					
+					dataOccupata.setVisible(false);
+					datiErratiMancanti.setVisible(true);
+				}
 				
 			}
 			
@@ -155,4 +200,27 @@ public class GestionePrenotazione extends JDialog {
 		
 		return dataComponent.getAnno();
 	}
+	
+	public String getTempoInserted() {
+		
+		return tempoPrenotatoField.getText();
+	}
+	
+	public Integer getTempoInt() {
+		
+		Integer time = Integer.parseInt(getTempoInserted());
+		return time;
+	}
+	
+	public LocalDate getDataUpdated() {
+		
+		Integer year = Integer.parseInt(dataComponent.getAnno());
+		Integer month = Integer.parseInt(dataComponent.getMese());
+		Integer day = Integer.parseInt(dataComponent.getGiorno());
+		
+		LocalDate data = LocalDate.of(year, month, day);
+		
+		return data;
+	}
+	
 }

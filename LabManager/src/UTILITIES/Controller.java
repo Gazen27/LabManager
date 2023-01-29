@@ -447,11 +447,9 @@ public class Controller {
 	}
 	
 	
-	public Boolean controlloDatePrenotate(Strumento strumento) {
+	public Boolean controlloDatePrenotate(Integer codiceStrumento) {
 		
 		prenotazioneDAO = new PrenotazioneDAO(this);
-		
-		Integer codiceStrumento = strumento.getCodice();
 		
 		Vector<LocalDate> tutteDate = prenotazioneDAO.getAllDatePrenotateScelte(codiceStrumento);
 		
@@ -468,8 +466,10 @@ public class Controller {
 	
 	
 	public void prenotaStrumento(Strumento strumento, Integer tempo, LocalDate data) {
+		
+		Integer codiceStrumento = strumento.getCodice();
 			
-		if(this.controlloDatePrenotate(strumento)) {
+		if(this.controlloDatePrenotate(codiceStrumento)) {
 			
 			prenotazioneDAO = new PrenotazioneDAO(this);
 			prenotazione = new Prenotazione();
@@ -576,9 +576,53 @@ public class Controller {
 	}
 	
 	
-	public void controlloCampiGestione() {
+	public Boolean campiGestioneCompleted() {
 		
+		if(!gestionePrenotazione.getDay().equals("GG")) {
+			if(!gestionePrenotazione.getMonth().equals("MM")) {
+				if(!gestionePrenotazione.getYear().equals("")) {
+					if(!gestionePrenotazione.getTempoInserted().equals("")) {
+						
+						return true;
+						
+					} else { return false; }
+					
+				} else { return false; }
+				
+			} else { return false; }
+			
+		} else { return false; }
+	}
+	
+	
+	public Boolean checkDate(Integer codiceStrumento) {
 		
+		prenotazioneDAO = new PrenotazioneDAO(this);
+		
+		Vector<LocalDate> tutteDate = prenotazioneDAO.getAllDatePrenotateScelte(codiceStrumento);
+		
+		if(!tutteDate.isEmpty()) {
+			
+			if(tutteDate.contains(gestionePrenotazione.getDataUpdated())) {
+				
+				return false;
+				
+			} else {return true;}
+			
+		} else {return true;}
+	}
+	
+	
+	public void aggiornaPrenotazione(Integer codice, Integer tempoAggiornato, LocalDate dataAggiornata) {
+		
+		prenotazionePersDAO = new PrenotazionePersonaleDAO(this);
+		
+		prenotazionePersDAO.updatePrenotazione(codice, tempoAggiornato, dataAggiornata);
+		
+		gestionePrenotazione.dispose();
+		mainWindow.dispose();
+		mainWindow =  new MainWindow(this, currentSession);
+		mainWindow.setVisible(true);	
 	}
 	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////
