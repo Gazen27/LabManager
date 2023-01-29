@@ -10,6 +10,8 @@ import DTO.Storico;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class RiepilogoStrumento extends JDialog {
 
@@ -22,8 +24,9 @@ public class RiepilogoStrumento extends JDialog {
 		Color sfondo = new Color(235, 235, 235);
 		Color coloreMese = new Color(25, 175, 25);
 		Color coloreAnno = new Color(25, 25, 175);
+		Color buttonColor = new Color(10, 100, 255);
 		
-		setSize(700, 550);
+		setSize(700, 450);
 		setAlwaysOnTop(true);
 		setResizable(false);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -79,5 +82,31 @@ public class RiepilogoStrumento extends JDialog {
 		line3.setFont(new Font("Arial", Font.BOLD, 15));
 		line3.setBounds(0, 295, 684, 20);
 		getContentPane().add(line3);
+		
+		JButton calendario = new JButton("Calendario prenotazioni");
+		calendario.setFont(new Font("Segoe UI", Font.BOLD, 25));
+		calendario.setForeground(Color.WHITE);
+		calendario.setBackground(buttonColor);
+		calendario.setBounds(160, 330, 339, 62);
+		calendario.setFocusable(false);
+		getContentPane().add(calendario);
+		
+		calendario.addMouseListener(new MouseAdapter() {
+			
+			public void mouseClicked(MouseEvent e) {
+				
+				
+			}
+			
+			public void mouseEntered(MouseEvent e) {
+				calendario.setBackground(new Color(0, 75, 210));
+				calendario.setFont(new Font("Segoe UI", Font.BOLD, 23));
+			}
+			
+			public void mouseExited(MouseEvent e) {
+				calendario.setBackground(buttonColor);
+				calendario.setFont(new Font("Segoe UI", Font.BOLD, 25));
+			}
+		});
 	}
 }
