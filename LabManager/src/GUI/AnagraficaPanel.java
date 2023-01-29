@@ -146,7 +146,7 @@ public class AnagraficaPanel extends JPanel {
 	}
 	
 	public String getCFInserted() {
-		return codiceFiscaleField.getText();
+		return codiceFiscaleField.getText().toUpperCase();
 	}
 	
 	public String getTelefonoInserted() {
@@ -154,7 +154,7 @@ public class AnagraficaPanel extends JPanel {
 	}
 	
 	public String getEmailInserted() {
-		return emailField.getText();
+		return emailField.getText().toLowerCase();
 	}
 	
 	public char getSessoInserted() {

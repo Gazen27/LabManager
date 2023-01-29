@@ -66,7 +66,7 @@ public class LoginPanel extends JPanel {
 	}
 	
 	public String getMatricolaLogin() {
-		return matricolaComponent.getMatricola();
+		return matricolaComponent.getMatricola().toUpperCase();
 	}
 	
 	public String getPasswordLogin() {

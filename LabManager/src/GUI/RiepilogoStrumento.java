@@ -23,7 +23,7 @@ public class RiepilogoStrumento extends JDialog {
 		
 		Color sfondo = new Color(235, 235, 235);
 		Color coloreMese = new Color(25, 175, 25);
-		Color coloreAnno = new Color(25, 25, 175);
+		Color coloreAnno = new Color(35, 35, 185);
 		Color buttonColor = new Color(10, 100, 255);
 		
 		setSize(700, 450);

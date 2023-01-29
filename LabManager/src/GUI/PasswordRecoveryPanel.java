@@ -100,11 +100,11 @@ public class PasswordRecoveryPanel extends JPanel {
 	}
 	
 	public String getMatricolaInserted() {
-		return matricolaComponent.getMatricola();
+		return matricolaComponent.getMatricola().toUpperCase();
 	}
 	
 	public String getCFInserted() {
-		return codiceFiscaleField.getText();
+		return codiceFiscaleField.getText().toUpperCase();
 	}
 	
 	public String getTelefonoInserted() {
@@ -112,7 +112,7 @@ public class PasswordRecoveryPanel extends JPanel {
 	}
 	
 	public String getEmailInserted() {
-		return emailField.getText();
+		return emailField.getText().toLowerCase();
 	}
 	
 	public String getNewPasswordInserted() {
