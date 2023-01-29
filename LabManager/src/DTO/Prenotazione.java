@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 public class Prenotazione {
 	
+	private Integer codicePrenotazione;
+	
 	private String matricolaPrenotata;
 	private Integer codiceStrumentoPrenotato;
 	private Integer codicePostazionePrenotata;
@@ -54,5 +56,14 @@ public class Prenotazione {
 	public void setOrePrenotate(Integer orePrenotate) {
 		this.orePrenotate = orePrenotate;
 	}
+
+	public Integer getCodicePrenotazione() {
+		return codicePrenotazione;
+	}
+
+	public void setCodicePrenotazione(Integer codicePrenotazione) {
+		this.codicePrenotazione = codicePrenotazione;
+	}
+	
 	
 }

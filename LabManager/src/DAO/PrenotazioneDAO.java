@@ -54,7 +54,6 @@ public class PrenotazioneDAO {
 		Vector<LocalDate> tutteDate = new Vector<LocalDate>();
 		
 		String data = null;
-		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		
 		try {
@@ -76,6 +75,46 @@ public class PrenotazioneDAO {
 		} catch(SQLException e) {
 			
 			return tutteDate;
+		}
+	}
+	
+	
+	public Vector<Prenotazione> getAllPrenotazioniStrumento(Integer codiceStrumento){
+		
+		Vector<Prenotazione> tuttePrenotazioni = new Vector<Prenotazione>();
+		
+		Prenotazione prenotazione = new Prenotazione();
+		
+		String data = null;
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		
+		String query1 = "SELECT codiceprenotazione, matricolaprenotata, dataprenotazione, oreprenotate ";
+		String query2 = "from prenotazioni where strumentoprenotato = " + codiceStrumento + ";";
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery(query1 + query2);
+			
+			while(rs.next()) {
+				
+				data = rs.getDate("dataprenotazione").toString();
+				
+				//CONVERTO DA TIPO STRING A TIPO LOCALDATE
+				LocalDate dataConvertita = LocalDate.parse(data, formatter);
+				
+				prenotazione.setCodicePrenotazione(rs.getInt("codiceprenotazione"));
+				prenotazione.setMatricolaPrenotata(rs.getString("matricolaprenotata"));
+				prenotazione.setDataPrenotazione(dataConvertita);
+				prenotazione.setOrePrenotate(rs.getInt("oreprenotate"));
+				
+				tuttePrenotazioni.add(prenotazione);
+			}
+			
+			return tuttePrenotazioni;
+			
+		} catch(SQLException e) {
+			
+			return tuttePrenotazioni;
 		}
 	}
 }

@@ -663,13 +663,35 @@ public class Controller {
 	
 	public void openCalendario(Integer codiceStrumento, String tipoStrumento) {
 		
-		String strumentoCompleto = "00" + codiceStrumento + " - " + tipoStrumento;
-		
-		calendario = new CalendarioPrenotazione(this, strumentoCompleto);
+		calendario = new CalendarioPrenotazione(this, codiceStrumento, tipoStrumento);
 		calendario.setLocationRelativeTo(mainWindow);
 		calendario.setVisible(true);
 		
 		riepilogo.dispose();
+	}
+	
+	
+	public Vector<Vector<String>> infoSceltaPrenotazione(Integer codiceStrumento) {
+		
+		Vector<Vector<String>> doubleVector = new Vector<Vector<String>>();
+		
+		prenotazioneDAO = new PrenotazioneDAO(this);
+		
+		Vector<Prenotazione> prenotaizoni = prenotazioneDAO.getAllPrenotazioniStrumento(codiceStrumento);
+		
+		for (Prenotazione p : prenotaizoni) {
+			
+			Vector<String> singleVector = new Vector<String>();
+			
+			singleVector.add("00" + p.getCodicePrenotazione().toString());
+			singleVector.add(p.getMatricolaPrenotata());
+			singleVector.add(p.getDataPrenotazione().toString());
+			singleVector.add(p.getOrePrenotate().toString());
+			
+			doubleVector.add(singleVector);
+		}
+		
+		return doubleVector;
 	}
 	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////

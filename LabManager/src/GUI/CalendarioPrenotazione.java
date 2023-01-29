@@ -13,7 +13,7 @@ public class CalendarioPrenotazione extends JDialog {
 	
 	Controller myController;
 	
-	public CalendarioPrenotazione(Controller controller, String strumentoCompleto) {
+	public CalendarioPrenotazione(Controller controller, Integer codiceStrumento, String nomeStrumento) {
 		
 		myController = controller;
 		
@@ -24,12 +24,21 @@ public class CalendarioPrenotazione extends JDialog {
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setAlwaysOnTop(true);
 		
-		JLabel title = new JLabel("Prenotazioni per: " + strumentoCompleto);
+		JLabel title = new JLabel("Prenotazioni per: " + "00" + codiceStrumento + " - " + nomeStrumento);
 		title.setHorizontalAlignment(JLabel.CENTER);
 		title.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 30));
-		title.setBounds(0, 15, 734, 35);
+		title.setBounds(0, 16, 734, 35);
 		getContentPane().add(title);
 		
+		JLabel line = new JLabel("______________________________________________________________________________________");
+		line.setFont(new Font("Arial", Font.BOLD, 15));
+		line.setHorizontalAlignment(JLabel.CENTER);
+		line.setBounds(0, 50, 734, 20);
+		getContentPane().add(line);
+		
+		ComponentTabellaCalendario tabCalendario = new ComponentTabellaCalendario(myController, codiceStrumento);
+		tabCalendario.setBounds(22, 85, 690, 400);
+		getContentPane().add(tabCalendario);
 		
 	}
 }
