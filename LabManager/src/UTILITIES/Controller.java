@@ -69,6 +69,9 @@ public class Controller {
 	}
 	
 	public Controller() {
+		
+		storicoDAO = new StoricoDAO(this);
+		storicoDAO.update();
 
 		loginWindow = new LoginWindow(this);
 		loginWindow.setUndecorated(true);

@@ -24,6 +24,22 @@ public class StoricoDAO {
 		statement = connessioneDB.getStatement();
 	}
 	
+////////////////////////////////////// UPDATING //////////////////////////////////////
+	
+	public void update() {
+		
+		try {
+			
+			statement.executeQuery("CALL aggiorna_conclusa();");
+			
+		} catch(SQLException e) {
+			
+			e.getMessage();
+		}
+	}
+	
+	
+////////////////////////////////////// SELECTING //////////////////////////////////////
 	
 	public Integer utilizzoMensile(Integer codiceStrumento) {
 		
