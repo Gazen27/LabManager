@@ -49,6 +49,7 @@ public class ScegliSede extends JDialog {
 		avantiButton.setBackground(new Color(10, 100, 255));
 		avantiButton.setForeground(Color.WHITE);
 		avantiButton.setBounds(180, 55, 85, 30);
+		avantiButton.setFocusable(false);
 		add(avantiButton);
 		
 		

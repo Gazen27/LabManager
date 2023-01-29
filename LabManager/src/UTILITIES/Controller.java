@@ -631,17 +631,24 @@ public class Controller {
 	
 ////////////////////////////////////// RIEPILOGO //////////////////////////////////////
 	
-	public void openRiepilogoStrumento(String nomeStrumento, Integer codiceStrumento) {
+	public Storico createNewStorico(String nomeStrumento, Integer codiceStrumento) {
 		
 		storicoDAO = new StoricoDAO(this);
 		
-		storico = new Storico();
-		storico.setCodiceStrumento(codiceStrumento);
-		storico.setTipoStrumento(nomeStrumento);
-		storico.setUtilizzoMese(storicoDAO.utilizzoMensile(codiceStrumento));
-		storico.setUtilizzoAnno(storicoDAO.utilizzoAnnuale(codiceStrumento));
-		storico.setTopUtilizzatoreMese(storicoDAO.topUtilizzatoreMese(codiceStrumento));
-		storico.setTopUtilizzatoreAnno(storicoDAO.topUtilizzatoreAnno(codiceStrumento));
+		Storico storicoTEMP = new Storico();
+		storicoTEMP.setCodiceStrumento(codiceStrumento);
+		storicoTEMP.setTipoStrumento(nomeStrumento);
+		storicoTEMP.setUtilizzoMese(storicoDAO.utilizzoMensile(codiceStrumento));
+		storicoTEMP.setUtilizzoAnno(storicoDAO.utilizzoAnnuale(codiceStrumento));
+		storicoTEMP.setTopUtilizzatoreMese(storicoDAO.topUtilizzatoreMese(codiceStrumento));
+		storicoTEMP.setTopUtilizzatoreAnno(storicoDAO.topUtilizzatoreAnno(codiceStrumento));
+		
+		return storicoTEMP;
+	}
+	
+	public void openRiepilogoStrumento(String nomeStrumento, Integer codiceStrumento) {
+		
+		storico = createNewStorico(nomeStrumento, codiceStrumento);
 		
 		riepilogo = new RiepilogoStrumento(this, storico);
 		riepilogo.setLocationRelativeTo(mainWindow);

@@ -135,6 +135,7 @@ public class EffettuaPrenotazione extends JDialog {
 		prenotaButton.setForeground(Color.WHITE);
 		prenotaButton.setBackground(new Color(10, 100, 255));
 		prenotaButton.setBounds(340, 340, 130, 53);
+		prenotaButton.setFocusable(false);
 		getContentPane().add(prenotaButton);
 		
 		datiMancantiErrrati = new JLabel("Dati mancanti o errati!");
