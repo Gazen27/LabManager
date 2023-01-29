@@ -6,7 +6,9 @@ public class Storico {
 	private String tipoStrumento;
 	private Integer utilizzoMese;
 	private Integer utilizzoAnno;
-	private String topUtilizzatore;
+	
+	private String topUtilizzatoreMese;
+	private String topUtilizzatoreAnno;
 	
 	public Storico() {
 		
@@ -44,12 +46,20 @@ public class Storico {
 		this.utilizzoAnno = utilizzoAnno;
 	}
 
-	public String getTopUtilizzatore() {
-		return topUtilizzatore;
+	public String getTopUtilizzatoreMese() {
+		return topUtilizzatoreMese;
 	}
 
-	public void setTopUtilizzatore(String topUtilizzatore) {
-		this.topUtilizzatore = topUtilizzatore;
+	public void setTopUtilizzatoreMese(String topUtilizzatoreMese) {
+		this.topUtilizzatoreMese = topUtilizzatoreMese;
+	}
+
+	public String getTopUtilizzatoreAnno() {
+		return topUtilizzatoreAnno;
+	}
+
+	public void setTopUtilizzatoreAnno(String topUtilizzatoreAnno) {
+		this.topUtilizzatoreAnno = topUtilizzatoreAnno;
 	}
 	
 }

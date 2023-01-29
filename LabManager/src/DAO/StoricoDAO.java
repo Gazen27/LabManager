@@ -7,6 +7,8 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import DTO.Storico;
+
 public class StoricoDAO {
 	
 	private ConnessioneDB connessioneDB;
@@ -22,4 +24,16 @@ public class StoricoDAO {
 		statement = connessioneDB.getStatement();
 	}
 	
+	
+//	public Storico getStoricoStrumento(Integer codiceStrumento) {
+//		
+//		Storico storico = new Storico();
+//		
+//		String query1 = "SELECT "
+//		
+//		try {
+//			
+//			ResultSet rs = statement.executeQuery("SELECT ");
+//		}
+//	}
 }

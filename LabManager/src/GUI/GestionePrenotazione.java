@@ -140,6 +140,8 @@ public class GestionePrenotazione extends JDialog {
 		codiceStrumento = Integer.parseInt(mySubstring);
 		
 		
+		
+		
 		conferma.addMouseListener(new MouseAdapter() {
 			
 			public void mouseClicked(MouseEvent e) {

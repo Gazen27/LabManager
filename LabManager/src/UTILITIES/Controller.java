@@ -57,6 +57,10 @@ public class Controller {
 	private GestisciElimina sceltaPrenotazione;
 	private GestionePrenotazione gestionePrenotazione;
 	private ConfermaEliminazione confermaEliminazione;
+	
+	private RiepilogoStrumento riepilogo;
+	private Storico storico;
+	private StoricoDAO storicoDAO;
 
 	public static void main(String[] args) {
 		
@@ -623,6 +627,19 @@ public class Controller {
 		mainWindow.dispose();
 		mainWindow =  new MainWindow(this, currentSession);
 		mainWindow.setVisible(true);	
+	}
+	
+////////////////////////////////////// RIEPILOGO //////////////////////////////////////
+	
+	public void openRiepilogoStrumento(Integer codiceStrumento) {
+		
+		storicoDAO = new StoricoDAO(this);
+		
+//		storico = storicoDAO.getStoricoStrumento(codiceStrumento);
+//		
+//		riepilogo = new RiepilogoStrumento();
+//		riepilogo.setLocationRelativeTo(mainWindow);
+//		riepilogo.setVisible(true);
 	}
 	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////
