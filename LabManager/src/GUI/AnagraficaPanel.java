@@ -2,8 +2,6 @@ package GUI;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
