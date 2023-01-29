@@ -33,7 +33,7 @@ public class StoricoDAO {
 		Integer mese = today.getMonthValue();
 		
 		String query1 = "SELECT SUM(tempoutilizzo) FROM storico ";
-		String query2 = "WHERE strumentostorico = " + codiceStrumento + ", AND EXTRACT(MONTH FROM datastorico) = " + mese;
+		String query2 = "WHERE strumentostorico = " + codiceStrumento + ", AND EXTRACT(MONTH FROM datastorico) = '" + mese + "';";
 		
 		try {
 			
@@ -60,7 +60,7 @@ public class StoricoDAO {
 		Integer anno = today.getYear();
 		
 		String query1 = "SELECT SUM(tempoutilizzo) FROM storico ";
-		String query2 = "WHERE strumentostorico = " + codiceStrumento + ", AND EXTRACT(YEAR FROM datastorico) = " + anno;
+		String query2 = "WHERE strumentostorico = " + codiceStrumento + ", AND EXTRACT(YEAR FROM datastorico) = '" + anno + "';";
 		
 		try {
 			
@@ -75,6 +75,32 @@ public class StoricoDAO {
 			
 			e.getMessage();
 			return tempo;
+		}
+	}
+	
+	
+	public String topUtilizzatoreMese(Integer codiceStrumento) {
+		
+		LocalDate today = LocalDate.now();
+		Integer mese = today.getMonthValue();
+		
+		String topUtilizzatore = "";
+		
+		String query1 = "SELECT utilizzatore FROM storico WHERE strumentostorico = " + codiceStrumento + " AND EXTRACT(MONTH FROM datastorico) = '";
+		String query2 = mese + "' GROUP BY utilizzatore ORDER BY SUM(tempoUtilizzo) DESC LIMIT 1;";
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery(query1 + query2);
+			
+			rs.next();
+			topUtilizzatore = rs.getString("utilizzatore");
+			return topUtilizzatore;
+			
+		} catch(SQLException e) {
+			
+			e.getMessage();
+			return topUtilizzatore;
 		}
 	}
 }
