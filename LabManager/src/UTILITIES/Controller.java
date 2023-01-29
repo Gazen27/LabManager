@@ -640,11 +640,12 @@ public class Controller {
 		storico.setTipoStrumento(nomeStrumento);
 		storico.setUtilizzoMese(storicoDAO.utilizzoMensile(codiceStrumento));
 		storico.setUtilizzoAnno(storicoDAO.utilizzoAnnuale(codiceStrumento));
+		storico.setTopUtilizzatoreMese(storicoDAO.topUtilizzatoreMese(codiceStrumento));
+		storico.setTopUtilizzatoreAnno(storicoDAO.topUtilizzatoreAnno(codiceStrumento));
 		
-		
-//		riepilogo = new RiepilogoStrumento();
-//		riepilogo.setLocationRelativeTo(mainWindow);
-//		riepilogo.setVisible(true);
+		riepilogo = new RiepilogoStrumento(this, storico);
+		riepilogo.setLocationRelativeTo(mainWindow);
+		riepilogo.setVisible(true);
 	}
 	
 ////////////////////////////////////// GO TO PAGES //////////////////////////////////////

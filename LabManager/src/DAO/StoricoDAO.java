@@ -103,4 +103,30 @@ public class StoricoDAO {
 			return topUtilizzatore;
 		}
 	}
+	
+	
+	public String topUtilizzatoreAnno(Integer codiceStrumento) {
+		
+		LocalDate today = LocalDate.now();
+		Integer anno = today.getYear();
+		
+		String topUtilizzatore = "";
+		
+		String query1 = "SELECT utilizzatore FROM storico WHERE strumentostorico = " + codiceStrumento + " AND EXTRACT(YEAR FROM datastorico) = '";
+		String query2 = anno + "' GROUP BY utilizzatore ORDER BY SUM(tempoUtilizzo) DESC LIMIT 1;";
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery(query1 + query2);
+			
+			rs.next();
+			topUtilizzatore = rs.getString("utilizzatore");
+			return topUtilizzatore;
+			
+		} catch(SQLException e) {
+			
+			e.getMessage();
+			return topUtilizzatore;
+		}
+	}
 }
