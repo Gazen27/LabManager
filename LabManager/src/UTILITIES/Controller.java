@@ -863,6 +863,7 @@ public class Controller {
 			RegisterNewUser(matricolaFinale, credenziali);
 			toLoginDialog = new ReturnToLoginPage(this, "Registrazione completata!", registerWindow);
 			toLoginDialog.setLocationRelativeTo(registerWindow);
+			toLoginDialog.setVisible(true);
 			
 		} else { credenziali.passwordBreve.setVisible(true); }
 
@@ -957,6 +958,13 @@ public class Controller {
 	
 ////////////////////////////////////// RECOVERY //////////////////////////////////////
 	
+	public void alertReturnToLogin() {
+		
+		toLoginDialog = new ReturnToLoginPage(this, "Password recuperata!", passwordRecoveryWindow);
+		toLoginDialog.setLocationRelativeTo(registerWindow);
+		toLoginDialog.setVisible(true);
+	}
+	
 	public void RecoverInformations(PasswordRecoveryPanel currentRecovery) {
 		
 		if(CheckMissingRecoveryInfo(currentRecovery)) {
@@ -967,14 +975,13 @@ public class Controller {
 				
 				if(tecnicoDAO.nuovaPassword(currentRecovery)) {
 					
-					toLoginDialog = new ReturnToLoginPage(this, "Password recuperata!", passwordRecoveryWindow);
-					toLoginDialog.setLocationRelativeTo(registerWindow);
+					this.alertReturnToLogin();
 					
-				} else { currentRecovery.datiErratiMancanti.setVisible(true); }
+				} else { currentRecovery.showError(); }
 				
-			} else { currentRecovery.datiErratiMancanti.setVisible(true); }
+			} else { currentRecovery.showError(); }
 			
-		} else { currentRecovery.datiErratiMancanti.setVisible(true); }
+		} else { currentRecovery.showError(); }
 	}
 	
 	

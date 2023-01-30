@@ -118,5 +118,10 @@ public class PasswordRecoveryPanel extends JPanel {
 	public String getNewPasswordInserted() {
 		return passwordComponent.getPassword();
 	}
+	
+	public void showError() {
+		
+		datiErratiMancanti.setVisible(true);
+	}
 
 }
