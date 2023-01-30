@@ -67,8 +67,6 @@ public class MainWindow extends JFrame {
 		strumentiPage.setLocation(350, 0);
 		allPanels[1] = strumentiPage;
 		
-		
-		
 		PrenotazioniPage prenotazioni = new PrenotazioniPage(myController);
 		prenotazioni.setLocation(350, 0);
 		allPanels[2] = prenotazioni;
