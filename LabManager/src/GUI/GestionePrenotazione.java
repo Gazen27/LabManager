@@ -14,6 +14,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 
 public class GestionePrenotazione extends JDialog {
@@ -139,7 +140,7 @@ public class GestionePrenotazione extends JDialog {
 		mySubstring = prenotazione.getStrumentoCompleto().substring(0, 3);
 		codiceStrumento = Integer.parseInt(mySubstring);
 		
-		
+		LocalDate dateCheck = LocalDate.of(1900, 01, 01);
 		
 		
 		conferma.addMouseListener(new MouseAdapter() {
@@ -152,7 +153,15 @@ public class GestionePrenotazione extends JDialog {
 						
 						if(myController.checkDate(codiceStrumento)) {
 							
-							myController.aggiornaPrenotazione(prenotazione.getCodicePrenotazione(), getTempoInt(), getDataUpdated());
+							if(!getDataUpdated().equals(dateCheck)) {
+								
+								myController.aggiornaPrenotazione(prenotazione.getCodicePrenotazione(), getTempoInt(), getDataUpdated());
+								
+							} else { 
+								
+								dataOccupata.setVisible(false);
+								datiErratiMancanti.setVisible(true);
+							}
 							
 						} else {
 							
@@ -220,9 +229,18 @@ public class GestionePrenotazione extends JDialog {
 		Integer month = Integer.parseInt(dataComponent.getMese());
 		Integer day = Integer.parseInt(dataComponent.getGiorno());
 		
-		LocalDate data = LocalDate.of(year, month, day);
+		LocalDate data = LocalDate.of(1900, 01, 01);
 		
-		return data;
+		try {
+			
+			data = LocalDate.of(year, month, day);
+			return data;
+			
+		} catch (DateTimeException e) {
+			
+			return data;
+		}
+		
 	}
 	
 }

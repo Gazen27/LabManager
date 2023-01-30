@@ -25,7 +25,6 @@ public class StrumentoDAO {
 	
 ////////////////////////////////////// INSERTING //////////////////////////////////////
 	
-	//TODO: go into the catch clause.
 	public Boolean newStrumento(Strumento strumentoTEMP) {
 		
 		Integer usage = Integer.parseInt(strumentoTEMP.getMaxUtilizzo());

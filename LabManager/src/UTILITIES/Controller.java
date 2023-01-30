@@ -4,7 +4,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Random;
 import java.util.Vector;
 
@@ -78,6 +80,21 @@ public class Controller {
 
 	}
 	
+	
+////////////////////////////////////// VALID DATE CHECK //////////////////////////////////////
+	
+	public Boolean validDate(Integer day, Integer month, Integer year) {
+		
+		try {
+			
+			LocalDate selectedLocalDate = LocalDate.of(year, month, day);
+		    return true;
+		    
+		} catch (DateTimeException e) {
+		    
+		    return false;
+		}
+	}
 	
 ////////////////////////////////////// GESTIONE LABORATORI //////////////////////////////////////
 	
@@ -439,12 +456,19 @@ public class Controller {
 	
 	public Boolean prenotazioneCompleted() {
 		
+		Integer day = Integer.parseInt(effettuaPrenotazione.getCampoDay());
+		Integer month = Integer.parseInt(effettuaPrenotazione.getCampoMonth());
+		Integer year = Integer.parseInt(effettuaPrenotazione.getCampoYear());
+		
 		if(!effettuaPrenotazione.getCampoTempo().equals("")) {
 			if(!effettuaPrenotazione.getCampoYear().equals("")) {
 				if(!effettuaPrenotazione.getCampoDay().equals("GG") && !effettuaPrenotazione.getCampoMonth().equals("MM")) {
-					
-					return true;
-					
+					if(validDate(day, month, year)) {
+						
+						return true;
+						
+					} else { return false; }
+
 				} else { return false; }
 				
 			} else { return false; }
@@ -622,7 +646,6 @@ public class Controller {
 	public void aggiornaPrenotazione(Integer codice, Integer tempoAggiornato, LocalDate dataAggiornata) {
 		
 		prenotazionePersDAO = new PrenotazionePersonaleDAO(this);
-		
 		prenotazionePersDAO.updatePrenotazione(codice, tempoAggiornato, dataAggiornata);
 		
 		gestionePrenotazione.dispose();
@@ -784,14 +807,21 @@ public class Controller {
 	
 	public Boolean CheckMissingPersonalInfo(AnagraficaPanel anagrafica) {
 		
+		Integer day = Integer.parseInt(anagrafica.getGiornoInserted());
+		Integer month = Integer.parseInt(anagrafica.getMeseInserted());
+		Integer year = Integer.parseInt(anagrafica.getAnnoInserted());
+		
 		//Checking if the fields are empty
 	    if(!anagrafica.getNomeInserted().equals("") && !anagrafica.getCognomeInserted().equals("")) {
 	    	if(!anagrafica.getGiornoInserted().equals("GG") && !anagrafica.getMeseInserted().equals("MM") && !anagrafica.getAnnoInserted().equals("")) {
 	    		if(!anagrafica.getCFInserted().equals("")) {
 	    			if(!anagrafica.getTelefonoInserted().equals("") && !anagrafica.getEmailInserted().equals("")) {
+	    				if(validDate(day, month, year)) {
 	    					
 		    				//no missing info
 		    				return true;
+	    					
+	    				} else { return false; }	
 
 	    			} else { return false; }
 	    			
