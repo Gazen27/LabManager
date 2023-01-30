@@ -37,7 +37,6 @@ public class PrenotazioneDAO {
 		try {
 			
 			statement.executeQuery(queryStart + values1 + values2);
-			System.out.println("CIAO");
 			
 		} catch (SQLException e) {
 			
