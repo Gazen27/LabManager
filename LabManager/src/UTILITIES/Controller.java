@@ -165,30 +165,31 @@ public class Controller {
 	}
 	
 	
+	public void refresh() {
+		
+		iscriviti.dispose();
+		mainWindow.dispose();
+		
+		mainWindow =  new MainWindow(this, currentSession);
+		mainWindow.setVisible(true);
+	}
+	
+	
 	public void deleteIscrizione(String sede, String tipo) {
 		
 		String matricola = currentSession.getUserMatricola();
 		laboratorioDAO.cancellaIscrizione(matricola, sede, tipo);
 		
-		iscriviti.dispose();
-		mainWindow.dispose();
-		
-		mainWindow =  new MainWindow(this, currentSession);
-		mainWindow.setVisible(true);
+		this.refresh();
 		
 	}
 	
-	
-	public void becomeResponsabile(String sede, String tipo) {
+	public void becomeResponsabile(String codiceLab, String tipoLab) {
 		
 		String matricola = currentSession.getUserMatricola();
-		laboratorioDAO.newResponsabile(matricola, sede, tipo);
+		laboratorioDAO.newResponsabile(matricola, codiceLab, tipoLab);
 		
-		iscriviti.dispose();
-		mainWindow.dispose();
-		
-		mainWindow =  new MainWindow(this, currentSession);
-		mainWindow.setVisible(true);
+		this.refresh();
 	}
 	
 	
@@ -196,11 +197,7 @@ public class Controller {
 		
 		laboratorioDAO.rimuoviResponsabile(sede, tipo);
 		
-		iscriviti.dispose();
-		mainWindow.dispose();
-		
-		mainWindow =  new MainWindow(this, currentSession);
-		mainWindow.setVisible(true);
+		this.refresh();
 	}
 	
 	public String currentMatricolaSession() {

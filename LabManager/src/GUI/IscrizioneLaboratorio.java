@@ -21,6 +21,9 @@ public class IscrizioneLaboratorio extends JDialog {
 
 	Controller myController;
 	
+	private String codiceLab;
+	private String tipoLab;
+	
 	public IscrizioneLaboratorio(Controller controller, Laboratorio laboratorio, Boolean notIscritto) {
 		
 		myController = controller;
@@ -155,6 +158,9 @@ public class IscrizioneLaboratorio extends JDialog {
 		}
 		
 		
+		codiceLab = laboratorio.getCodice();
+		tipoLab = laboratorio.getTipo();
+		
 ////////////////////////////////////// LISTENER //////////////////////////////////////
 		
 		
@@ -162,7 +168,7 @@ public class IscrizioneLaboratorio extends JDialog {
 			
 			public void mouseClicked(MouseEvent e) {
 				
-				myController.executeIscrizione(laboratorio.getCodice(), laboratorio.getTipo());
+				myController.executeIscrizione(codiceLab, tipoLab);
 				
 			}
 			
@@ -181,7 +187,7 @@ public class IscrizioneLaboratorio extends JDialog {
 			
 			public void mouseClicked(MouseEvent e) {
 				
-				myController.deleteIscrizione(laboratorio.getCodice(), laboratorio.getTipo());
+				myController.deleteIscrizione(codiceLab, tipoLab);
 			}
 			
 			public void mouseEntered(MouseEvent e) {
@@ -195,13 +201,14 @@ public class IscrizioneLaboratorio extends JDialog {
 		});
 		
 		
+		
 		if(responsabileButton.isEnabled()) {
 			
 			responsabileButton.addMouseListener(new MouseAdapter() {
 				
 				public void mouseClicked(MouseEvent e) {
 					
-					myController.becomeResponsabile(laboratorio.getCodice(), laboratorio.getTipo());
+					myController.becomeResponsabile(codiceLab, tipoLab);
 					
 				}
 				
@@ -222,7 +229,7 @@ public class IscrizioneLaboratorio extends JDialog {
 			
 			public void mouseClicked(MouseEvent e) {
 				
-				myController.removeResponsabile(laboratorio.getCodice(), laboratorio.getTipo());
+				myController.removeResponsabile(codiceLab, tipoLab);
 				
 			}
 			
