@@ -605,20 +605,15 @@ public class Controller {
 	
 	public Boolean campiGestioneCompleted() {
 		
-		if(!gestionePrenotazione.getDay().equals("GG")) {
-			if(!gestionePrenotazione.getMonth().equals("MM")) {
-				if(!gestionePrenotazione.getYear().equals("")) {
-					if(!gestionePrenotazione.getTempoInserted().equals("")) {
+		if(!gestionePrenotazione.getYear().equals("")) {
+			if(!gestionePrenotazione.getTempoInserted().equals("")) {
 						
-						return true;
+				return true;
 						
-					} else { return false; }
-					
-				} else { return false; }
-				
 			} else { return false; }
-			
+					
 		} else { return false; }
+				
 	}
 	
 	
@@ -810,7 +805,6 @@ public class Controller {
 		
 		//Checking if the fields are empty
 	    if(!anagrafica.getNomeInserted().equals("") && !anagrafica.getCognomeInserted().equals("")) {
-	    	if(!anagrafica.getGiornoInserted().equals("GG") && !anagrafica.getMeseInserted().equals("MM") && !anagrafica.getAnnoInserted().equals("")) {
 	    		if(!anagrafica.getCFInserted().equals("")) {
 	    			if(!anagrafica.getTelefonoInserted().equals("") && !anagrafica.getEmailInserted().equals("")) {
 	    				if(validDate(day, month, year)) {
@@ -826,7 +820,6 @@ public class Controller {
 	    		
 	    	}else { return false; }
 	    	
-	    }else { return false; }
 	}
 	
 	
@@ -1004,7 +997,7 @@ public class Controller {
 			allPages[i].setVisible(false);
 		}
 		
-		//Setting true to Strumenti Panel
+		//Setting true to STRUMENTI Panel
 		allPages[1].setVisible(true);
 	}
 	
@@ -1014,7 +1007,7 @@ public class Controller {
 			allPages[i].setVisible(false);
 		}
 		
-		//Setting true to Prenotazioni Panel
+		//Setting true to PRENOTAZIONI Panel
 		allPages[2].setVisible(true);
 	}
 	
