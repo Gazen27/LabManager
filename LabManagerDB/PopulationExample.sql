@@ -56,7 +56,7 @@ VALUES ('LM1234567', 'passMarioR', 'Mario', 'Rossi', '1990-03-15', 'M', 'RSSMRA9
 INSERT INTO tecnico (matricola, pass, nome, cognome, datanascita, sesso, codicefiscale, telefono, email) 
 VALUES ('LM8765432', 'passLuciaB', 'Lucia', 'Bianchi', '1995-02-14', 'F', 'BNCLCU95B54G702A', '9876543210', 'lucia.bianchi@email.com');
 
-INSERT INTO tecnico (matricola, pass, nome, cognome, datanascita, sesso. codicefiscale, telefono, email)
+INSERT INTO tecnico (matricola, pass, nome, cognome, datanascita, sesso, codicefiscale, telefono, email)
 VALUES ('LM7842105', 'passDavide11', 'Davide', 'Crispano', '2001-06-07', 'M', 'CRSDVD01E07F839A', '3286543210', 'davide.crispano@gmail.com');
 
 
