@@ -1,5 +1,5 @@
 The Database.sql and PopulationExample.sql files are just an example of Database that could work fine with the application contained in "LabManager" folder;
-We know that the structure of the DB could be more complex, those examples were useful to let the application work.
+We know that the structure of the DB could be more complex, those examples are just useful to let the application work.
 
 The real project about the Database is a bit different and it's not uploaded on this GitHub repository
 
