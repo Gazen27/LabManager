@@ -133,7 +133,7 @@ SELECT pos.codpostazione,
             l.csede,
             s.nome
            FROM locazione l
-             JOIN sede s ON l.csede = s.codsede) u ON pos.laboratoriopostazione::text = u.tlaboratorio::text AND pos.sedepostazione = u.csede;
+             JOIN sede s ON l.csede = s.codsede) u ON pos.laboratoriopostazione::text = u.tlaboratorio::text AND pos.sedepostazione = u.csede
 );
 
 
@@ -148,7 +148,7 @@ SELECT s.codstrumento,
     cp.laboratoriopostazione,
     cp.nome
    FROM strumento s
-     JOIN postazionelocazione cp ON s.postazioneassegnata = cp.codpostazione;
+     JOIN postazionelocazione cp ON s.postazioneassegnata = cp.codpostazione
 );
 ---------------------------------------------------------------
 
@@ -376,7 +376,7 @@ orario2 integer;
 BEGIN
 	open cursore_prenotazioni_strumento;
 
-	loop;
+	loop
 		fetch cursore_prenotazioni_strumento into codice_struemento,orario1,orario2;
 		exit when not found;
 		
