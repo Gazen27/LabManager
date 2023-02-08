@@ -82,24 +82,24 @@ INSERT INTO lavora(matricolatecnico, codsede, tipo) VALUES('LM8765432',4,'Geolog
 
 
 -- popolamento postazione
-INSERT INTO postazione(codpostazione, laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES(1,'Informatica',1,2,0);
-INSERT INTO postazione(codpostazione, laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES(2,'Chimica',3,3,0);
-INSERT INTO postazione(codpostazione, laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES(3,'Biologia',1,2,0);
-INSERT INTO postazione(codpostazione, laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES(4,'Atronomia',3,3,0);
-INSERT INTO postazione(codpostazione, laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES(5,'Geologia',2,4,0);
-INSERT INTO postazione(codpostazione, laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES(6,'Fisica',5,2,0);
-INSERT INTO postazione(codpostazione, laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES(7,'Fisica',6,3,0);
-INSERT INTO postazione(codpostazione, laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES(8,'Geologia',4,3,0);
-INSERT INTO postazione(codpostazione, laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES(9,'Informatica',2,4,0);
-INSERT INTO postazione(codpostazione, laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES(10,'Informatica',4,6,0);
-INSERT INTO postazione(codpostazione, laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES(11,'Chimica',2,2,0);
-INSERT INTO postazione(codpostazione, laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES(12,'Astronomia',1,3,0);
-INSERT INTO postazione(codpostazione, laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES(13,'Geologia',2,3,0);
-INSERT INTO postazione(codpostazione, laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES(14,'Biologia',3,4,0);
-INSERT INTO postazione(codpostazione, laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES(15,'Informatica',6,2,0);
-INSERT INTO postazione(codpostazione, laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES(16,'Fisica',5,3,0);
-INSERT INTO postazione(codpostazione, laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES(17,'Chimica',5,3,0);
-INSERT INTO postazione(codpostazione, laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES(18,'Geologia',4,4,0);
+INSERT INTO postazione(laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES('Informatica',1,2,0);
+INSERT INTO postazione(laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES('Chimica',3,3,0);
+INSERT INTO postazione(laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES('Biologia',1,2,0);
+INSERT INTO postazione(laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES('Atronomia',3,3,0);
+INSERT INTO postazione(laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES('Geologia',2,4,0);
+INSERT INTO postazione(laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES('Fisica',5,2,0);
+INSERT INTO postazione(laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES('Fisica',6,3,0);
+INSERT INTO postazione(laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES('Geologia',4,3,0);
+INSERT INTO postazione(laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES('Informatica',2,4,0);
+INSERT INTO postazione(laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES('Informatica',4,6,0);
+INSERT INTO postazione(laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES('Chimica',2,2,0);
+INSERT INTO postazione(laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES('Astronomia',1,3,0);
+INSERT INTO postazione(laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES('Geologia',2,3,0);
+INSERT INTO postazione(laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES('Biologia',3,4,0);
+INSERT INTO postazione(laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES('Informatica',6,2,0);
+INSERT INTO postazione(laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES('Fisica',5,3,0);
+INSERT INTO postazione(laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES('Chimica',5,3,0);
+INSERT INTO postazione(laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES('Geologia',4,4,0);
 
 
 -- popolamento prenotazioni
@@ -116,27 +116,27 @@ INSERT INTO prenotazioni(matricolaprenotata, strumentoprenotato, postazionepreno
 
 
 -- popolamento strumento
-INSERT INTO strumento(codstrumento, tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES(1,'Computer Fisso','Computer marca DELL',2,1);
-INSERT INTO strumento(codstrumento, tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES(2,'Stampante Laser','Stampante marca EPSON',3,9);
-INSERT INTO strumento(codstrumento, tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES(3,'Plotter','Plotter marca HP',1,10);
-INSERT INTO strumento(codstrumento, tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES(4,'MainFrame','MainFrame marca IBM',2,15);
-INSERT INTO strumento(codstrumento, tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES(5,'Becco Bunsen','Marca Neolab',3,2);
-INSERT INTO strumento(codstrumento, tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES(6,'Refrigeranti','Marca Allihn',4,11);
-INSERT INTO strumento(codstrumento, tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES(7,'Beuta','Beuta Erlenmeyer collo largo',2,17);
-INSERT INTO strumento(codstrumento, tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES(8,'Microscopio','Marca Digiteck',2,3);
-INSERT INTO strumento(codstrumento, tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES(9,'Pallone','Pallone per colture cellulari',3,14);
-INSERT INTO strumento(codstrumento, tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES(10,'Imbuto','Imbuto in plastica',4,3);
-INSERT INTO strumento(codstrumento, tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES(11,'Vetrini','Vetrini per microscopio',2,14);
-INSERT INTO strumento(codstrumento, tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES(12,'Kit dissezione','Marca Ronaldo',2,14);
-INSERT INTO strumento(codstrumento, tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES(13,'Planetario','Planetario portatile SPLN',3,12);
-INSERT INTO strumento(codstrumento, tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES(14,'Telescopio','Telescopio multi accessoriato',1,12);
-INSERT INTO strumento(codstrumento, tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES(15,'Telescopio','Marca Taurus',2,12);
-INSERT INTO strumento(codstrumento, tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES(16,'Bussola','Marca DQY',3,5);
-INSERT INTO strumento(codstrumento, tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES(17,'Sismografo','Marca WitMotion',4,8);
-INSERT INTO strumento(codstrumento, tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES(18,'Geofono sismico','Marca Set',1,13);
-INSERT INTO strumento(codstrumento, tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES(19,'Dinamometro','Marca Sauter',3,7);
-INSERT INTO strumento(codstrumento, tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES(20,'Peseria','Class certificata Accredia',4,6);
-INSERT INTO strumento(codstrumento, tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES(21,'Torsiometro','Marca Metrica',1,16);
+INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Computer Fisso','Computer marca DELL',2,1);
+INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Stampante Laser','Stampante marca EPSON',3,9);
+INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Plotter','Plotter marca HP',1,10);
+INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('MainFrame','MainFrame marca IBM',2,15);
+INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Becco Bunsen','Marca Neolab',3,2);
+INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Refrigeranti','Marca Allihn',4,11);
+INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Beuta','Beuta Erlenmeyer collo largo',2,17);
+INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Microscopio','Marca Digiteck',2,3);
+INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Pallone','Pallone per colture cellulari',3,14);
+INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Imbuto','Imbuto in plastica',4,3);
+INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Vetrini','Vetrini per microscopio',2,14);
+INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Kit dissezione','Marca Ronaldo',2,14);
+INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Planetario','Planetario portatile SPLN',3,12);
+INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Telescopio','Telescopio multi accessoriato',1,12);
+INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Telescopio','Marca Taurus',2,12);
+INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Bussola','Marca DQY',3,5);
+INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Sismografo','Marca WitMotion',4,8);
+INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Geofono sismico','Marca Set',1,13);
+INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Dinamometro','Marca Sauter',3,7);
+INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Peseria','Class certificata Accredia',4,6);
+INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Torsiometro','Marca Metrica',1,16);
 
 
 -- popolamento storico
