@@ -102,19 +102,6 @@ INSERT INTO postazione(laboratoriopostazione, sedepostazione, maxstrumenti, curr
 INSERT INTO postazione(laboratoriopostazione, sedepostazione, maxstrumenti, currentstrumenti) VALUES('Geologia',4,4,0);
 
 
--- popolamento prenotazioni
-INSERT INTO prenotazioni(matricolaprenotata, strumentoprenotato, postazioneprenotata, dataprenotazione, oreprenotate, conclusa) VALUES('LM1990401',1,1,'2023-02-03',2,false);
-INSERT INTO prenotazioni(matricolaprenotata, strumentoprenotato, postazioneprenotata, dataprenotazione, oreprenotate, conclusa) VALUES('LM1633608',2,9,'2023-03-24',1,false);
-INSERT INTO prenotazioni(matricolaprenotata, strumentoprenotato, postazioneprenotata, dataprenotazione, oreprenotate, conclusa) VALUES('LM1493704',3,10,'2023-04-23',1,false);
-INSERT INTO prenotazioni(matricolaprenotata, strumentoprenotato, postazioneprenotata, dataprenotazione, oreprenotate, conclusa) VALUES('LM1391596',4,15,'2023-06-20',2,false);
-INSERT INTO prenotazioni(matricolaprenotata, strumentoprenotato, postazioneprenotata, dataprenotazione, oreprenotate, conclusa) VALUES('LM1234567',5,2,'2023-08-18',3,false);
-INSERT INTO prenotazioni(matricolaprenotata, strumentoprenotato, postazioneprenotata, dataprenotazione, oreprenotate, conclusa) VALUES('LM8765432',6,11,'2023-11-08',2,false);
-INSERT INTO prenotazioni(matricolaprenotata, strumentoprenotato, postazioneprenotata, dataprenotazione, oreprenotate, conclusa) VALUES('LM7842105',7,17,'2023-12-05',1,false);
-INSERT INTO prenotazioni(matricolaprenotata, strumentoprenotato, postazioneprenotata, dataprenotazione, oreprenotate, conclusa) VALUES('LM8765432',8,3,'2023-05-03',1,false);
-INSERT INTO prenotazioni(matricolaprenotata, strumentoprenotato, postazioneprenotata, dataprenotazione, oreprenotate, conclusa) VALUES('LM1990401',9,14,'2023-08-21',2,false);
-INSERT INTO prenotazioni(matricolaprenotata, strumentoprenotato, postazioneprenotata, dataprenotazione, oreprenotate, conclusa) VALUES('LM1990401',1,3,'2023-09-13',3,false);
-
-
 -- popolamento strumento
 INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Computer Fisso','Computer marca DELL',2,1);
 INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Stampante Laser','Stampante marca EPSON',3,9);
@@ -137,6 +124,19 @@ INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegna
 INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Dinamometro','Marca Sauter',3,7);
 INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Peseria','Class certificata Accredia',4,6);
 INSERT INTO strumento(tipo, descrizionestrumento, utilizzomax, postazioneassegnata) VALUES('Torsiometro','Marca Metrica',1,16);
+
+
+-- popolamento prenotazioni
+INSERT INTO prenotazioni(matricolaprenotata, strumentoprenotato, postazioneprenotata, dataprenotazione, oreprenotate, conclusa) VALUES('LM1990401',1,1,'2023-02-03',2,false);
+INSERT INTO prenotazioni(matricolaprenotata, strumentoprenotato, postazioneprenotata, dataprenotazione, oreprenotate, conclusa) VALUES('LM1633608',2,9,'2023-03-24',1,false);
+INSERT INTO prenotazioni(matricolaprenotata, strumentoprenotato, postazioneprenotata, dataprenotazione, oreprenotate, conclusa) VALUES('LM1493704',3,10,'2023-04-23',1,false);
+INSERT INTO prenotazioni(matricolaprenotata, strumentoprenotato, postazioneprenotata, dataprenotazione, oreprenotate, conclusa) VALUES('LM1391596',4,15,'2023-06-20',2,false);
+INSERT INTO prenotazioni(matricolaprenotata, strumentoprenotato, postazioneprenotata, dataprenotazione, oreprenotate, conclusa) VALUES('LM1234567',5,2,'2023-08-18',3,false);
+INSERT INTO prenotazioni(matricolaprenotata, strumentoprenotato, postazioneprenotata, dataprenotazione, oreprenotate, conclusa) VALUES('LM8765432',6,11,'2023-11-08',2,false);
+INSERT INTO prenotazioni(matricolaprenotata, strumentoprenotato, postazioneprenotata, dataprenotazione, oreprenotate, conclusa) VALUES('LM7842105',7,17,'2023-12-05',1,false);
+INSERT INTO prenotazioni(matricolaprenotata, strumentoprenotato, postazioneprenotata, dataprenotazione, oreprenotate, conclusa) VALUES('LM8765432',8,3,'2023-05-03',1,false);
+INSERT INTO prenotazioni(matricolaprenotata, strumentoprenotato, postazioneprenotata, dataprenotazione, oreprenotate, conclusa) VALUES('LM1990401',9,14,'2023-08-21',2,false);
+INSERT INTO prenotazioni(matricolaprenotata, strumentoprenotato, postazioneprenotata, dataprenotazione, oreprenotate, conclusa) VALUES('LM1990401',1,3,'2023-09-13',3,false);
 
 
 -- popolamento storico
