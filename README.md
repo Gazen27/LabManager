@@ -1,5 +1,6 @@
 ![license: MIT](https://badgen.net/badge/license/MIT/blue)
 ![status: concluded](https://badgen.net/badge/status/concluded/green)
+![release: none](https://badgen.net/badge/release/none/purple)
 # Project: Lab-Manager
 ![Banner](https://user-images.githubusercontent.com/43990877/213590461-9bf2f97d-aa42-4859-b72c-5c7dfdda920d.png)
 
